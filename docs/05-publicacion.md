@@ -1,41 +1,74 @@
-# 05 · Publicación en mantenplus.cl
+# 05 · Publicación en mantenplus.cl con GitHub Pages
 
-El sitio es **estático** (HTML, CSS y JS sin compilación), así que se puede publicar gratis en un servicio de hosting estático.
+El sitio es **estático** (HTML, CSS y JS sin compilación) y el repositorio es **público**, así que GitHub Pages lo publica **gratis**, con HTTPS incluido. No hace falta contratar hosting.
 
-**Recomendación: Cloudflare Pages + DNS de Cloudflare.** Es gratis, incluye HTTPS automático, CDN global y se actualiza solo cada vez que se fusiona un cambio en `main`.
+## Paso 1 · Activar GitHub Pages (1 minuto)
 
-> Los dominios **.cl** se administran en **NIC Chile** (clientes.nic.cl), que solo delega el dominio a unos *servidores de nombre* (DNS). Por eso el dominio se conecta cambiando esos servidores por los de Cloudflare.
+1. En GitHub, abrir el repositorio → **Settings** → **Pages** (menú izquierdo).
+2. En *Build and deployment → Source*, elegir **Deploy from a branch**.
+3. En *Branch*, elegir la rama y la carpeta **`/ (root)`**, y pulsar **Save**:
+   - Para revisar **antes** de aprobar el pull request: `claude/mantenplus-web-redesign-cgys0a`.
+   - Para el lanzamiento oficial: **`main`** (después de fusionar el pull request).
+4. En uno o dos minutos el sitio queda en **https://cvarela-creacion.github.io/mantenplus/**. El avance se ve en la pestaña **Actions** (*pages build and deployment*).
 
-## Antes de empezar: el correo
+El repositorio incluye un archivo `.nojekyll` para que GitHub publique los archivos tal cual, sin procesarlos.
 
-⚠️ Si **contacto@mantenplus.cl ya funciona** (Google Workspace, Zoho, el correo del hosting, etc.), al cambiar los servidores de nombre hay que **copiar en Cloudflare los registros MX y TXT (SPF/DKIM)** del proveedor de correo. Si no, el correo deja de llegar. Cloudflare suele importarlos al agregar el dominio, pero hay que verificarlos uno a uno antes del paso 4.
+## Paso 2 · Preparar el DNS de mantenplus.cl
 
-## Pasos
+Los dominios **.cl** se administran en **NIC Chile** (clientes.nic.cl), que solo delega el dominio a unos *servidores de nombre* (DNS). Los registros que pide GitHub se crean en ese servicio de DNS:
 
-1. **Fusionar el pull request** en la rama `main` de GitHub.
-2. **Crear el proyecto en Cloudflare Pages** (dash.cloudflare.com → *Workers & Pages* → *Create* → *Pages* → *Connect to Git*):
-   - Repositorio: `cvarela-creacion/mantenplus`, rama `main`.
-   - Framework preset: **None**. Build command: **vacío**. Build output directory: **`/`**.
-   - Se publica en una dirección provisoria `*.pages.dev` para revisar.
-3. **Agregar el dominio a Cloudflare** (*Add a site* → `mantenplus.cl`, plan Free). Revisar los registros importados (sobre todo MX/TXT del correo). Cloudflare entrega **dos servidores de nombre** (p. ej. `xxx.ns.cloudflare.com`).
-4. **Cambiar los servidores DNS en NIC Chile:** clientes.nic.cl → dominio `mantenplus.cl` → modificar servidores de nombre → reemplazarlos por los dos de Cloudflare. La propagación puede tardar desde minutos hasta 24–48 h.
-5. **Conectar el dominio al proyecto:** en el proyecto de Pages → *Custom domains* → agregar `mantenplus.cl` y `www.mantenplus.cl`. El certificado HTTPS se emite solo.
-6. **Redirigir `www` al dominio principal** (*Rules* → *Redirect Rules*: `www.mantenplus.cl/*` → `https://mantenplus.cl/$1`, 301), para que Google vea una sola versión (el `canonical` del sitio ya apunta a `https://mantenplus.cl/`).
-7. **Después de publicar:**
-   - Google Search Console: verificar el dominio (registro TXT en Cloudflare) y enviar `https://mantenplus.cl/sitemap.xml`.
-   - Google Business Profile: crear o completar la ficha (es lo que alimenta las reseñas y el mapa) y poner su enlace en `[LINK_GOOGLE_RESENAS]`.
-   - Opcional: GA4 y/o Meta Pixel. El sitio ya envía los eventos de conversión (`hero_agendar`, `servicio_<equipo>`, `cobertura_consulta`, `contacto_formulario`…) si se instalan.
-   - Probar la vista previa del enlace pegando `https://mantenplus.cl` en WhatsApp (usa `assets/img/og-mantenplus.jpg`).
+- Si ya tienes un panel de DNS para el dominio (por ejemplo, donde se configuró el correo), usa ese.
+- Si no, **Cloudflare DNS** es gratis (no es hosting, solo DNS): *Add a site* → `mantenplus.cl` → plan Free. Luego, en NIC Chile, reemplaza los servidores de nombre por los dos que entrega Cloudflare.
 
-## Lista de control antes de abrir el dominio al público
+⚠️ **Correo:** si contacto@mantenplus.cl ya funciona y cambias de proveedor de DNS, copia antes los registros **MX** y **TXT** (SPF/DKIM) del correo en el nuevo DNS. Si no, el correo deja de llegar.
+
+## Paso 3 · Verificar el dominio en GitHub (recomendado)
+
+Evita que otra cuenta de GitHub pueda apropiarse del dominio.
+
+1. Foto de perfil → **Settings** (de la cuenta) → **Pages** → **Add a domain** → `mantenplus.cl`.
+2. GitHub muestra un registro **TXT** (`_github-pages-challenge-cvarela-creacion.mantenplus.cl`). Crearlo en el DNS y pulsar **Verify**.
+
+## Paso 4 · Crear los registros DNS
+
+| Tipo | Nombre | Valor |
+|---|---|---|
+| A | `@` (mantenplus.cl) | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| AAAA (opcional) | `@` | `2606:50c0:8000::153` · `2606:50c0:8001::153` · `2606:50c0:8002::153` · `2606:50c0:8003::153` |
+| CNAME | `www` | `cvarela-creacion.github.io` |
+
+En **Cloudflare**, dejar estos registros en **«DNS only»** (nube gris). Con el proxy activado (nube naranja), GitHub no puede emitir el certificado HTTPS.
+
+## Paso 5 · Conectar el dominio en el repositorio
+
+1. Repositorio → **Settings** → **Pages** → *Custom domain*: escribir `mantenplus.cl` → **Save**. GitHub agrega solo un archivo `CNAME` a la rama publicada.
+2. Esperar a que el chequeo de DNS salga en verde. Puede tardar desde minutos hasta 24–48 h si se cambiaron los servidores de nombre.
+3. Marcar **Enforce HTTPS** cuando se habilite (el certificado puede tardar hasta una hora más).
+4. `www.mantenplus.cl` redirige solo a `mantenplus.cl` gracias al CNAME de `www`.
+
+> **No agregar el archivo `CNAME` antes de tiempo.** Con ese archivo, GitHub redirige `cvarela-creacion.github.io/mantenplus` al dominio. Si el DNS aún no está listo, la vista previa deja de funcionar.
+
+## Paso 6 · Después del lanzamiento
+
+- **Google Search Console:** verificar el dominio (registro TXT) y enviar `https://mantenplus.cl/sitemap.xml`.
+- **Google Business Profile:** crear o completar la ficha (alimenta las reseñas y el mapa) y poner su enlace en `[LINK_GOOGLE_RESENAS]`.
+- **Vista previa del enlace:** pegar `https://mantenplus.cl` en WhatsApp para comprobarla (usa `assets/img/og-mantenplus.jpg`).
+- **Opcional:** GA4 y/o Meta Pixel. El sitio ya envía los eventos de conversión (`hero_agendar`, `servicio_<equipo>`, `cobertura_consulta`, `contacto_formulario`…) si se instalan.
+
+## Lista de control antes del lanzamiento oficial
 
 - [ ] Número de WhatsApp real (`569XXXXXXXX` y `+56 9 XXXX XXXX`).
 - [ ] Enlaces de Instagram, Facebook y reseñas de Google.
 - [ ] Comunas de cobertura confirmadas.
 - [ ] Respuestas de Preguntas frecuentes y promesas del servicio validadas (ver `01-arquitectura.md`).
-- [ ] **Imágenes y videos de stock reemplazados por material propio**, en especial el **antes/después** (mostrar resultados de stock como trabajos propios sería engañoso) y la **foto del equipo** (los clientes esperan ver a las personas que llegarán a su casa).
+- [ ] Fotos y videos propios, en especial el **antes/después** y la **foto del equipo**.
 - [ ] Sección Opiniones con reseñas reales, u oculta.
 
-## Alternativa: GitHub Pages
+> El repositorio es público: además de la web, cualquiera puede ver el código y la carpeta `docs/` en GitHub (y también en `…/docs/` dentro del sitio publicado). No guardar ahí datos privados.
 
-Como el repositorio es público, también sirve GitHub Pages (Settings → Pages → rama `main`, carpeta `/`). En ese caso: agregar un archivo `CNAME` con `mantenplus.cl` y, en el DNS (igual se necesita un proveedor como Cloudflare), registros A hacia las IP de GitHub Pages y un CNAME `www` → `cvarela-creacion.github.io`.
+## Alternativa: Cloudflare Pages
+
+También gratis. Workers & Pages → *Create* → *Pages* → *Connect to Git* → repositorio `cvarela-creacion/mantenplus`, rama `main`, sin comando de compilación, carpeta `/`. Luego *Custom domains* → `mantenplus.cl` y `www.mantenplus.cl`.

@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MantenPlus · Servicio técnico de electrodomésticos a domicilio en Santiago</title>
+  <meta name="description" content="Expertos en el cuidado y reparación de tus electrodomésticos. Técnicos especializados en marcas premium y de ingeniería alemana, a domicilio en Santiago. Diagnóstico transparente, garantía por escrito y charla de uso incluida.">
+  <meta name="theme-color" content="#FFFFFF">
+  <link rel="canonical" href="https://mantenplus.cl/">
+
+  <!-- Open Graph / redes -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:site_name" content="MantenPlus">
+  <meta property="og:title" content="MantenPlus · Expertos en el cuidado y reparación de tus electrodomésticos">
+  <meta property="og:description" content="Servicio técnico premium a domicilio en Santiago. Agenda por WhatsApp.">
+  <meta property="og:url" content="https://mantenplus.cl/">
+  <meta property="og:image" content="https://mantenplus.cl/assets/img/og-mantenplus.jpg">
+
+  <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
+
+  <!-- Tipografías: Plus Jakarta Sans (titulares) + Inter (texto). En producción, autoalojar en /assets/fonts (ver docs/02-guia-visual.md) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+
+  <!-- Activar cuando exista la foto del Hero (mejora el LCP):
+  <link rel="preload" as="image" href="assets/img/hero-tecnico-puerta.webp" type="image/webp" fetchpriority="high"> -->
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/main.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "MantenPlus",
+    "legalName": "Servicios Integrales Varela",
+    "slogan": "Expertos en el cuidado y reparación de tus electrodomésticos",
+    "url": "https://mantenplus.cl/",
+    "email": "contacto@mantenplus.cl",
+    "logo": "https://mantenplus.cl/assets/img/logo-mark.svg",
+    "areaServed": { "@type": "City", "name": "Santiago", "containedInPlace": { "@type": "Country", "name": "Chile" } },
+    "knowsAbout": ["Reparación de lavadoras", "Reparación de refrigeradores", "Reparación de encimeras", "Mantención de electrodomésticos"]
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="brand" href="/" aria-label="MantenPlus, ir al inicio">
+        <svg class="brand__mark" viewBox="0 0 680 380" aria-hidden="true" focusable="false">
+          <use href="#logo-mark"/>
+        </svg>
+        <span class="brand__word">MANTEN<span class="brand__plus">PLUS</span></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Principal">
+        <ul class="main-nav__list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#charlas-de-uso">Charlas de uso</a></li>
+          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="btn btn--ghost btn--sm hide-sm" href="mailto:contacto@mantenplus.cl">
+          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+          contacto@mantenplus.cl
+        </a>
+        <a class="btn btn--primary btn--sm" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="header_agendar">
+          Agendar
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+          <span class="visually-hidden">Abrir menú</span>
+          <span class="menu-toggle__bar"></span>
+          <span class="menu-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú móvil (hoja a pantalla completa) -->
+    <div class="mobile-menu" id="mobile-menu" hidden data-mobile-menu>
+      <nav aria-label="Menú móvil">
+        <ul class="mobile-menu__list">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#charlas-de-uso">Charlas de uso</a></li>
+          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu__footer">
+        <a class="btn btn--primary btn--block" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="menu_agendar">Agendar servicio</a>
+        <a class="mobile-menu__mail" href="mailto:contacto@mantenplus.cl">contacto@mantenplus.cl</a>
+        <div class="social">
+          <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="container hero__grid">
+        <!-- Columna de texto + conversión -->
+        <div class="hero__copy">
+          <p class="eyebrow">
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            Servicio técnico a domicilio · Santiago
+          </p>
+
+          <h1 class="hero__title" id="hero-title">
+            Expertos en el <span class="hl">cuidado</span> y <span class="hl">reparación</span> de tus electrodomésticos
+          </h1>
+
+          <p class="hero__lead">
+            Técnicos especializados en equipos de alta gama que llegan puntuales, uniformados y con todo lo necesario.
+            Te mostramos el diagnóstico <strong>antes</strong> de reparar, dejamos tu espacio impecable y te enseñamos a cuidar tu equipo para que dure más.
+          </p>
+
+          <!-- Agendamiento rápido: elegir el equipo pre-llena el mensaje de WhatsApp -->
+          <form class="quick-book" action="https://wa.me/569XXXXXXXX" method="get" target="_blank" data-quick-book>
+            <fieldset class="quick-book__set">
+              <legend class="quick-book__label">¿Qué equipo necesitas revisar?</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="equipo" value="lavadora" checked><span>Lavadora</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="secadora"><span>Secadora</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="refrigerador"><span>Refrigerador</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="lavavajillas"><span>Lavavajillas</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="horno"><span>Horno</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="encimera"><span>Encimera</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="otro equipo"><span>Otro</span></label>
+              </div>
+            </fieldset>
+            <input type="hidden" name="text" value="Hola MantenPlus, quiero agendar un servicio para mi lavadora." data-wa-text>
+
+            <div class="hero__ctas">
+              <button class="btn btn--primary btn--lg" type="submit" data-track="hero_agendar">
+                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                Agendar servicio
+                <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </button>
+              <a class="btn btn--soft btn--lg" href="#como-trabajamos">Cómo trabajamos</a>
+            </div>
+            <p class="quick-book__note">Te respondemos por WhatsApp en horario hábil. Sin compromiso.</p>
+          </form>
+
+          <ul class="trust" role="list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Diagnóstico transparente</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Garantía por escrito</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Charla de uso incluida</li>
+          </ul>
+        </div>
+
+        <!-- Columna visual -->
+        <div class="hero__visual">
+          <figure class="hero-photo">
+            <!--
+              FOTO PRINCIPAL (ver docs/04-brief-fotografico.md):
+              Técnico MantenPlus con polo negro corporativo bordado, cubrecalzado y maletín,
+              recibido con una sonrisa en la puerta de una casa luminosa por el cliente.
+              Exportar 1200×1440 (desktop) y 800×800 (móvil) en AVIF + WebP.
+            -->
+            <picture>
+              <source type="image/avif" srcset="assets/img/hero-tecnico-puerta.avif">
+              <source type="image/webp" srcset="assets/img/hero-tecnico-puerta.webp">
+              <img class="hero-photo__img" src="assets/img/hero-tecnico-puerta.jpg"
+                   alt="Técnico de MantenPlus con uniforme corporativo siendo recibido en la puerta de un hogar"
+                   width="1200" height="1440" fetchpriority="high" decoding="async"
+                   onerror="this.closest('picture').remove()">
+            </picture>
+
+            <!-- Placeholder elegante mientras llega la sesión de fotos -->
+            <div class="hero-photo__placeholder" aria-hidden="true">
+              <svg class="hero-photo__mark" viewBox="0 0 680 380"><use href="#logo-mark"/></svg>
+              <span class="hero-photo__hint">Fotografía: técnico MantenPlus recibido en la puerta</span>
+            </div>
+          </figure>
+
+          <!-- Tarjetas flotantes de confianza -->
+          <div class="float-card float-card--top">
+            <span class="float-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+            <span>
+              <strong>Técnico identificado</strong>
+              <small>Uniforme, credencial y cubrecalzado</small>
+            </span>
+          </div>
+
+          <div class="float-card float-card--bottom">
+            <span class="float-card__icon float-card__icon--sky"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+            <span>
+              <strong>Tu horario, respetado</strong>
+              <small>Te avisamos cuando vamos en camino</small>
+            </span>
+          </div>
+
+          <!-- Sello "German Engineering" (inspirado en el parche de la manga del uniforme) -->
+          <div class="seal" role="img" aria-label="Especialistas en ingeniería alemana">
+            <svg class="seal__ring" viewBox="0 0 120 120" aria-hidden="true">
+              <defs><path id="seal-path" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+              <text><textPath href="#seal-path">GERMAN ENGINEERING · ESPECIALISTAS ·</textPath></text>
+            </svg>
+            <span class="seal__flag" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Franja de marcas (texto, no logotipos: ver nota legal en docs/01-arquitectura.md) -->
+      <div class="container">
+        <div class="brands">
+          <p class="brands__label">Especialistas en marcas premium</p>
+          <ul class="brands__list" role="list">
+            <li>BOSCH</li><li>SIEMENS</li><li>MIELE</li><li>NEFF</li><li>GAGGENAU</li><li>AEG</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Las siguientes secciones se construyen en las próximas fases (ver docs/01-arquitectura.md) -->
+    <span id="servicios"></span><span id="como-trabajamos"></span><span id="charlas-de-uso"></span><span id="equipo"></span><span id="contacto"></span>
+  </main>
+
+  <!-- Barra fija inferior en móvil (zona del pulgar) -->
+  <div class="mobile-cta" data-mobile-cta>
+    <a class="btn btn--soft" href="mailto:contacto@mantenplus.cl" aria-label="Escribir correo">
+      <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+    </a>
+    <a class="btn btn--primary btn--block" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="sticky_agendar">
+      <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+      Agendar servicio
+    </a>
+  </div>
+
+  <!-- ============================== SPRITE SVG ============================== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="logo-mark" viewBox="0 0 680 380">
+      <path d="M10 358H137V178H100L330 12L422 78V34H488V126L562 178H519V358H670" fill="none" stroke="currentColor" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+      <rect x="232" y="120" width="98" height="220" rx="9" fill="currentColor"/>
+      <rect x="348" y="197" width="111" height="143" rx="9" fill="currentColor"/>
+      <g fill="var(--mark-cut, #fff)">
+        <rect x="232" y="199" width="98" height="6"/>
+        <rect x="243" y="146" width="7" height="30" rx="3.5"/>
+        <rect x="243" y="216" width="7" height="34" rx="3.5"/>
+        <rect x="348" y="224" width="111" height="5"/>
+        <circle cx="403.5" cy="283" r="33"/>
+      </g>
+    </symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.42 1.31-1.96 1.36-.5.05-.98.23-3.3-.69-2.79-1.1-4.55-3.95-4.69-4.13-.14-.18-1.12-1.49-1.12-2.85 0-1.35.71-2.02.96-2.29.25-.27.55-.34.73-.34l.53.01c.17 0 .4-.06.62.48.24.56.8 1.93.87 2.07.07.14.12.3.02.48-.09.18-.14.3-.27.46-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.52 1.89 1.04.93 1.92 1.22 2.19 1.35.27.14.43.11.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.89.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="var(--sky-100)"/><path fill="none" stroke="var(--sky-700)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m7.5 12.3 3 3 6-6.3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.5V4.46A20 20 0 0 0 14.3 4.3c-2.17 0-3.66 1.33-3.66 3.77v2.43H8.2v3h2.44V21h2.86Z"/></symbol>
+  </svg>
+</body>
+</html>

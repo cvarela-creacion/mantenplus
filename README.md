@@ -15,11 +15,13 @@ assets/js/main.js          Menú móvil, WhatsApp, slider, pestañas, carrusel, 
 assets/img/logo-mark.svg   Isotipo redibujado en vector
 assets/img/resultados/     Ilustraciones referenciales del slider antes/después (reemplazar por fotos reales)
 assets/brand/              Logotipo original y fotos de referencia del uniforme
+robots.txt, sitemap.xml    Indexación en Google para https://mantenplus.cl
 docs/
   01-arquitectura.md            Mapa del sitio, embudo de conversión, decisiones técnicas
   02-guia-visual.md             Paleta, tipografía, botones, movimiento
   03-tecnicas-interactivas.md   Slider antes/después, carrusel storytelling, micro-videos, vista explosionada
   04-brief-fotografico.md       Dirección de arte para la foto del Hero y la del equipo
+  05-publicacion.md             Cómo conectar el sitio con mantenplus.cl (Cloudflare Pages + NIC Chile)
 ```
 
 ## Ver en local

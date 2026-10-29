@@ -227,8 +227,317 @@
       </div>
     </section>
 
-    <!-- Las siguientes secciones se construyen en las próximas fases (ver docs/01-arquitectura.md) -->
-    <span id="servicios"></span><span id="como-trabajamos"></span><span id="charlas-de-uso"></span><span id="equipo"></span><span id="contacto"></span>
+    <!-- ============================== SERVICIOS ============================== -->
+    <section class="section" id="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="kicker">Servicios</p>
+          <h2 class="section-title" id="servicios-title">Cuidamos los equipos que hacen funcionar tu hogar</h2>
+          <p class="section-lead">Reparación y mantención a domicilio de línea blanca y cocina premium. Diagnóstico en tu casa, repuestos de calidad y garantía por escrito.</p>
+        </header>
+
+        <!--
+          MICRO-VIDEOS EN BUCLE (ver docs/03-tecnicas-interactivas.md §3):
+          dejar los archivos en assets/video/ con estos nombres. Mientras no existan, se muestra el ícono.
+          Al tener los videos, agregar poster="assets/video/<equipo>-poster.webp" a cada <video>.
+        -->
+        <ul class="services" role="list">
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-lavadora"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/lavadora-loop.webm" type="video/webm">
+                <source src="assets/video/lavadora-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Lavadoras y secadoras</h3>
+              <p class="service__text">Carga frontal y superior, lavadoras-secadoras y secadoras de condensación o bomba de calor.</p>
+              <ul class="service__tags" role="list"><li>No centrifuga</li><li>Pierde agua</li><li>Ruidos al girar</li><li>Código de error</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20lavadora%20o%20secadora." data-track="servicio_lavadora">
+                Agendar servicio<span class="visually-hidden"> de lavadora o secadora</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-refrigerador"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/refrigerador-loop.webm" type="video/webm">
+                <source src="assets/video/refrigerador-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Refrigeradores</h3>
+              <p class="service__text">No Frost, side by side, french door y empotrados. Diagnóstico de compresor, sensores y placa electrónica.</p>
+              <ul class="service__tags" role="list"><li>No enfría</li><li>Forma hielo</li><li>Ruido del motor</li><li>Gotea agua</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20refrigerador." data-track="servicio_refrigerador">
+                Agendar servicio<span class="visually-hidden"> de refrigerador</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/lavavajillas-loop.webm" type="video/webm">
+                <source src="assets/video/lavavajillas-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Lavavajillas</h3>
+              <p class="service__text">Libre instalación y panelables. Bombas, aspersores, resistencias y sistemas de secado.</p>
+              <ul class="service__tags" role="list"><li>No desagua</li><li>No seca</li><li>Deja residuos</li><li>Fugas</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20lavavajillas." data-track="servicio_lavavajillas">
+                Agendar servicio<span class="visually-hidden"> de lavavajillas</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-horno"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/horno-loop.webm" type="video/webm">
+                <source src="assets/video/horno-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Hornos</h3>
+              <p class="service__text">Eléctricos, multifunción, a vapor y pirolíticos. Resistencias, termostatos, ventiladores y cierres.</p>
+              <ul class="service__tags" role="list"><li>No calienta</li><li>Cocción dispareja</li><li>Ventilador</li><li>Puerta</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20horno." data-track="servicio_horno">
+                Agendar servicio<span class="visually-hidden"> de horno</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-encimera"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/encimera-loop.webm" type="video/webm">
+                <source src="assets/video/encimera-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Encimeras</h3>
+              <p class="service__text">Inducción, vitrocerámica y gas. Zonas que no encienden, errores de placa y encendido eléctrico.</p>
+              <ul class="service__tags" role="list"><li>No enciende</li><li>Código de error</li><li>Se apaga sola</li><li>Chispero</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20encimera." data-track="servicio_encimera">
+                Agendar servicio<span class="visually-hidden"> de encimera</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="service">
+            <div class="service__media">
+              <svg class="service__icon" aria-hidden="true"><use href="#a-campana"/></svg>
+              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+                <source src="assets/video/campana-loop.webm" type="video/webm">
+                <source src="assets/video/campana-loop.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="service__body">
+              <h3 class="service__title">Campanas</h3>
+              <p class="service__text">Murales, de isla y extractores. Motores, iluminación y limpieza profunda de filtros.</p>
+              <ul class="service__tags" role="list"><li>Pierde succión</li><li>Ruido</li><li>Luces</li><li>Grasa acumulada</li></ul>
+              <a class="service__link" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20campana." data-track="servicio_campana">
+                Agendar servicio<span class="visually-hidden"> de campana</span>
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================== RESULTADOS: ANTES / DESPUÉS ============================== -->
+    <section class="section section--tint" id="resultados" aria-labelledby="resultados-title">
+      <div class="container results">
+        <header class="section-head results__head">
+          <p class="kicker">Resultados</p>
+          <h2 class="section-title" id="resultados-title">La diferencia se ve y se nota en cómo funciona</h2>
+          <p class="section-lead">Desliza para comparar el estado de un equipo antes y después de una mantención MantenPlus.</p>
+
+          <div class="tabs" role="tablist" aria-label="Casos de antes y después" data-tabs>
+            <button class="tab" type="button" role="tab" id="tab-lavadora" aria-controls="caso-lavadora" aria-selected="true">Lavadora</button>
+            <button class="tab" type="button" role="tab" id="tab-encimera" aria-controls="caso-encimera" aria-selected="false" tabindex="-1">Encimera</button>
+            <button class="tab" type="button" role="tab" id="tab-campana" aria-controls="caso-campana" aria-selected="false" tabindex="-1">Campana</button>
+          </div>
+
+          <ul class="results__points" role="list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Limpieza profunda con productos adecuados a cada material</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Revisión de piezas de desgaste en la misma visita</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Te mostramos el resultado antes de irnos</li>
+          </ul>
+        </header>
+
+        <div class="results__stage">
+          <!--
+            SLIDER ANTES/DESPUÉS: las imágenes actuales son ILUSTRACIONES REFERENCIALES.
+            Reemplazar por fotos reales (mismo encuadre y luz, 1200×800, WebP) y quitar .results__note.
+          -->
+          <div class="ba-panel" role="tabpanel" id="caso-lavadora" aria-labelledby="tab-lavadora">
+            <div class="ba" style="--pos: 50%" data-ba>
+              <img src="assets/img/resultados/lavadora-antes.svg" alt="Puerta de lavadora con moho en la goma y vidrio opaco antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/lavadora-despues.svg" alt="Puerta de lavadora con goma limpia y vidrio transparente después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de la lavadora">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Goma y vidrio de la puerta: eliminación de moho, sarro y residuos de detergente.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-encimera" aria-labelledby="tab-encimera" hidden>
+            <div class="ba" style="--pos: 50%" data-ba>
+              <img src="assets/img/resultados/encimera-antes.svg" alt="Encimera de vidrio con manchas quemadas y sarro antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/encimera-despues.svg" alt="Encimera de vidrio limpia y brillante después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de la encimera">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Vitrocerámica e inducción: retiro de quemados y sarro sin rayar el vidrio.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-campana" aria-labelledby="tab-campana" hidden>
+            <div class="ba" style="--pos: 50%" data-ba>
+              <img src="assets/img/resultados/campana-antes.svg" alt="Filtro metálico de campana cubierto de grasa antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/campana-despues.svg" alt="Filtro metálico de campana limpio después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después del filtro de campana">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Filtros de campana: desengrase profundo para recuperar la succión.</p>
+          </div>
+
+          <p class="results__note">Imágenes referenciales. Pronto, fotos reales de nuestros trabajos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CÓMO TRABAJAMOS: STORYTELLING ============================== -->
+    <section class="section" id="como-trabajamos" aria-labelledby="proceso-title">
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="kicker">Cómo trabajamos</p>
+          <h2 class="section-title" id="proceso-title">Una visita técnica pensada para tu tranquilidad</h2>
+          <p class="section-lead">Cuatro pasos, siempre los mismos, en cada servicio.</p>
+        </header>
+
+        <!-- Fotos del carrusel: ver docs/04-brief-fotografico.md. Mientras no existan, se muestra la ilustración. -->
+        <div class="story" data-story role="region" aria-roledescription="carrusel" aria-label="Los cuatro pasos de nuestro servicio">
+          <ol class="story__track" role="list" data-story-track>
+            <li class="story__step is-active" data-step>
+              <figure class="story__media">
+                <div class="story__placeholder" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><use href="#s-llegada"/></svg>
+                  <span>Foto: técnico poniéndose cubrecalzado en la entrada</span>
+                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/proceso/paso-1-llegada.webp">
+                  <img src="assets/img/proceso/paso-1-llegada.jpg" alt="Técnico de MantenPlus poniéndose cubrecalzado en la entrada de un hogar" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
+                </picture>
+              </figure>
+              <div class="story__text">
+                <span class="story__num" aria-hidden="true">01</span>
+                <h3 class="story__title"><button type="button" data-step-btn aria-current="step">Llegada pulcra</button></h3>
+                <div class="story__desc"><p>Puntuales, uniformados, con credencial y cubrecalzado. Protegemos el piso y la zona de trabajo antes de empezar.</p></div>
+                <span class="story__bar" aria-hidden="true"></span>
+              </div>
+            </li>
+
+            <li class="story__step" data-step>
+              <figure class="story__media">
+                <div class="story__placeholder" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><use href="#s-diagnostico"/></svg>
+                  <span>Foto: técnico mostrando el diagnóstico al cliente</span>
+                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/proceso/paso-2-diagnostico.webp">
+                  <img src="assets/img/proceso/paso-2-diagnostico.jpg" alt="Técnico mostrando al cliente el diagnóstico de su equipo" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
+                </picture>
+              </figure>
+              <div class="story__text">
+                <span class="story__num" aria-hidden="true">02</span>
+                <h3 class="story__title"><button type="button" data-step-btn>Diagnóstico transparente</button></h3>
+                <div class="story__desc"><p>Te mostramos la falla y el presupuesto <strong>antes</strong> de tocar nada. Sin sorpresas: tú decides si seguimos.</p></div>
+                <span class="story__bar" aria-hidden="true"></span>
+              </div>
+            </li>
+
+            <li class="story__step" data-step>
+              <figure class="story__media">
+                <div class="story__placeholder" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><use href="#s-ejecucion"/></svg>
+                  <span>Foto: herramientas ordenadas y manos con guantes</span>
+                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/proceso/paso-3-ejecucion.webp">
+                  <img src="assets/img/proceso/paso-3-ejecucion.jpg" alt="Herramientas ordenadas sobre un paño mientras el técnico trabaja" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
+                </picture>
+              </figure>
+              <div class="story__text">
+                <span class="story__num" aria-hidden="true">03</span>
+                <h3 class="story__title"><button type="button" data-step-btn>Ejecución impecable</button></h3>
+                <div class="story__desc"><p>Repuestos de calidad y herramientas en orden. Probamos el equipo contigo y dejamos todo más limpio que como lo encontramos.</p></div>
+                <span class="story__bar" aria-hidden="true"></span>
+              </div>
+            </li>
+
+            <li class="story__step" data-step>
+              <figure class="story__media">
+                <div class="story__placeholder" aria-hidden="true">
+                  <svg viewBox="0 0 48 48"><use href="#s-charla"/></svg>
+                  <span>Foto: técnico explicando el panel del equipo al cliente</span>
+                </div>
+                <picture>
+                  <source type="image/webp" srcset="assets/img/proceso/paso-4-charla.webp">
+                  <img src="assets/img/proceso/paso-4-charla.jpg" alt="Técnico explicando al cliente cómo cuidar su electrodoméstico" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
+                </picture>
+              </figure>
+              <div class="story__text">
+                <span class="story__num" aria-hidden="true">04</span>
+                <h3 class="story__title"><button type="button" data-step-btn>Charla de uso</button></h3>
+                <div class="story__desc"><p>Te enseñamos a cuidar tu equipo para que dure años, y te dejamos la garantía por escrito.</p></div>
+                <span class="story__bar" aria-hidden="true"></span>
+              </div>
+            </li>
+          </ol>
+
+          <div class="story__controls">
+            <button class="story__arrow" type="button" data-story-prev aria-label="Paso anterior"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            <div class="story__dots">
+              <button type="button" data-dot aria-label="Paso 1" aria-current="true"></button>
+              <button type="button" data-dot aria-label="Paso 2"></button>
+              <button type="button" data-dot aria-label="Paso 3"></button>
+              <button type="button" data-dot aria-label="Paso 4"></button>
+            </div>
+            <button class="story__arrow" type="button" data-story-next aria-label="Paso siguiente"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          </div>
+        </div>
+
+        <div class="story__cta">
+          <a class="btn btn--primary btn--lg" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="proceso_agendar">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Agendar servicio
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Próximas fases (ver docs/01-arquitectura.md) -->
+    <span id="charlas-de-uso"></span><span id="equipo"></span><span id="contacto"></span>
   </main>
 
   <!-- Barra fija inferior en móvil (zona del pulgar) -->
@@ -264,6 +573,21 @@
     <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
     <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46h1.5V4.46A20 20 0 0 0 14.3 4.3c-2.17 0-3.66 1.33-3.66 3.77v2.43H8.2v3h2.44V21h2.86Z"/></symbol>
+    <symbol id="i-drag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 7-5 5 5 5m6-10 5 5-5 5"/></symbol>
+
+    <!-- Equipos (línea fina, mismo lenguaje que el isotipo) -->
+    <symbol id="a-lavadora" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="5" width="30" height="38" rx="4"/><path d="M9 13h30M29 9h6"/><circle cx="24" cy="28" r="9"/><circle cx="24" cy="28" r="6"/><path d="M19.2 29.6c1.6-1.3 3.2-1.3 4.8 0s3.2 1.3 4.8 0"/><circle cx="14" cy="9" r=".6"/><circle cx="18" cy="9" r=".6"/></g></symbol>
+    <symbol id="a-refrigerador" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="12" y="4" width="24" height="40" rx="3"/><path d="M12 18h24M16 9v5M16 23v8M15 44v1.5M33 44v1.5"/></g></symbol>
+    <symbol id="a-lavavajillas" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="5" width="30" height="38" rx="4"/><path d="M9 12h30M19 16h10M14 26h20M14 35h20M18 26v-4M22 26v-5M26 26v-5M30 26v-4"/><circle cx="14" cy="8.5" r=".6"/><circle cx="17.5" cy="8.5" r=".6"/></g></symbol>
+    <symbol id="a-horno" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="7" width="36" height="34" rx="4"/><path d="M6 15h36M28 11h8M16 23h16"/><rect x="12" y="19" width="24" height="16" rx="2"/><circle cx="12" cy="11" r="1.4"/><circle cx="18" cy="11" r="1.4"/></g></symbol>
+    <symbol id="a-encimera" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="38" height="28" rx="4"/><circle cx="15" cy="19.5" r="5"/><circle cx="15" cy="19.5" r="2.4"/><circle cx="32" cy="19" r="3.4"/><circle cx="15" cy="31" r="3"/><circle cx="31.5" cy="29.5" r="4.6"/><path d="M22 34.5h4"/></g></symbol>
+    <symbol id="a-campana" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5h10v12l11 10H8l11-10z"/><path d="M8 27v4h32v-4M24 35v5M17 35l-2 4M31 35l2 4"/></g></symbol>
+
+    <!-- Pasos del servicio -->
+    <symbol id="s-llegada" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M13 42V8a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v34M7 42h34"/><path d="M13 42 25 38V10L13 6"/><circle cx="21" cy="24" r="1"/></g></symbol>
+    <symbol id="s-diagnostico" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="7" width="28" height="36" rx="3"/><path d="M18 7V4.5h12V7M16 18h16M16 25h11"/><path d="m17 34 3.2 3.2L27 30.5"/></g></symbol>
+    <symbol id="s-ejecucion" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M30.5 8.5a8 8 0 0 0-10 10.3L8 31.3a3.2 3.2 0 0 0 4.5 4.5L25 23.3a8 8 0 0 0 10.3-10l-4.8 4.8-4.4-1-1-4.4z"/><path d="m33 30 7 7a2.5 2.5 0 0 1-3.5 3.5l-7-7M29.5 33.5l4-4"/></g></symbol>
+    <symbol id="s-charla" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11a4 4 0 0 1 4-4h17a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4h-9l-7 5v-5a4 4 0 0 1-5-4z"/><path d="M36 17h1a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4v5l-7-5h-6a4 4 0 0 1-4-4v-1"/><path d="M14 15.5h11"/></g></symbol>
   </svg>
 </body>
 </html>

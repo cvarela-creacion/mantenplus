@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Ilustración referencial: reemplazar por foto real -->
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9EEF3"/></linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFCFD"/><stop offset=".5" stop-color="#C6CED7"/><stop offset="1" stop-color="#F1F4F7"/></linearGradient>
+    <radialGradient id="glass" cx=".38" cy=".32" r=".85"><stop offset="0" stop-color="#F6FBFF"/><stop offset=".55" stop-color="#CDE5F6"/><stop offset="1" stop-color="#8FBEE0"/></radialGradient>
+    <radialGradient id="rubber" cx=".5" cy=".4" r=".6"><stop offset=".8" stop-color="#B7BEC6"/><stop offset="1" stop-color="#959EA8"/></radialGradient>
+    <pattern id="drum" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="17" cy="17" r="4.5" fill="#FFFFFF" opacity=".55"/></pattern>
+  </defs>
+  <rect width="1200" height="800" fill="url(#panel)"/>
+  <rect x="0" y="0" width="1200" height="70" fill="#F7F9FB"/>
+  <path d="M0 70h1200" stroke="#DCE2E8" stroke-width="3"/>
+  <circle cx="600" cy="430" r="336" fill="#DDE3EA"/>
+  <circle cx="600" cy="430" r="318" fill="url(#chrome)"/>
+  <circle cx="600" cy="430" r="272" fill="url(#rubber)"/>
+  <circle cx="600" cy="430" r="246" fill="none" stroke="#A9B1BA" stroke-width="2"/>
+  <circle cx="600" cy="430" r="222" fill="url(#glass)"/>
+  <circle cx="600" cy="430" r="222" fill="url(#drum)"/>
+  <path d="M455 318a196 196 0 0 1 150-92" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" opacity=".85"/>
+  <path d="M430 400a196 196 0 0 1 8-36" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" opacity=".7"/>
+</svg>

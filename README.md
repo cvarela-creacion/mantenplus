@@ -7,9 +7,9 @@ Sitio web de **MantenPlus** (Servicios Integrales Varela), servicio técnico pre
 ## Estructura
 
 ```
-index.html                 Header, Hero, Servicios, Resultados (antes/después) y Cómo trabajamos
+index.html                 Header, Hero, Servicios, Resultados, Cómo trabajamos, Ingeniería, Charlas de uso y Equipo
 assets/css/styles.css      Sistema visual (tokens, botones, header, hero, responsive)
-assets/js/main.js          Menú móvil, agendamiento por WhatsApp, slider, pestañas, carrusel, micro-videos y medición
+assets/js/main.js          Menú móvil, WhatsApp, slider, pestañas, carrusel, micro-videos, vista explosionada y medición
 assets/img/logo-mark.svg   Isotipo redibujado en vector
 assets/img/resultados/     Ilustraciones referenciales del slider antes/después (reemplazar por fotos reales)
 assets/brand/              Logotipo original y fotos de referencia del uniforme
@@ -34,3 +34,4 @@ python3 -m http.server 8080   # luego abre http://localhost:8080
 - Redes sociales: reemplazar `[LINK_INSTAGRAM]` y `[LINK_FACEBOOK]`.
 - Foto del Hero: `assets/img/hero-tecnico-puerta.{avif,webp,jpg}` (ver `docs/04-brief-fotografico.md`).
 - Fotos del antes/después, del carrusel «Cómo trabajamos» y los micro-videos de servicios (lista exacta de archivos en `docs/03-tecnicas-interactivas.md`).
+- Foto institucional del equipo: `assets/img/equipo-mantenplus.{avif,webp,jpg}` (ver `docs/04-brief-fotografico.md`, Foto 2).

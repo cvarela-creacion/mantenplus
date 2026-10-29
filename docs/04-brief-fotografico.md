@@ -25,8 +25,9 @@
 - **Composición:** 6 personas, de pie, en V suave o dos filas escalonadas: **4 técnicos** (polo corporativo + botas de trabajo) y **2 mujeres de administración/atención al cliente** (camisa blanca corporativa con logo bordado). Brazos relajados o cruzados con naturalidad, sonrisas genuinas.
 - **Fondo:** muro blanco o estudio gris muy claro, o una cocina premium desenfocada. Se puede incluir la camioneta de la empresa (si tiene rotulación) a un costado.
 - **Prohibido:** foto o mención del fundador, historias individuales, nombres destacados. El protagonista es **el equipo**.
-- **Formato:** horizontal 16:9 (2400×1350) + recorte 4:5 para móvil.
-- Texto que la acompaña: *«Un equipo, un estándar. Técnicos especializados en terreno y un equipo de atención que coordina cada visita para que tú no tengas que preocuparte de nada.»*
+- **Formato:** horizontal 16:9 (2400×1350), en AVIF + WebP + JPG, como `assets/img/equipo-mantenplus.*`. Aparece sola sobre la ilustración de respaldo.
+- **Encuadre seguro para móvil:** en teléfonos se recorta a 16:10; mantener a las 6 personas dentro del 90 % central.
+- Texto que la acompaña (ya en la web): *«Personas de confianza en tu hogar. Técnicos especializados en terreno y un equipo de atención que coordina cada visita, para que tú no tengas que preocuparte de nada.»*
 
 ## Fotos 3–6 · Carrusel «Cómo trabajamos»
 

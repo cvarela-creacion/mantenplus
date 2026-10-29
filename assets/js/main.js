@@ -182,6 +182,42 @@
     }
   }
 
+  // Vista explosionada: el scroll separa las piezas (--p: 0 ensamblado → 1 explosionado) y luego enciende cada etiqueta
+  const xp = document.querySelector('[data-xp]');
+  if (xp && !reduceMotion) {
+    const figure = xp.querySelector('.xp__figure');
+    const items = [...xp.querySelectorAll('[data-xp-item]')];
+    const callouts = items.map((_, i) => xp.querySelector(`[data-xp-callout="${i + 1}"]`)); // el SVG las tiene en orden de dibujo
+    const sticky = matchMedia('(min-width: 861px) and (min-height: 620px)');
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      let p;
+      if (sticky.matches) {
+        const r = xp.getBoundingClientRect();
+        p = -r.top / (r.height - vh); // recorrido de la escena fija
+      } else {
+        const r = figure.getBoundingClientRect();
+        p = (vh * 0.9 - r.top) / (vh * 0.6); // de entrar por abajo a llegar al tercio superior
+      }
+      p = Math.min(1, Math.max(0, p));
+      xp.style.setProperty('--p', Math.min(1, p / 0.6).toFixed(3)); // las piezas terminan de separarse al 60 %
+      items.forEach((li, i) => {
+        const on = p >= 0.6 + (0.38 * i) / items.length; // luego se encienden las etiquetas, una a una
+        li.classList.toggle('is-on', on);
+        callouts[i]?.classList.toggle('is-on', on);
+      });
+    };
+    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+
+    xp.classList.add('is-enhanced');
+    update();
+    window.addEventListener('scroll', request, { passive: true });
+    window.addEventListener('resize', request);
+  }
+
   // Medición de conversiones (GA4 / Meta Pixel si están cargados)
   function track(name, params = {}) {
     window.gtag?.('event', name, params);

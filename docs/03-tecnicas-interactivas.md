@@ -9,13 +9,15 @@ Las cuatro técnicas se implementan sin librerías pesadas (JS nativo + CSS), co
 | Slider antes/después | ✅ Implementado (con ilustraciones referenciales) | `#resultados` | `assets/img/resultados/{lavadora,encimera,campana}-{antes,despues}.webp` (1200×800). Al tenerlas, cambiar la extensión en `index.html` y quitar `.results__note`. |
 | Storytelling en carrusel | ✅ Implementado (con ilustraciones de respaldo) | `#como-trabajamos` | `assets/img/proceso/paso-{1-llegada,2-diagnostico,3-ejecucion,4-charla}.{webp,jpg}` (1200×1000). Aparecen solas al subirlas. |
 | Micro-video en bucle | ✅ Implementado (muestra el ícono mientras no hay video) | `#servicios` | `assets/video/{lavadora,refrigerador,lavavajillas,horno,encimera,campana}-loop.{webm,mp4}` + agregar `poster` a cada `<video>`. |
-| Vista explosionada | ⏳ Pendiente (requiere la ilustración técnica) | `#ingenieria` | SVG por capas (ver §4). |
+| Vista explosionada | ✅ Implementado (ilustración vectorial propia, lavadora genérica) | `#ingenieria` | Nada obligatorio. Opcional: versiones para refrigerador o encimera. |
 
 **Comportamiento implementado**
 - *Slider:* arrastre con mouse o dedo en cualquier punto de la imagen (sin bloquear el scroll vertical en móvil), control con flechas del teclado y lector de pantalla mediante un `input range` real, pestañas accesibles (Lavadora / Encimera / Campana) y una pista animada la primera vez que el slider aparece.
 - *Carrusel:* en escritorio, lista de pasos con barra de progreso que avanza sola cada 6,5 s y se pausa con el mouse, el foco o fuera de pantalla; en móvil, tarjetas deslizables con *scroll-snap*, flechas y puntos sincronizados. Con «reducir movimiento» no avanza solo.
 - *Micro-videos:* no se descarga nada hasta que la tarjeta se acerca a la pantalla. En escritorio se reproducen al pasar el mouse; en móvil, al estar visibles. No se reproducen con «reducir movimiento» o con ahorro de datos.
 - Cada «Agendar servicio» de las tarjetas abre WhatsApp con el equipo ya escrito y registra el evento `servicio_<equipo>`.
+- *Vista explosionada:* en escritorio la escena queda fija mientras se hace scroll (240 vh): durante el primer 60 % las 8 piezas se separan a lo largo del eje y luego se enciende cada número junto a su ítem de la lista. En móvil (o pantallas bajas) se anima al pasar, sin escena fija. Sin JavaScript o con «reducir movimiento» se muestra directamente el despiece completo.
+- *Charlas de uso:* acordeón nativo (`<details name="tips">`), accesible y sin JavaScript; abrir un consejo cierra el anterior.
 
 ---
 

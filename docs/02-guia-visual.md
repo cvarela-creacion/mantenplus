@@ -10,7 +10,7 @@
 | Fondo alterno | `--gray-25` / `--gray-50` | `#FAFBFC` / `#F4F6F8` | Secciones alternas, tarjetas |
 | Cielo muy claro | `--sky-50` / `--sky-100` | `#F3F9FE` / `#E4F2FC` | Degradados del Hero, chips activos, subrayados |
 | Cielo medio | `--sky-300` / `--sky-400` | `#9BD0F2` / `#5DB3EA` | Ilustraciones, bordes activos |
-| **Acción** | `--sky-600` | `#1478C2` | **Botón primario** (blanco sobre azul: 4,8 : 1, AA) |
+| **Acción** | `--sky-600` | `#1478C2` | **Botón primario** (blanco sobre azul: 4,7 : 1, AA) |
 | Acción hover | `--sky-700` | `#0F5F9C` | Hover, enlaces, texto sobre fondo celeste |
 | Titulares | `--ink` | `#151B23` | H1–H3 |
 | Texto | `--gray-700` / `--gray-500` | `#3B4450` / `#6B7682` | Cuerpo / secundario |

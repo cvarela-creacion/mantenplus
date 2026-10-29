@@ -1,8 +1,9 @@
-/* MantenPlus · interacciones del sitio (sin dependencias, ~1 KB) */
+/* MantenPlus · interacciones del sitio (sin dependencias) */
 (() => {
   const WA_NUMBER = '569XXXXXXXX'; // TODO: reemplazar por el número de WhatsApp Business
+  const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
-  // Header: sombra al hacer scroll + barra CTA móvil al pasar el Hero
+  // Header: sombra al hacer scroll + barra CTA móvil fuera del Hero, del Contacto y del footer
   const header = document.querySelector('[data-header]');
   const mobileCta = document.querySelector('[data-mobile-cta]');
   const hero = document.querySelector('.hero__ctas');
@@ -12,9 +13,12 @@
   window.addEventListener('scroll', onScroll, { passive: true });
 
   if (mobileCta && hero && 'IntersectionObserver' in window) {
-    new IntersectionObserver(([entry]) => {
-      mobileCta.classList.toggle('is-visible', !entry.isIntersecting);
-    }).observe(hero);
+    const visible = new Set(); // la barra se oculta mientras ya hay una CTA a la vista
+    const ctaIo = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      mobileCta.classList.toggle('is-visible', visible.size === 0);
+    });
+    [hero, document.getElementById('contacto'), document.querySelector('.site-footer')].forEach((el) => el && ctaIo.observe(el));
   } else if (mobileCta) {
     mobileCta.classList.add('is-visible');
   }
@@ -45,7 +49,7 @@
       e.preventDefault();
       sync();
       track('hero_agendar', { equipo: form.querySelector('input[name="equipo"]:checked')?.value });
-      window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text.value)}`, '_blank', 'noopener');
+      window.open(waLink(text.value), '_blank', 'noopener');
     });
   }
 
@@ -217,6 +221,66 @@
     window.addEventListener('scroll', request, { passive: true });
     window.addEventListener('resize', request);
   }
+
+  // Cobertura: "¿Llegamos a tu comuna?" compara con las comunas de la lista de zonas (data-comuna)
+  const checker = document.querySelector('[data-checker]');
+  if (checker) {
+    const norm = (str) => str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    const aliases = { chicureo: 'Colina', 'santiago centro': 'Santiago', stgo: 'Santiago' };
+    const comunas = [...document.querySelectorAll('#comunas-rm option')].map((o) => o.value);
+    const chips = [...document.querySelectorAll('[data-comuna]')];
+    const covered = new Set(chips.map((c) => c.dataset.comuna));
+    const input = checker.querySelector('input');
+    const out = checker.querySelector('[data-checker-result]');
+
+    checker.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = norm(input.value);
+      const comuna = aliases[q] || comunas.find((c) => norm(c) === q);
+      const name = q === 'chicureo' ? 'Chicureo' : comuna;
+      chips.forEach((c) => c.classList.toggle('is-match', c.dataset.comuna === comuna));
+
+      const msg = document.createElement('span');
+      const link = document.createElement('a');
+      if (comuna && covered.has(comuna)) {
+        out.className = 'checker__result is-ok';
+        msg.textContent = `¡Sí! Atendemos en ${name}.`;
+        link.textContent = 'Agendar por WhatsApp';
+        link.href = waLink(`Hola MantenPlus, estoy en ${name} y quiero agendar un servicio.`);
+      } else if (comuna) {
+        out.className = 'checker__result is-maybe';
+        msg.textContent = `${name} no está en nuestra zona habitual, pero escríbenos y lo evaluamos.`;
+        link.textContent = 'Consultar por WhatsApp';
+        link.href = waLink(`Hola MantenPlus, ¿atienden en ${name}?`);
+      } else {
+        out.className = 'checker__result is-error';
+        msg.textContent = 'No encontramos esa comuna. Prueba con el nombre completo, por ejemplo «Las Condes».';
+      }
+      out.replaceChildren(msg, ...(link.href ? [link] : []));
+      if (link.href) link.dataset.track = 'cobertura_agendar';
+      track('cobertura_consulta', { comuna: comuna || 'desconocida', cubierta: covered.has(comuna) });
+    });
+  }
+
+  // Formulario de contacto sin servidor: arma el mensaje y abre WhatsApp (la validación es la nativa del navegador)
+  const contactForm = document.querySelector('[data-contact-form]');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const f = new FormData(contactForm);
+      const val = (k) => String(f.get(k) || '').trim();
+      const lines = [
+        `Hola MantenPlus, soy ${val('nombre')}.`,
+        `Necesito un servicio para mi ${val('equipo').toLowerCase()} en ${val('comuna')}.`,
+      ];
+      if (val('marca')) lines.push(`Marca y modelo: ${val('marca')}.`);
+      if (val('detalle')) lines.push(`Problema: ${val('detalle')}`);
+      track('contacto_formulario', { equipo: val('equipo') });
+      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+    });
+  }
+
+  document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
   // Medición de conversiones (GA4 / Meta Pixel si están cargados)
   function track(name, params = {}) {

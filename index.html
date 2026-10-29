@@ -604,7 +604,7 @@
             <summary>
               <span class="tip__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#a-lavadora"/></svg></span>
               <span class="tip__q">¿Tu lavadora tiene mal olor?</span>
-              <span class="tip__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+              <span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
             </summary>
             <div class="tip__a"><p>Deja la puerta y el cajón del detergente entreabiertos después de cada lavado para que se sequen. Una vez al mes, haz un ciclo vacío a alta temperatura (o el programa de limpieza de tambor) y usa la dosis justa de detergente: el exceso deja residuos donde crece el moho.</p></div>
           </details>
@@ -613,7 +613,7 @@
             <summary>
               <span class="tip__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#a-refrigerador"/></svg></span>
               <span class="tip__q">¿A qué temperatura debe estar tu refrigerador?</span>
-              <span class="tip__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+              <span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
             </summary>
             <div class="tip__a"><p>Alrededor de 4 °C en el refrigerador y −18 °C en el congelador. No guardes comida caliente, deja espacio para que circule el aire y limpia el burlete de la puerta: si no sella bien, el motor trabaja de más.</p></div>
           </details>
@@ -622,7 +622,7 @@
             <summary>
               <span class="tip__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#a-encimera"/></svg></span>
               <span class="tip__q">¿Cómo limpiar una encimera de inducción sin rayarla?</span>
-              <span class="tip__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+              <span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
             </summary>
             <div class="tip__a"><p>Límpiala siempre fría, con un paño de microfibra y un limpiador específico para vitrocerámica. Para restos quemados usa un raspador para vidrio, nunca esponjas metálicas. Y cocina con ollas de base plana del tamaño de la zona.</p></div>
           </details>
@@ -631,7 +631,7 @@
             <summary>
               <span class="tip__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#a-lavavajillas"/></svg></span>
               <span class="tip__q">¿Tu lavavajillas deja restos en la loza?</span>
-              <span class="tip__plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
+              <span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span>
             </summary>
             <div class="tip__a"><p>Revisa y limpia el filtro del fondo con regularidad, retira los restos grandes antes de cargar y cuida que nada bloquee los aspersores. Si tu modelo lo pide, mantén cargada la sal regeneradora y el abrillantador.</p></div>
           </details>
@@ -690,9 +690,304 @@
       </div>
     </section>
 
-    <!-- Próximas fases (ver docs/01-arquitectura.md) -->
-    <span id="contacto"></span>
+    <!-- ============================== OPINIONES ============================== -->
+    <section class="section" id="opiniones" aria-labelledby="opiniones-title">
+      <div class="container">
+        <header class="section-head section-head--center">
+          <p class="kicker">Opiniones</p>
+          <h2 class="section-title" id="opiniones-title">La confianza se gana visita a visita</h2>
+          <p class="section-lead">Lo que cuentan nuestros clientes después de cada servicio.</p>
+        </header>
+
+        <!--
+          RESEÑAS: usar SOLO reseñas reales, copiadas de Google con el nombre que el cliente publicó.
+          Inventar reseñas es publicidad engañosa (Ley 19.496 del Consumidor). Para publicar una,
+          reemplazar una tarjeta .review--placeholder por este formato:
+
+          <li class="review">
+            <div class="review__stars" role="img" aria-label="5 de 5 estrellas">
+              <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg> (×5)
+            </div>
+            <blockquote class="review__text"><p>Texto de la reseña…</p></blockquote>
+            <p class="review__author"><span class="review__avatar" aria-hidden="true">M</span><span><strong>María P.</strong><small>Vitacura · Lavadora Bosch</small></span></p>
+            <p class="review__source">Reseña de Google</p>
+          </li>
+
+          Si al publicar aún no hay reseñas, ocultar la sección con el atributo hidden.
+        -->
+        <ul class="reviews" role="list">
+          <li class="review review--placeholder" aria-hidden="true">
+            <div class="review__stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+            <div class="skeleton"><span></span><span></span><span></span><span class="skeleton--short"></span></div>
+            <p class="review__author"><span class="review__avatar"></span><span class="skeleton"><span class="skeleton--name"></span><span class="skeleton--meta"></span></span></p>
+            <span class="review__hint">Espacio para una reseña real de Google</span>
+          </li>
+          <li class="review review--placeholder" aria-hidden="true">
+            <div class="review__stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+            <div class="skeleton"><span></span><span></span><span class="skeleton--short"></span></div>
+            <p class="review__author"><span class="review__avatar"></span><span class="skeleton"><span class="skeleton--name"></span><span class="skeleton--meta"></span></span></p>
+            <span class="review__hint">Espacio para una reseña real de Google</span>
+          </li>
+          <li class="review review--placeholder" aria-hidden="true">
+            <div class="review__stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+            <div class="skeleton"><span></span><span></span><span></span><span class="skeleton--short"></span></div>
+            <p class="review__author"><span class="review__avatar"></span><span class="skeleton"><span class="skeleton--name"></span><span class="skeleton--meta"></span></span></p>
+            <span class="review__hint">Espacio para una reseña real de Google</span>
+          </li>
+        </ul>
+
+        <div class="reviews__cta">
+          <a class="btn btn--soft" href="[LINK_GOOGLE_RESENAS]" target="_blank" rel="noopener" data-track="resenas_ver">Ver reseñas en Google</a>
+          <a class="btn btn--ghost" href="[LINK_GOOGLE_RESENAS]" target="_blank" rel="noopener" data-track="resenas_dejar">¿Ya te atendimos? Deja tu reseña</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== COBERTURA ============================== -->
+    <section class="section section--tint" id="cobertura" aria-labelledby="cobertura-title">
+      <div class="container coverage">
+        <div class="coverage__intro">
+          <p class="kicker">Cobertura</p>
+          <h2 class="section-title" id="cobertura-title">Llegamos a tu casa en Santiago</h2>
+          <p class="section-lead">Atendemos a domicilio en las principales comunas de la Región Metropolitana. Revisa si llegamos a la tuya.</p>
+
+          <!-- Comprobador: compara la comuna escrita con las de la lista de zonas (data-comuna) -->
+          <form class="checker" data-checker>
+            <label class="checker__label" for="checker-comuna">¿En qué comuna estás?</label>
+            <div class="checker__row">
+              <div class="checker__field">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                <input id="checker-comuna" name="comuna" list="comunas-rm" autocomplete="address-level2" placeholder="Ej.: Vitacura" required>
+              </div>
+              <button class="btn btn--primary" type="submit">Revisar</button>
+            </div>
+            <div class="checker__result" role="status" aria-live="polite" data-checker-result></div>
+          </form>
+        </div>
+
+        <!-- LISTA PROPUESTA: confirmar las comunas reales de cobertura (ver docs/01-arquitectura.md) -->
+        <div class="zones">
+          <div class="zone">
+            <h3 class="zone__title">Sector oriente</h3>
+            <ul class="zone__list" role="list">
+              <li data-comuna="Las Condes">Las Condes</li>
+              <li data-comuna="Vitacura">Vitacura</li>
+              <li data-comuna="Lo Barnechea">Lo Barnechea</li>
+              <li data-comuna="La Reina">La Reina</li>
+              <li data-comuna="Providencia">Providencia</li>
+              <li data-comuna="Ñuñoa">Ñuñoa</li>
+              <li data-comuna="Peñalolén">Peñalolén</li>
+            </ul>
+          </div>
+          <div class="zone">
+            <h3 class="zone__title">Centro y sur oriente</h3>
+            <ul class="zone__list" role="list">
+              <li data-comuna="Santiago">Santiago Centro</li>
+              <li data-comuna="Macul">Macul</li>
+              <li data-comuna="La Florida">La Florida</li>
+              <li data-comuna="San Miguel">San Miguel</li>
+            </ul>
+          </div>
+          <div class="zone">
+            <h3 class="zone__title">Sector norte</h3>
+            <ul class="zone__list" role="list">
+              <li data-comuna="Huechuraba">Huechuraba</li>
+              <li data-comuna="Colina">Chicureo</li>
+            </ul>
+          </div>
+          <p class="zones__note">¿Tu comuna no aparece? Escríbenos: evaluamos cada caso.</p>
+        </div>
+
+        <datalist id="comunas-rm">
+          <option value="Buin"></option><option value="Calera de Tango"></option><option value="Cerrillos"></option><option value="Cerro Navia"></option>
+          <option value="Chicureo"></option><option value="Colina"></option><option value="Conchalí"></option><option value="El Bosque"></option>
+          <option value="Estación Central"></option><option value="Huechuraba"></option><option value="Independencia"></option><option value="La Cisterna"></option>
+          <option value="La Florida"></option><option value="La Granja"></option><option value="La Pintana"></option><option value="La Reina"></option>
+          <option value="Lampa"></option><option value="Las Condes"></option><option value="Lo Barnechea"></option><option value="Lo Espejo"></option>
+          <option value="Lo Prado"></option><option value="Macul"></option><option value="Maipú"></option><option value="Ñuñoa"></option>
+          <option value="Padre Hurtado"></option><option value="Pedro Aguirre Cerda"></option><option value="Peñaflor"></option><option value="Peñalolén"></option>
+          <option value="Pirque"></option><option value="Providencia"></option><option value="Pudahuel"></option><option value="Puente Alto"></option>
+          <option value="Quilicura"></option><option value="Quinta Normal"></option><option value="Recoleta"></option><option value="Renca"></option>
+          <option value="San Bernardo"></option><option value="San Joaquín"></option><option value="San José de Maipo"></option><option value="San Miguel"></option>
+          <option value="San Ramón"></option><option value="Santiago"></option><option value="Talagante"></option><option value="Vitacura"></option>
+        </datalist>
+      </div>
+    </section>
+
+    <!-- ============================== PREGUNTAS FRECUENTES ============================== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq">
+        <div class="faq__intro">
+          <p class="kicker">Preguntas frecuentes</p>
+          <h2 class="section-title" id="faq-title">Todo claro antes de agendar</h2>
+          <p class="section-lead">Las dudas que más nos hacen. Si la tuya no está, escríbenos.</p>
+          <div class="help-card">
+            <span class="help-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-headset"/></svg></span>
+            <span class="help-card__text"><strong>¿Tienes otra pregunta?</strong><small>Nuestro equipo de atención te responde por WhatsApp.</small></span>
+            <a class="btn btn--soft btn--sm" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20tengo%20una%20consulta." data-track="faq_consulta">Escribir</a>
+          </div>
+        </div>
+
+        <!-- Respuestas redactadas sin cifras ni políticas no confirmadas: validar con el equipo (ver docs/01-arquitectura.md) -->
+        <div class="faq__list">
+          <details class="faq-item" name="faq" open>
+            <summary><span class="faq-item__q">¿Cuánto cuesta la visita de diagnóstico?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Te informamos el valor de la visita al agendar, antes de confirmar la hora. Ya en tu casa, te entregamos el diagnóstico y el presupuesto de la reparación antes de empezar: tú decides si seguimos.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Cómo se coordina la visita?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Por WhatsApp acordamos contigo un bloque horario que te acomode, y te avisamos cuando el técnico va en camino. Así no tienes que esperar todo el día.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Qué marcas atienden?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Nos especializamos en equipos premium y de ingeniería alemana, como Bosch, Siemens, Miele, Neff, Gaggenau y AEG. Si tu equipo es de otra marca, escríbenos con la marca y el modelo y te confirmamos.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿La reparación tiene garantía?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Sí. Al terminar el servicio te entregamos por escrito el detalle del trabajo realizado y su garantía.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Qué repuestos usan?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Antes de reparar te explicamos qué repuesto necesita tu equipo, su procedencia y su valor, para que decidas con toda la información.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Qué necesito tener listo para la visita?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Idealmente, la marca y el modelo del equipo (suelen estar en una etiqueta en el marco de la puerta o en la parte trasera), una foto del código de error si aparece en la pantalla y el acceso al equipo despejado.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Hacen mantenciones preventivas?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Sí. Una mantención periódica (limpieza de filtros, gomas y desagües, y revisión de piezas de desgaste) ayuda a prevenir fallas mayores y a que tu equipo dure más. Pregúntanos por la frecuencia recomendada para el tuyo.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿En qué comunas atienden?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>En las principales comunas de Santiago. Revisa la tuya en la sección <a href="#cobertura">Cobertura</a> o escríbenos: evaluamos cada caso.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACTO ============================== -->
+    <section class="section" id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <div class="contact">
+          <div class="contact__intro">
+            <p class="kicker">Contacto</p>
+            <h2 class="section-title" id="contacto-title">Agenda tu visita técnica</h2>
+            <p class="section-lead">Cuéntanos qué le pasa a tu equipo y te respondemos por WhatsApp para coordinar el horario.</p>
+
+            <ul class="channels" role="list">
+              <li>
+                <a class="channel" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="contacto_whatsapp">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-whatsapp"/></svg></span>
+                  <span><small>WhatsApp</small><strong>+56 9 XXXX XXXX</strong></span>
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="mailto:contacto@mantenplus.cl" data-track="contacto_correo">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
+                  <span><small>Correo</small><strong>contacto@mantenplus.cl</strong></span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="social social--start">
+              <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+              <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Formulario sin servidor: arma el mensaje y abre WhatsApp. No guarda datos -->
+          <form class="contact-form" action="https://wa.me/569XXXXXXXX" method="get" target="_blank" data-contact-form>
+            <div class="field">
+              <label for="cf-nombre">Nombre</label>
+              <input id="cf-nombre" name="nombre" autocomplete="name" required>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="cf-comuna">Comuna</label>
+                <input id="cf-comuna" name="comuna" list="comunas-rm" autocomplete="address-level2" required>
+              </div>
+              <div class="field">
+                <label for="cf-equipo">Equipo</label>
+                <select id="cf-equipo" name="equipo" required>
+                  <option value="" selected disabled>Selecciona</option>
+                  <option>Lavadora</option><option>Secadora</option><option>Refrigerador</option><option>Lavavajillas</option>
+                  <option>Horno</option><option>Encimera</option><option>Campana</option><option>Otro equipo</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="cf-marca">Marca y modelo <span class="field__optional">(opcional)</span></label>
+              <input id="cf-marca" name="marca" placeholder="Ej.: Bosch Serie 6">
+            </div>
+            <div class="field">
+              <label for="cf-detalle">¿Qué le pasa? <span class="field__optional">(opcional)</span></label>
+              <textarea id="cf-detalle" name="detalle" rows="3" placeholder="Ej.: no centrifuga y hace ruido al final del lavado"></textarea>
+            </div>
+            <button class="btn btn--primary btn--lg btn--block" type="submit" data-track="contacto_formulario">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Enviar por WhatsApp
+            </button>
+            <p class="contact-form__note">Se abrirá WhatsApp con tu mensaje listo para enviar. Este sitio no guarda tus datos.</p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <a class="brand" href="/" aria-label="MantenPlus, ir al inicio">
+          <svg class="brand__mark" viewBox="0 0 680 380" aria-hidden="true" focusable="false"><use href="#logo-mark"/></svg>
+          <span class="brand__word">MANTEN<span class="brand__plus">PLUS</span></span>
+        </a>
+        <p>Expertos en el cuidado y reparación de tus electrodomésticos.</p>
+        <div class="social social--start">
+          <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+        </div>
+      </div>
+
+      <nav class="site-footer__col" aria-labelledby="footer-servicios">
+        <h2 class="site-footer__title" id="footer-servicios">Servicios</h2>
+        <ul role="list">
+          <li><a href="#servicios">Lavadoras y secadoras</a></li>
+          <li><a href="#servicios">Refrigeradores</a></li>
+          <li><a href="#servicios">Lavavajillas</a></li>
+          <li><a href="#servicios">Hornos y encimeras</a></li>
+          <li><a href="#servicios">Campanas</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__col" aria-labelledby="footer-empresa">
+        <h2 class="site-footer__title" id="footer-empresa">MantenPlus</h2>
+        <ul role="list">
+          <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#charlas-de-uso">Charlas de uso</a></li>
+          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <h2 class="site-footer__title">Contacto</h2>
+        <ul role="list">
+          <li><a href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="footer_whatsapp">WhatsApp</a></li>
+          <li><a href="mailto:contacto@mantenplus.cl">contacto@mantenplus.cl</a></li>
+          <li>Santiago, Chile</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container site-footer__bottom">
+      <p>© <span data-year>2026</span> MantenPlus · Servicios Integrales Varela</p>
+      <p>Las marcas mencionadas pertenecen a sus respectivos dueños y se citan solo para indicar los equipos que atendemos.</p>
+    </div>
+  </footer>
+
 
   <!-- Barra fija inferior en móvil (zona del pulgar) -->
   <div class="mobile-cta" data-mobile-cta>
@@ -733,6 +1028,8 @@
     <symbol id="i-headset" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19a3 3 0 0 1-3 3h-3"/></g></symbol>
     <symbol id="i-id" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16a3.4 3.4 0 0 1 6.4 0M14.5 10h3.5M14.5 13.5h2.5"/></g></symbol>
     <symbol id="i-list" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7h10M10 12h10M10 17h10"/><path d="m3.5 7 1.3 1.3L7 6M3.5 12l1.3 1.3L7 11M3.5 17l1.3 1.3L7 16"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 3.5 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
     <symbol id="i-drag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 7-5 5 5 5m6-10 5 5-5 5"/></symbol>
 
     <!-- Equipos (línea fina, mismo lenguaje que el isotipo) -->

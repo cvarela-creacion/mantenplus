@@ -61,7 +61,29 @@ Bosch, Siemens, Miele, Neff, Gaggenau y AEG son marcas de terceros. Se muestran 
 
 | Marcador | Dónde |
 |---|---|
-| `569XXXXXXXX` | `index.html` (enlaces `wa.me`) y `assets/js/main.js` (`WA_NUMBER`) |
-| `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` | `index.html` (menú móvil; más adelante, footer) |
+| `569XXXXXXXX` | `index.html` (todos los enlaces `wa.me`) y `assets/js/main.js` (`WA_NUMBER`) |
+| `+56 9 XXXX XXXX` | `index.html`, tarjeta de WhatsApp en Contacto (número visible) |
+| `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` | `index.html` (menú móvil, Contacto y footer) |
+| `[LINK_GOOGLE_RESENAS]` | `index.html`, botones de Opiniones (ficha de Google Business) |
 | `assets/img/hero-tecnico-puerta.{avif,webp,jpg}` | Foto del Hero (ver `04-brief-fotografico.md`) |
 | `assets/img/og-mantenplus.jpg` | Imagen 1200×630 para compartir en redes/WhatsApp |
+
+## Contenido a validar con el equipo antes de publicar
+
+El sitio no inventa cifras, plazos ni reseñas. Aun así, estos textos describen la forma de trabajar y deben confirmarse:
+
+| Qué | Dónde | Por qué |
+|---|---|---|
+| **Comunas de cobertura** | `#cobertura` (atributos `data-comuna`) | Lista propuesta (sector oriente, centro/sur oriente, Huechuraba y Chicureo). El comprobador «¿Llegamos a tu comuna?» lee esta lista: basta con agregar o quitar `<li data-comuna="…">`. |
+| **Reseñas** | `#opiniones` | Hoy son espacios reservados. Pegar **solo reseñas reales** de Google (formato en el comentario del HTML). Si al publicar aún no hay, ocultar la sección con `hidden`. |
+| Respuestas de **Preguntas frecuentes** | `#faq` | Valor de la visita informado al agendar, presupuesto antes de reparar, garantía por escrito, explicación del repuesto antes de usarlo, mantenciones preventivas. |
+| Promesas del servicio | Hero, Cómo trabajamos, Equipo | Cubrecalzado, credencial, aviso cuando el técnico va en camino, charla de uso incluida. |
+| Consejos técnicos | `#charlas-de-uso` | Son recomendaciones generales correctas; revisar que coincidan con lo que enseñan los técnicos. |
+
+**Pregunta sugerida para agregar cuando se confirme:** «¿Son servicio técnico oficial de estas marcas?». Responder solo con lo que sea cierto (independiente o certificado).
+
+## Conversión implementada en la fase final
+
+- **Comprobador de cobertura:** acepta nombres sin tildes («nunoa» → Ñuñoa) y el alias «Chicureo». Si la comuna está cubierta, ofrece «Agendar por WhatsApp» con la comuna ya escrita; si no, «Consultar por WhatsApp». Registra el evento `cobertura_consulta`.
+- **Formulario de contacto sin servidor:** valida con el navegador y abre WhatsApp con un mensaje ordenado (nombre, equipo, comuna, marca/modelo y problema). No guarda datos. Evento `contacto_formulario`.
+- **Barra fija móvil:** se oculta mientras se ve el Hero, la sección Contacto o el footer, para no duplicar botones.

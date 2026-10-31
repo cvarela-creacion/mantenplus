@@ -1,0 +1,22 @@
+[
+  {
+    "variant": "a",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "variant": "a",
+    "width": 1440,
+    "violations": []
+  },
+  {
+    "variant": "b",
+    "width": 390,
+    "violations": []
+  },
+  {
+    "variant": "b",
+    "width": 1440,
+    "violations": []
+  }
+]

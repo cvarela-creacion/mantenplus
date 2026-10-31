@@ -1,0 +1,20 @@
+[
+  {
+    "variant": "a",
+    "normalMotion": true,
+    "touchDrag": true,
+    "skipFlow": true,
+    "anchors": true,
+    "alias": true,
+    "servicePreselection": true
+  },
+  {
+    "variant": "b",
+    "normalMotion": true,
+    "touchDrag": true,
+    "skipFlow": true,
+    "anchors": true,
+    "alias": true,
+    "servicePreselection": true
+  }
+]

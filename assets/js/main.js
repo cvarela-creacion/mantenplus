@@ -31,11 +31,22 @@
     toggle.querySelector('.visually-hidden').textContent = open ? 'Cerrar menú' : 'Abrir menú';
     menu.hidden = !open;
     document.body.style.overflow = open ? 'hidden' : '';
+    document.querySelector('main').inert = open;
+    document.querySelector('.site-footer').inert = open;
+    if (open) menu.querySelector('a').focus();
+    else toggle.focus();
   };
   toggle.addEventListener('click', () => setMenu(menu.hidden));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); toggle.focus(); } });
 
+  document.addEventListener('keydown', e => {
+    if (menu.hidden || e.key !== 'Tab') return;
+    const all = [toggle, ...menu.querySelectorAll('a,button')];
+    const i = all.indexOf(document.activeElement);
+    e.preventDefault(); all[(i + (e.shiftKey ? -1 : 1) + all.length) % all.length].focus();
+  });
+  matchMedia('(min-width: 1151px)').addEventListener('change', () => { if (!menu.hidden) setMenu(false); });
   // Agendamiento rápido: el equipo elegido viaja en el mensaje de WhatsApp
   const form = document.querySelector('[data-quick-book]');
   if (form) {
@@ -49,7 +60,7 @@
       e.preventDefault();
       sync();
       track('hero_agendar', { equipo: form.querySelector('input[name="equipo"]:checked')?.value });
-      window.open(waLink(text.value), '_blank', 'noopener');
+      window.prepareMessage(text.value);
     });
   }
 
@@ -157,6 +168,7 @@
     const goTo = (i) => {
       const idx = (i + steps.length) % steps.length;
       if (desktop.matches) return setActive(idx);
+      setActive(idx);
       steps[idx].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
     };
 
@@ -167,7 +179,7 @@
 
     // Escritorio: al completarse la barra de progreso pasa al siguiente paso
     story.addEventListener('animationend', (e) => {
-      if (e.animationName === 'story-progress' && desktop.matches && !reduceMotion) setActive(current + 1);
+      if (false && e.animationName === 'story-progress' && desktop.matches && !reduceMotion) setActive(current + 1);
     });
     const pause = (on) => story.classList.toggle('is-paused', on);
     story.addEventListener('mouseenter', () => pause(true));
@@ -179,16 +191,19 @@
       // Fuera de pantalla no avanza
       new IntersectionObserver(([entry]) => story.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(story);
       // Móvil: los puntos siguen a la tarjeta visible
-      const trackIo = new IntersectionObserver((entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting && !desktop.matches) setActive(steps.indexOf(entry.target));
-      }), { root: story.querySelector('[data-story-track]'), threshold: 0.6 });
-      steps.forEach((s) => trackIo.observe(s));
+      const rail = story.querySelector('[data-story-track]');
+      rail.addEventListener('scroll', () => {
+        if (desktop.matches) return;
+        const left = rail.getBoundingClientRect().left;
+        const distances = steps.map(step => Math.abs(step.getBoundingClientRect().left - left));
+        setActive(distances.indexOf(Math.min(...distances)));
+      }, { passive: true });
     }
   }
 
   // Vista explosionada: el scroll separa las piezas (--p: 0 ensamblado → 1 explosionado) y luego enciende cada etiqueta
   const xp = document.querySelector('[data-xp]');
-  if (xp && !reduceMotion) {
+  if (xp && !reduceMotion && !document.querySelector('[data-part]')) {
     const figure = xp.querySelector('.xp__figure');
     const items = [...xp.querySelectorAll('[data-xp-item]')];
     const callouts = items.map((_, i) => xp.querySelector(`[data-xp-callout="${i + 1}"]`)); // el SVG las tiene en orden de dibujo
@@ -276,7 +291,7 @@
       if (val('marca')) lines.push(`Marca y modelo: ${val('marca')}.`);
       if (val('detalle')) lines.push(`Problema: ${val('detalle')}`);
       track('contacto_formulario', { equipo: val('equipo') });
-      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+      window.prepareMessage(lines.join('\n'));
     });
   }
 

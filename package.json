@@ -1,0 +1,6 @@
+{
+  "name": "mantenplus-v2-review",
+  "private": true,
+  "scripts": {"test": "node tests/browser.cjs && node tests/additional.cjs", "test:a11y": "node tests/accessibility.cjs"},
+  "devDependencies": {"playwright": "1.56.1", "axe-core": "4.10.3"}
+}

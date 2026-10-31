@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Ilustración referencial: reemplazar por foto real -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEEBE4"/><stop offset="1" stop-color="#D8D2C6"/></linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D9CDAE"/><stop offset=".5" stop-color="#B09765"/><stop offset="1" stop-color="#8E7444"/></linearGradient>
+    <pattern id="mesh" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 9h18M9 0v18" stroke="#5E4A28" stroke-width="2.4" opacity=".55"/></pattern>
+    <filter id="grease" x="0" y="0" width="1200" height="800" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="4"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.36  0 0 0 0 0.25  0 0 0 0 0.09  4.5 0 0 0 -1.9"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="drip" x="0" y="0" width="1200" height="800" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.09 0.012" numOctaves="2" seed="8"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.07  6 0 0 0 -3"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect x="190" y="150" width="820" height="530" rx="22" fill="#C2B9A8"/>
+  <rect x="200" y="140" width="800" height="520" rx="18" fill="url(#steel)"/>
+  <rect x="232" y="172" width="736" height="456" rx="8" fill="url(#mesh)"/>
+  <rect x="200" y="140" width="800" height="520" rx="18" fill="#000" filter="url(#grease)"/>
+  <rect x="200" y="380" width="800" height="280" rx="18" fill="#000" filter="url(#drip)"/>
+  <rect x="200" y="140" width="800" height="520" rx="18" fill="none" stroke="#7D6A47" stroke-width="12"/>
+  <rect x="540" y="612" width="120" height="22" rx="11" fill="#6E5D3E"/>
+</svg>

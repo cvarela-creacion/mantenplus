@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Ilustración referencial: reemplazar por foto real -->
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3F0E9"/><stop offset="1" stop-color="#DAD3C5"/></linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E6E3DC"/><stop offset=".5" stop-color="#B3B0A6"/><stop offset="1" stop-color="#D8D4CA"/></linearGradient>
+    <radialGradient id="glass" cx=".38" cy=".32" r=".85"><stop offset="0" stop-color="#E4DFD2"/><stop offset=".6" stop-color="#C4BBA6"/><stop offset="1" stop-color="#9C907A"/></radialGradient>
+    <filter id="mold" x="0" y="0" width="1200" height="800" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="7"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.13  0 0 0 0 0.12  0 0 0 0 0.09  7 0 0 0 -3.6"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="soap" x="0" y="0" width="1200" height="800" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.018" numOctaves="4" seed="3"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.97  0 0 0 0 0.95  0 0 0 0 0.9  2.2 0 0 0 -0.95"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+    <filter id="residue" x="0" y="0" width="1200" height="800" filterUnits="userSpaceOnUse">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.09" numOctaves="3" seed="11"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.45  0 0 0 0 0.34  0 0 0 0 0.18  5 0 0 0 -2.1"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#panel)"/>
+  <rect x="0" y="0" width="1200" height="70" fill="#ECE8DF"/>
+  <path d="M0 70h1200" stroke="#CFC8BA" stroke-width="3"/>
+  <circle cx="600" cy="430" r="336" fill="#D2CBBE"/>
+  <circle cx="600" cy="430" r="318" fill="url(#chrome)"/>
+  <circle cx="600" cy="430" r="272" fill="#7F7C74"/>
+  <circle cx="600" cy="430" r="247" fill="none" stroke="#000" stroke-width="50" filter="url(#mold)"/>
+  <path d="M390 560a247 247 0 0 0 420 0" fill="none" stroke="#000" stroke-width="56" filter="url(#residue)"/>
+  <circle cx="600" cy="430" r="222" fill="url(#glass)"/>
+  <circle cx="600" cy="430" r="222" fill="#000" filter="url(#soap)"/>
+  <path d="M455 318a196 196 0 0 1 150-92" fill="none" stroke="#FFFFFF" stroke-width="20" stroke-linecap="round" opacity=".25"/>
+</svg>

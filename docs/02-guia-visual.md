@@ -10,10 +10,12 @@
 | Fondo alterno | `--gray-25` / `--gray-50` | `#FAFBFC` / `#F4F6F8` | Secciones alternas, tarjetas |
 | Cielo muy claro | `--sky-50` / `--sky-100` | `#F3F9FE` / `#E4F2FC` | Degradados del Hero, chips activos, subrayados |
 | Cielo medio | `--sky-300` / `--sky-400` | `#9BD0F2` / `#5DB3EA` | Ilustraciones, bordes activos |
-| **Acción** | `--sky-600` | `#1478C2` | **Botón primario** (blanco sobre azul: 4,7 : 1, AA) |
+| **Acción** | `--sky-600` | `#126EAF` | **Botón primario** (blanco sobre azul: 5,4 : 1, AA) |
+| Foco y acentos | `--focus` | `#1478C2` | Anillo de foco de 3 px (contorno, visible también en modo de alto contraste) |
 | Acción hover | `--sky-700` | `#0F5F9C` | Hover, enlaces, texto sobre fondo celeste |
 | Titulares | `--ink` | `#151B23` | H1–H3 |
-| Texto | `--gray-700` / `--gray-500` | `#3B4450` / `#6B7682` | Cuerpo / secundario |
+| Texto | `--gray-700` / `--gray-500` / `--gray-400` | `#3B4450` / `#536472` / `#5E6B78` | Cuerpo / secundario / apoyo (todos ≥ 4,5 : 1 incluso sobre celeste) |
+| Decoración | `--gray-300` | `#98A2AE` | Solo íconos, bordes y textos de ejemplo en campos; nunca texto informativo |
 | Marca: carbón | `--brand-ink` | `#2E3036` | Isotipo, «MANTEN» |
 | Marca: rojo | `--brand-red` | `#C8202F` | **Solo** «PLUS» y detalles mínimos (≤ 2 % de la pantalla) |
 
@@ -30,7 +32,7 @@ Proporción recomendada: **70 % blanco · 20 % grises claros · 8 % azul cielo �
 
 - H1: `clamp(2.25rem → 4.125rem)`, peso 800, interlineado 1,04, tracking −3,5 %.
 - Lead: `clamp(1.0625rem → 1.25rem)`, interlineado 1,65, gris 500.
-- **Producción:** autoalojar las fuentes en `/assets/fonts` (WOFF2, subconjunto latino) para quitar la dependencia de Google Fonts y ganar ~150 ms.
+- **Autoalojadas** en `assets/fonts` (WOFF2 variables, subconjunto latino, licencias SIL OFL incluidas) y precargadas: sin peticiones a Google Fonts. Aporte de la propuesta Codex.
 
 ## Formas, sombras y movimiento
 

@@ -1,7 +1,40 @@
 /* MantenPlus · interacciones del sitio (sin dependencias) */
 (() => {
-  const WA_NUMBER = '569XXXXXXXX'; // TODO: reemplazar por el número de WhatsApp Business
+  const WA_NUMBER = '569XXXXXXXX'; // TODO: reemplazar por el número de WhatsApp Business (569 + 8 dígitos)
+  const WA_READY = /^569\d{8}$/.test(WA_NUMBER);
   const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+
+  // Modo revisión (idea de la propuesta Codex): mientras el número sea provisorio, en vez de abrir un WhatsApp
+  // que fallaría, se muestra el mensaje para revisarlo, copiarlo o mandarlo por correo. Con el número real, abre WhatsApp directo.
+  const dialog = document.querySelector('[data-message-dialog]');
+  const sendWhatsApp = (message) => {
+    if (WA_READY || !dialog) return void window.open(waLink(message), '_blank', 'noopener');
+    dialog.querySelector('[data-message-text]').value = message;
+    dialog.querySelector('[data-copy-status]').textContent = '';
+    dialog.querySelector('[data-mail-message]').href = `mailto:contacto@mantenplus.cl?subject=${encodeURIComponent('Consulta desde mantenplus.cl')}&body=${encodeURIComponent(message)}`;
+    dialog.showModal();
+  };
+  if (dialog) {
+    const area = dialog.querySelector('[data-message-text]');
+    const status = dialog.querySelector('[data-copy-status]');
+    dialog.querySelector('[data-copy-message]').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(area.value); status.textContent = 'Mensaje copiado.'; }
+      catch { area.select(); status.textContent = 'Selecciona el texto y cópialo desde el menú de tu dispositivo.'; }
+    });
+    area.addEventListener('input', () => {
+      dialog.querySelector('[data-mail-message]').href = `mailto:contacto@mantenplus.cl?subject=${encodeURIComponent('Consulta desde mantenplus.cl')}&body=${encodeURIComponent(area.value)}`;
+    });
+    dialog.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); }); // clic fuera del panel
+  }
+  if (!WA_READY) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href*="wa.me/"]');
+      if (!a) return;
+      e.preventDefault();
+      sendWhatsApp(new URL(a.href).searchParams.get('text') || 'Hola MantenPlus, quiero agendar un servicio.');
+    });
+  }
 
   // Header: sombra al hacer scroll + barra CTA móvil fuera del Hero, del Contacto y del footer
   const header = document.querySelector('[data-header]');
@@ -26,30 +59,67 @@
   // Menú móvil
   const toggle = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-mobile-menu]');
-  const setMenu = (open) => {
+  // Mientras el menú está abierto, el resto de la página queda inerte (ni foco ni lector de pantalla)
+  const outside = [document.querySelector('main'), document.querySelector('.site-footer'), mobileCta].filter(Boolean);
+  const setMenu = (open, { restoreFocus = true } = {}) => {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.querySelector('.visually-hidden').textContent = open ? 'Cerrar menú' : 'Abrir menú';
     menu.hidden = !open;
     document.body.style.overflow = open ? 'hidden' : '';
+    outside.forEach((el) => { el.inert = open; });
+    if (open) menu.querySelector('a').focus();
+    else if (restoreFocus) toggle.focus();
   };
   toggle.addEventListener('click', () => setMenu(menu.hidden));
-  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); toggle.focus(); } });
+  menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false, { restoreFocus: false }); });
+  document.addEventListener('keydown', (e) => {
+    if (menu.hidden) return;
+    if (e.key === 'Escape') return setMenu(false);
+    if (e.key !== 'Tab') return;
+    // El foco recorre en círculo el botón del menú y los enlaces del panel
+    const focusables = [toggle, ...menu.querySelectorAll('a, button')];
+    const i = focusables.indexOf(document.activeElement);
+    e.preventDefault();
+    focusables[(i + (e.shiftKey ? -1 : 1) + focusables.length) % focusables.length].focus();
+  });
+  matchMedia('(min-width: 1181px)').addEventListener('change', (e) => { if (e.matches && !menu.hidden) setMenu(false, { restoreFocus: false }); });
 
-  // Agendamiento rápido: el equipo elegido viaja en el mensaje de WhatsApp
+  // Agendamiento rápido: el equipo (paso 1) y la avería opcional (paso 2) viajan en el mensaje
   const form = document.querySelector('[data-quick-book]');
   if (form) {
     const text = form.querySelector('[data-wa-text]');
-    const sync = () => {
-      const equipo = form.querySelector('input[name="equipo"]:checked')?.value || 'electrodoméstico';
-      text.value = `Hola MantenPlus, quiero agendar un servicio para mi ${equipo}.`;
+    const issues = form.querySelector('[data-issues]');
+    const issueChips = form.querySelector('[data-issue-chips]');
+    const chip = (value, label, checked) => {
+      const wrap = document.createElement('label');
+      wrap.className = 'chip';
+      const input = Object.assign(document.createElement('input'), { type: 'radio', name: 'averia', value, checked });
+      const span = document.createElement('span');
+      span.textContent = label;
+      wrap.append(input, span);
+      return wrap;
     };
-    form.addEventListener('change', sync);
+    const selected = (name) => form.querySelector(`input[name="${name}"]:checked`);
+    const renderIssues = () => {
+      const averias = selected('equipo')?.dataset.averias;
+      issues.hidden = !averias;
+      if (averias) issueChips.replaceChildren(chip('', 'No estoy seguro', true), ...averias.split('|').map((a) => chip(a, a, false)));
+    };
+    const sync = () => {
+      const equipo = selected('equipo')?.value || 'electrodoméstico';
+      const averia = selected('averia')?.value;
+      text.value = `Hola MantenPlus, quiero agendar un servicio para mi ${equipo}.` + (averia ? ` Problema: ${averia.toLowerCase()}.` : '');
+    };
+    form.addEventListener('change', (e) => {
+      if (e.target.name === 'equipo') renderIssues();
+      sync();
+    });
+    renderIssues();
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       sync();
-      track('hero_agendar', { equipo: form.querySelector('input[name="equipo"]:checked')?.value });
-      window.open(waLink(text.value), '_blank', 'noopener');
+      track('hero_agendar', { equipo: selected('equipo')?.value, averia: selected('averia')?.value || 'sin especificar' });
+      sendWhatsApp(text.value);
     });
   }
 
@@ -137,11 +207,13 @@
     });
   });
 
-  // Storytelling "Cómo trabajamos": en escritorio avanza solo (barra de progreso); en móvil es un carrusel deslizable
+  // Storytelling "Cómo trabajamos": el visitante avanza a su ritmo, sin avance automático (criterio de accesibilidad
+  // tomado de la propuesta Codex). Escritorio: lista de pasos + imagen; móvil: carrusel deslizable.
   const story = document.querySelector('[data-story]');
   if (story) {
     const steps = [...story.querySelectorAll('[data-step]')];
     const dots = [...story.querySelectorAll('[data-dot]')];
+    const rail = story.querySelector('[data-story-track]');
     const desktop = matchMedia('(min-width: 861px)');
     let current = 0;
 
@@ -155,9 +227,8 @@
       dots.forEach((d, n) => d.setAttribute('aria-current', String(n === current)));
     };
     const goTo = (i) => {
-      const idx = (i + steps.length) % steps.length;
-      if (desktop.matches) return setActive(idx);
-      steps[idx].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
+      setActive(i);
+      if (!desktop.matches) steps[current].scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest', inline: 'start' });
     };
 
     steps.forEach((s, n) => s.querySelector('[data-step-btn]').addEventListener('click', () => desktop.matches && setActive(n)));
@@ -165,61 +236,47 @@
     story.querySelector('[data-story-prev]').addEventListener('click', () => goTo(current - 1));
     story.querySelector('[data-story-next]').addEventListener('click', () => goTo(current + 1));
 
-    // Escritorio: al completarse la barra de progreso pasa al siguiente paso
-    story.addEventListener('animationend', (e) => {
-      if (e.animationName === 'story-progress' && desktop.matches && !reduceMotion) setActive(current + 1);
-    });
-    const pause = (on) => story.classList.toggle('is-paused', on);
-    story.addEventListener('mouseenter', () => pause(true));
-    story.addEventListener('mouseleave', () => pause(false));
-    story.addEventListener('focusin', () => pause(true));
-    story.addEventListener('focusout', () => pause(false));
-
-    if ('IntersectionObserver' in window) {
-      // Fuera de pantalla no avanza
-      new IntersectionObserver(([entry]) => story.classList.toggle('is-offscreen', !entry.isIntersecting)).observe(story);
-      // Móvil: los puntos siguen a la tarjeta visible
-      const trackIo = new IntersectionObserver((entries) => entries.forEach((entry) => {
-        if (entry.isIntersecting && !desktop.matches) setActive(steps.indexOf(entry.target));
-      }), { root: story.querySelector('[data-story-track]'), threshold: 0.6 });
-      steps.forEach((s) => trackIo.observe(s));
-    }
+    // Móvil: el paso activo es la tarjeta más cercana al inicio del carril (en tablet hay dos visibles a la vez)
+    rail.addEventListener('scroll', () => {
+      if (desktop.matches) return;
+      const start = rail.getBoundingClientRect().left + parseFloat(getComputedStyle(rail).paddingLeft);
+      const distances = steps.map((st) => Math.abs(st.getBoundingClientRect().left - start));
+      setActive(distances.indexOf(Math.min(...distances)));
+    }, { passive: true });
   }
 
-  // Vista explosionada: el scroll separa las piezas (--p: 0 ensamblado → 1 explosionado) y luego enciende cada etiqueta
+  // Vista explosionada: las piezas se separan al entrar en pantalla, sin dejar la sección fija, y cada pieza
+  // se puede seleccionar para ver qué revisamos en ella (explorador tomado de la propuesta Codex)
   const xp = document.querySelector('[data-xp]');
-  if (xp && !reduceMotion) {
-    const figure = xp.querySelector('.xp__figure');
-    const items = [...xp.querySelectorAll('[data-xp-item]')];
-    const callouts = items.map((_, i) => xp.querySelector(`[data-xp-callout="${i + 1}"]`)); // el SVG las tiene en orden de dibujo
-    const sticky = matchMedia('(min-width: 861px) and (min-height: 620px)');
-    let ticking = false;
+  if (xp) {
+    const parts = [...xp.querySelectorAll('[data-part]')];
+    const detail = xp.querySelector('[data-part-detail]');
+    const prompt = detail.textContent;
+    detail.hidden = false;
+    parts.forEach((btn) => btn.addEventListener('click', () => {
+      const on = btn.getAttribute('aria-pressed') !== 'true';
+      parts.forEach((b) => b.setAttribute('aria-pressed', String(on && b === btn)));
+      xp.querySelectorAll('[data-xp-callout]').forEach((c) => c.classList.toggle('is-selected', on && c.dataset.xpCallout === btn.dataset.part));
+      detail.textContent = on ? `${btn.querySelector('strong').textContent}: ${btn.dataset.detail}` : prompt;
+    }));
 
-    const update = () => {
-      ticking = false;
-      const vh = window.innerHeight;
-      let p;
-      if (sticky.matches) {
-        const r = xp.getBoundingClientRect();
-        p = -r.top / (r.height - vh); // recorrido de la escena fija
-      } else {
+    if (!reduceMotion) {
+      const figure = xp.querySelector('.xp__figure');
+      let ticking = false;
+      const update = () => {
+        ticking = false;
         const r = figure.getBoundingClientRect();
-        p = (vh * 0.9 - r.top) / (vh * 0.6); // de entrar por abajo a llegar al tercio superior
-      }
-      p = Math.min(1, Math.max(0, p));
-      xp.style.setProperty('--p', Math.min(1, p / 0.6).toFixed(3)); // las piezas terminan de separarse al 60 %
-      items.forEach((li, i) => {
-        const on = p >= 0.6 + (0.38 * i) / items.length; // luego se encienden las etiquetas, una a una
-        li.classList.toggle('is-on', on);
-        callouts[i]?.classList.toggle('is-on', on);
-      });
-    };
-    const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-
-    xp.classList.add('is-enhanced');
-    update();
-    window.addEventListener('scroll', request, { passive: true });
-    window.addEventListener('resize', request);
+        const vh = window.innerHeight;
+        const p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.55))); // de entrar por abajo a llegar al tercio superior
+        xp.style.setProperty('--p', p.toFixed(3));
+        xp.classList.toggle('is-exploded', p === 1);
+      };
+      const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+      xp.classList.add('is-enhanced');
+      update();
+      window.addEventListener('scroll', request, { passive: true });
+      window.addEventListener('resize', request);
+    }
   }
 
   // Cobertura: "¿Llegamos a tu comuna?" compara con las comunas de la lista de zonas (data-comuna)
@@ -276,7 +333,7 @@
       if (val('marca')) lines.push(`Marca y modelo: ${val('marca')}.`);
       if (val('detalle')) lines.push(`Problema: ${val('detalle')}`);
       track('contacto_formulario', { equipo: val('equipo') });
-      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+      sendWhatsApp(lines.join('\n'));
     });
   }
 

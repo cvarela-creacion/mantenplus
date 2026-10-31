@@ -13,16 +13,20 @@ assets/css/styles.css      Sistema visual (tokens, botones, header, hero, respon
 assets/js/main.js          Menú móvil, WhatsApp, slider, pestañas, carrusel, micro-videos, vista explosionada,
                            comprobador de cobertura, formulario de contacto y medición
 assets/img/logo-mark.svg   Isotipo redibujado en vector
+assets/img/hero-conceptual-*.webp  Imagen conceptual de portada (aporte Codex; reemplazar por foto propia)
+assets/fonts/              Inter y Plus Jakarta Sans autoalojadas (licencia SIL OFL)
 assets/img/resultados/     Ilustraciones referenciales del slider antes/después (reemplazar por fotos reales)
 assets/brand/              Logotipo original y fotos de referencia del uniforme
 robots.txt, sitemap.xml    Indexación en Google para https://mantenplus.cl
 .nojekyll                  GitHub Pages publica los archivos tal cual
+tests/sitio.cjs            Pruebas en Chromium + accesibilidad (npm test)
 docs/
   01-arquitectura.md            Mapa del sitio, embudo de conversión, decisiones técnicas
   02-guia-visual.md             Paleta, tipografía, botones, movimiento
   03-tecnicas-interactivas.md   Slider antes/después, carrusel storytelling, micro-videos, vista explosionada
   04-brief-fotografico.md       Dirección de arte para la foto del Hero y la del equipo
   05-publicacion.md             Publicación gratis con GitHub Pages y conexión de mantenplus.cl
+  06-integracion-codex.md       Qué se tomó de la propuesta Codex, qué se conservó y por qué
 ```
 
 ## Ver en local
@@ -33,12 +37,15 @@ Sitio estático, sin dependencias de compilación:
 python3 -m http.server 8080   # luego abre http://localhost:8080
 ```
 
+Pruebas automáticas (opcionales): `npm ci && npm test`.
+
 ## Pendientes antes de publicar
 
-- Número de WhatsApp: reemplazar `569XXXXXXXX` en `index.html` y `assets/js/main.js`.
-- Número visible en Contacto: reemplazar `+56 9 XXXX XXXX`.
+- Número de WhatsApp: reemplazar `569XXXXXXXX` en `index.html` y `assets/js/main.js`. Mientras sea provisorio, los botones abren un diálogo para revisar y copiar el mensaje; con el número real abren WhatsApp directo.
+- Número visible en Contacto: reemplazar «Número definitivo pendiente».
 - Redes sociales y reseñas: reemplazar `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` y `[LINK_GOOGLE_RESENAS]`.
 - Confirmar comunas de cobertura, reseñas reales y respuestas de Preguntas frecuentes (detalle en `docs/01-arquitectura.md`).
-- Foto del Hero: `assets/img/hero-tecnico-puerta.{avif,webp,jpg}` (ver `docs/04-brief-fotografico.md`).
+- Foto del Hero: reemplazar la imagen conceptual `assets/img/hero-conceptual-*.webp` por la fotografía propia (ver `docs/04-brief-fotografico.md`) y actualizar el `preload` del `<head>`.
 - Fotos del antes/después, del carrusel «Cómo trabajamos» y los micro-videos de servicios (lista exacta de archivos en `docs/03-tecnicas-interactivas.md`).
 - Foto institucional del equipo: `assets/img/equipo-mantenplus.{avif,webp,jpg}` (ver `docs/04-brief-fotografico.md`, Foto 2).
+- Las fotos del proceso, los videos y la foto del equipo esperan en `<template data-pending-media>`: al subir cada archivo, sacar su `<picture>`/`<video>` del template.

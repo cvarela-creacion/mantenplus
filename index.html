@@ -23,13 +23,12 @@
   <link rel="icon" href="assets/img/logo-mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
-  <!-- Tipografías: Plus Jakarta Sans (titulares) + Inter (texto). En producción, autoalojar en /assets/fonts (ver docs/02-guia-visual.md) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <!-- Tipografías autoalojadas (Plus Jakarta Sans + Inter, licencia OFL en assets/fonts): se precargan para evitar saltos -->
+  <link rel="preload" href="assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- Activar cuando exista la foto del Hero (mejora el LCP):
-  <link rel="preload" as="image" href="assets/img/hero-tecnico-puerta.webp" type="image/webp" fetchpriority="high"> -->
+  <!-- Imagen principal de la portada (mejora el LCP) -->
+  <link rel="preload" as="image" href="assets/img/hero-conceptual-1200.webp" imagesrcset="assets/img/hero-conceptual-600.webp 600w, assets/img/hero-conceptual-1200.webp 1200w" imagesizes="(max-width: 860px) calc(100vw - 2rem), 46vw" fetchpriority="high">
 
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
@@ -67,17 +66,15 @@
         <ul class="main-nav__list">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#resultados">Resultados</a></li>
           <li><a href="#charlas-de-uso">Charlas de uso</a></li>
-          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--ghost btn--sm hide-sm" href="mailto:contacto@mantenplus.cl">
-          <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
-          contacto@mantenplus.cl
-        </a>
         <a class="btn btn--primary btn--sm" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="header_agendar">
           Agendar
         </a>
@@ -95,8 +92,10 @@
         <ul class="mobile-menu__list">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+          <li><a href="#resultados">Resultados</a></li>
           <li><a href="#charlas-de-uso">Charlas de uso</a></li>
-          <li><a href="#equipo">Nuestro equipo</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -136,16 +135,23 @@
           <!-- Agendamiento rápido: elegir el equipo pre-llena el mensaje de WhatsApp -->
           <form class="quick-book" action="https://wa.me/569XXXXXXXX" method="get" target="_blank" data-quick-book>
             <fieldset class="quick-book__set">
-              <legend class="quick-book__label">¿Qué equipo necesitas revisar?</legend>
+              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">1</span>¿Qué equipo necesitas revisar?</legend>
               <div class="chips">
-                <label class="chip"><input type="radio" name="equipo" value="lavadora" checked><span>Lavadora</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="secadora"><span>Secadora</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="refrigerador"><span>Refrigerador</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="lavavajillas"><span>Lavavajillas</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="horno"><span>Horno</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="encimera"><span>Encimera</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="lavadora" data-averias="No centrifuga|Pierde agua|Ruidos al girar|Código de error" checked><span>Lavadora</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="secadora" data-averias="No seca|No calienta|Hace ruido|Código de error"><span>Secadora</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="refrigerador" data-averias="No enfría|Forma hielo|Ruido del motor|Gotea agua"><span>Refrigerador</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="lavavajillas" data-averias="No desagua|No seca|Deja residuos|Fugas"><span>Lavavajillas</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="horno" data-averias="No calienta|Cocción dispareja|Ventilador|Puerta"><span>Horno</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="encimera" data-averias="No enciende|Código de error|Se apaga sola|Chispero"><span>Encimera</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="campana" data-averias="Pierde succión|Ruido|Luces|Grasa acumulada"><span>Campana</span></label>
                 <label class="chip"><input type="radio" name="equipo" value="otro equipo"><span>Otro</span></label>
               </div>
+            </fieldset>
+
+            <!-- Paso 2 opcional (idea de la propuesta Codex): averías típicas del equipo elegido; main.js arma los chips -->
+            <fieldset class="quick-book__set quick-book__set--issues" data-issues hidden>
+              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">2</span>¿Qué le pasa? <span class="quick-book__optional">(opcional)</span></legend>
+              <div class="chips chips--issues" data-issue-chips></div>
             </fieldset>
             <input type="hidden" name="text" value="Hola MantenPlus, quiero agendar un servicio para mi lavadora." data-wa-text>
 
@@ -171,41 +177,31 @@
         <div class="hero__visual">
           <figure class="hero-photo">
             <!--
-              FOTO PRINCIPAL (ver docs/04-brief-fotografico.md):
-              Técnico MantenPlus con polo negro corporativo bordado, cubrecalzado y maletín,
-              recibido con una sonrisa en la puerta de una casa luminosa por el cliente.
-              Exportar 1200×1440 (desktop) y 800×800 (móvil) en AVIF + WebP.
+              IMAGEN CONCEPTUAL (aporte de la propuesta Codex): no representa personal ni trabajos reales.
+              Reemplazar por la fotografía propia del brief (docs/04-brief-fotografico.md) y actualizar el preload del <head>.
             -->
             <picture>
-              <source type="image/avif" srcset="assets/img/hero-tecnico-puerta.avif">
-              <source type="image/webp" srcset="assets/img/hero-tecnico-puerta.webp">
-              <img class="hero-photo__img" src="assets/img/hero-tecnico-puerta.jpg"
-                   alt="Técnico de MantenPlus con uniforme corporativo siendo recibido en la puerta de un hogar"
-                   width="1200" height="1440" fetchpriority="high" decoding="async"
+              <img class="hero-photo__img" src="assets/img/hero-conceptual-1200.webp"
+                   srcset="assets/img/hero-conceptual-600.webp 600w, assets/img/hero-conceptual-1200.webp 1200w"
+                   sizes="(max-width: 860px) calc(100vw - 2rem), 46vw"
+                   alt="Imagen conceptual: técnico con polo negro revisando la puerta de una lavadora en una casa luminosa con vista a la cordillera"
+                   width="1200" height="800" fetchpriority="high" decoding="async"
                    onerror="this.closest('picture').remove()">
             </picture>
 
-            <!-- Placeholder elegante mientras llega la sesión de fotos -->
+            <!-- Respaldo si la imagen no carga -->
             <div class="hero-photo__placeholder" aria-hidden="true">
               <svg class="hero-photo__mark" viewBox="0 0 680 380"><use href="#logo-mark"/></svg>
-              <span class="hero-photo__hint">Fotografía: técnico MantenPlus recibido en la puerta</span>
             </div>
+            <figcaption class="hero-photo__caption">Imagen conceptual<span class="hero-photo__caption-more"> · fotografía definitiva pendiente</span></figcaption>
           </figure>
 
-          <!-- Tarjetas flotantes de confianza -->
-          <div class="float-card float-card--top">
+          <!-- Tarjeta flotante de confianza -->
+          <div class="float-card float-card--bottom">
             <span class="float-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
             <span>
               <strong>Técnico identificado</strong>
               <small>Uniforme, credencial y cubrecalzado</small>
-            </span>
-          </div>
-
-          <div class="float-card float-card--bottom">
-            <span class="float-card__icon float-card__icon--sky"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
-            <span>
-              <strong>Tu horario, respetado</strong>
-              <small>Te avisamos cuando vamos en camino</small>
             </span>
           </div>
 
@@ -242,17 +238,18 @@
 
         <!--
           MICRO-VIDEOS EN BUCLE (ver docs/03-tecnicas-interactivas.md §3):
-          dejar los archivos en assets/video/ con estos nombres. Mientras no existan, se muestra el ícono.
-          Al tener los videos, agregar poster="assets/video/<equipo>-poster.webp" a cada <video>.
+          cada <video> está guardado en un <template data-pending-media> para no pedir archivos que aún no existen.
+          Al subir los archivos a assets/video/, sacar el <video> de su <template> y agregarle
+          poster="assets/video/<equipo>-poster.webp". Mientras tanto se muestra el ícono.
         -->
         <ul class="services" role="list">
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-lavadora"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/lavadora-loop.webm" type="video/webm">
                 <source src="assets/video/lavadora-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Lavadoras y secadoras</h3>
@@ -268,10 +265,10 @@
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-refrigerador"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/refrigerador-loop.webm" type="video/webm">
                 <source src="assets/video/refrigerador-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Refrigeradores</h3>
@@ -287,10 +284,10 @@
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/lavavajillas-loop.webm" type="video/webm">
                 <source src="assets/video/lavavajillas-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Lavavajillas</h3>
@@ -306,10 +303,10 @@
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-horno"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/horno-loop.webm" type="video/webm">
                 <source src="assets/video/horno-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Hornos</h3>
@@ -325,10 +322,10 @@
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-encimera"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/encimera-loop.webm" type="video/webm">
                 <source src="assets/video/encimera-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Encimeras</h3>
@@ -344,10 +341,10 @@
           <li class="service">
             <div class="service__media">
               <svg class="service__icon" aria-hidden="true"><use href="#a-campana"/></svg>
-              <video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
+              <template data-pending-media><video class="loop" muted playsinline loop preload="none" width="640" height="480" aria-hidden="true">
                 <source src="assets/video/campana-loop.webm" type="video/webm">
                 <source src="assets/video/campana-loop.mp4" type="video/mp4">
-              </video>
+              </video></template>
             </div>
             <div class="service__body">
               <h3 class="service__title">Campanas</h3>
@@ -439,7 +436,7 @@
           <p class="section-lead">Cuatro pasos, siempre los mismos, en cada servicio.</p>
         </header>
 
-        <!-- Fotos del carrusel: ver docs/04-brief-fotografico.md. Mientras no existan, se muestra la ilustración. -->
+        <!-- Fotos del carrusel: ver docs/04-brief-fotografico.md. Cada <picture> espera en un <template data-pending-media>: al subir la foto, sacarlo del template. Mientras tanto se muestra la ilustración. -->
         <div class="story" data-story role="region" aria-roledescription="carrusel" aria-label="Los cuatro pasos de nuestro servicio">
           <ol class="story__track" role="list" data-story-track>
             <li class="story__step is-active" data-step>
@@ -448,16 +445,15 @@
                   <svg viewBox="0 0 48 48"><use href="#s-llegada"/></svg>
                   <span>Foto: técnico poniéndose cubrecalzado en la entrada</span>
                 </div>
-                <picture>
+                <template data-pending-media><picture>
                   <source type="image/webp" srcset="assets/img/proceso/paso-1-llegada.webp">
                   <img src="assets/img/proceso/paso-1-llegada.jpg" alt="Técnico de MantenPlus poniéndose cubrecalzado en la entrada de un hogar" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture>
+                </picture></template>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">01</span>
                 <h3 class="story__title"><button type="button" data-step-btn aria-current="step">Llegada pulcra</button></h3>
                 <div class="story__desc"><p>Puntuales, uniformados, con credencial y cubrecalzado. Protegemos el piso y la zona de trabajo antes de empezar.</p></div>
-                <span class="story__bar" aria-hidden="true"></span>
               </div>
             </li>
 
@@ -467,16 +463,15 @@
                   <svg viewBox="0 0 48 48"><use href="#s-diagnostico"/></svg>
                   <span>Foto: técnico mostrando el diagnóstico al cliente</span>
                 </div>
-                <picture>
+                <template data-pending-media><picture>
                   <source type="image/webp" srcset="assets/img/proceso/paso-2-diagnostico.webp">
                   <img src="assets/img/proceso/paso-2-diagnostico.jpg" alt="Técnico mostrando al cliente el diagnóstico de su equipo" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture>
+                </picture></template>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">02</span>
                 <h3 class="story__title"><button type="button" data-step-btn>Diagnóstico transparente</button></h3>
                 <div class="story__desc"><p>Te mostramos la falla y el presupuesto <strong>antes</strong> de tocar nada. Sin sorpresas: tú decides si seguimos.</p></div>
-                <span class="story__bar" aria-hidden="true"></span>
               </div>
             </li>
 
@@ -486,16 +481,15 @@
                   <svg viewBox="0 0 48 48"><use href="#s-ejecucion"/></svg>
                   <span>Foto: herramientas ordenadas y manos con guantes</span>
                 </div>
-                <picture>
+                <template data-pending-media><picture>
                   <source type="image/webp" srcset="assets/img/proceso/paso-3-ejecucion.webp">
                   <img src="assets/img/proceso/paso-3-ejecucion.jpg" alt="Herramientas ordenadas sobre un paño mientras el técnico trabaja" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture>
+                </picture></template>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">03</span>
                 <h3 class="story__title"><button type="button" data-step-btn>Ejecución impecable</button></h3>
                 <div class="story__desc"><p>Repuestos de calidad y herramientas en orden. Probamos el equipo contigo y dejamos todo más limpio que como lo encontramos.</p></div>
-                <span class="story__bar" aria-hidden="true"></span>
               </div>
             </li>
 
@@ -505,16 +499,15 @@
                   <svg viewBox="0 0 48 48"><use href="#s-charla"/></svg>
                   <span>Foto: técnico explicando el panel del equipo al cliente</span>
                 </div>
-                <picture>
+                <template data-pending-media><picture>
                   <source type="image/webp" srcset="assets/img/proceso/paso-4-charla.webp">
                   <img src="assets/img/proceso/paso-4-charla.jpg" alt="Técnico explicando al cliente cómo cuidar su electrodoméstico" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture>
+                </picture></template>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">04</span>
                 <h3 class="story__title"><button type="button" data-step-btn>Charla de uso</button></h3>
                 <div class="story__desc"><p>Te enseñamos a cuidar tu equipo para que dure años, y te dejamos la garantía por escrito.</p></div>
-                <span class="story__bar" aria-hidden="true"></span>
               </div>
             </li>
           </ol>
@@ -522,10 +515,10 @@
           <div class="story__controls">
             <button class="story__arrow" type="button" data-story-prev aria-label="Paso anterior"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
             <div class="story__dots">
-              <button type="button" data-dot aria-label="Paso 1" aria-current="true"></button>
-              <button type="button" data-dot aria-label="Paso 2"></button>
-              <button type="button" data-dot aria-label="Paso 3"></button>
-              <button type="button" data-dot aria-label="Paso 4"></button>
+              <button type="button" data-dot aria-label="Paso 1: Llegada pulcra" aria-current="true">1</button>
+              <button type="button" data-dot aria-label="Paso 2: Diagnóstico transparente">2</button>
+              <button type="button" data-dot aria-label="Paso 3: Ejecución impecable">3</button>
+              <button type="button" data-dot aria-label="Paso 4: Charla de uso">4</button>
             </div>
             <button class="story__arrow" type="button" data-story-next aria-label="Paso siguiente"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
           </div>
@@ -542,24 +535,25 @@
 
     <!-- ============================== INGENIERÍA: VISTA EXPLOSIONADA ============================== -->
     <section class="xp-section" id="ingenieria" aria-labelledby="ingenieria-title">
-      <!-- En escritorio la escena queda fija mientras se hace scroll y las piezas se separan; en móvil se anima al pasar -->
+      <!-- Las piezas se separan al entrar en pantalla y cada una se puede seleccionar (explorador tomado de la propuesta Codex) -->
       <div class="xp" data-xp>
-        <div class="xp__sticky">
+        <div class="xp__inner">
           <div class="container xp__grid">
             <div class="xp__copy">
               <p class="kicker">Ingeniería</p>
               <h2 class="section-title" id="ingenieria-title">Conocemos tu equipo pieza por pieza</h2>
               <p class="section-lead">Los equipos de ingeniería alemana son precisos y complejos. Por eso los diagnosticamos componente por componente, con método, en vez de cambiar piezas al azar.</p>
               <ol class="xp__list" role="list">
-                <li data-xp-item><span class="xp__num" aria-hidden="true">1</span><span><strong>Puerta y cierre</strong><small>Bisagras, seguro y vidrio</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">2</span><span><strong>Fuelle</strong><small>Hermeticidad, moho y filtraciones</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">3</span><span><strong>Tambor</strong><small>Equilibrio, paletas y objetos atrapados</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">4</span><span><strong>Cuba</strong><small>Sellos, contrapesos y amortiguadores</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">5</span><span><strong>Eje y rodamientos</strong><small>Origen típico del ruido al centrifugar</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">6</span><span><strong>Motor inverter</strong><small>Bobinados, sensores y conexiones</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">7</span><span><strong>Bomba de desagüe</strong><small>Filtro, impulsor y obstrucciones</small></span></li>
-                <li data-xp-item><span class="xp__num" aria-hidden="true">8</span><span><strong>Placa electrónica</strong><small>Códigos de error y componentes</small></span></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="1" data-detail="El cierre debe bloquear la puerta antes de iniciar el ciclo. Revisamos bisagras, seguro y estado del vidrio."><span class="xp__num" aria-hidden="true">1</span><span><strong>Puerta y cierre</strong><small>Bisagras, seguro y vidrio</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="2" data-detail="El fuelle sella la unión con la puerta. Revisamos desgaste, residuos y filtraciones."><span class="xp__num" aria-hidden="true">2</span><span><strong>Fuelle</strong><small>Hermeticidad, moho y filtraciones</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="3" data-detail="El tambor aloja la ropa. Su equilibrio ayuda a reducir vibraciones y ruidos."><span class="xp__num" aria-hidden="true">3</span><span><strong>Tambor</strong><small>Equilibrio, paletas y objetos atrapados</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="4" data-detail="La cuba contiene el agua; sus sellos y soportes evitan fugas y movimientos excesivos."><span class="xp__num" aria-hidden="true">4</span><span><strong>Cuba</strong><small>Sellos, contrapesos y amortiguadores</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="5" data-detail="El eje y los rodamientos permiten el giro. Su desgaste es el origen típico del ruido al centrifugar."><span class="xp__num" aria-hidden="true">5</span><span><strong>Eje y rodamientos</strong><small>Origen típico del ruido al centrifugar</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="6" data-detail="El motor controla el giro del tambor. Su diagnóstico incluye bobinados, conexiones y sensores."><span class="xp__num" aria-hidden="true">6</span><span><strong>Motor inverter</strong><small>Bobinados, sensores y conexiones</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="7" data-detail="La bomba evacua el agua. El filtro y el impulsor pueden quedar obstruidos."><span class="xp__num" aria-hidden="true">7</span><span><strong>Bomba de desagüe</strong><small>Filtro, impulsor y obstrucciones</small></span></button></li>
+                <li><button class="xp__part" type="button" aria-pressed="false" data-part="8" data-detail="La placa coordina el funcionamiento y recibe las señales de los sensores. Interpretamos sus códigos de error."><span class="xp__num" aria-hidden="true">8</span><span><strong>Placa electrónica</strong><small>Códigos de error y componentes</small></span></button></li>
               </ol>
+              <p class="xp__detail" aria-live="polite" data-part-detail hidden>Toca una pieza para ver qué revisamos en ella.</p>
             </div>
             <figure class="xp__figure">
               <svg class="xp__svg" viewBox="0 0 1000 580" role="img" aria-labelledby="xp-svg-title"><title id="xp-svg-title">Vista explosionada de una lavadora de carga frontal con sus ocho componentes principales numerados</title><defs>
@@ -656,17 +650,17 @@
           <!--
             FOTO INSTITUCIONAL (ver docs/04-brief-fotografico.md, Foto 2): 4 técnicos con polo corporativo y botas
             de trabajo + 2 personas de atención al cliente con camisa blanca bordada. Sin el fundador.
-            Exportar 2400×1350 (AVIF/WebP/JPG) como assets/img/equipo-mantenplus.*; aparece sola sobre la ilustración.
+            Exportar 2400×1350 (AVIF/WebP/JPG) como assets/img/equipo-mantenplus.* y sacar el <picture> de su <template>.
           -->
           <div class="team-photo__placeholder" aria-hidden="true">
             <svg class="team-photo__art" viewBox="0 -110 1050 710" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect x="135" y="312" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M72 600V402Q72 330 112 330H188Q228 330 228 402V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M126 332L150 364L174 332" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="150" cy="280" r="38" fill="#D5E6F3"/><svg x="168" y="374" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="188" y="396" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="885" y="312" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M822 600V402Q822 330 862 330H938Q978 330 978 402V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M876 332L900 364L924 332" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="900" cy="280" r="38" fill="#D5E6F3"/><svg x="918" y="374" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="938" y="396" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="285" y="300" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M222 600V390Q222 318 262 318H338Q378 318 378 390V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M276 320L300 352L324 320" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="300" cy="268" r="38" fill="#D5E6F3"/><svg x="318" y="362" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="338" y="384" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="735" y="300" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M672 600V390Q672 318 712 318H788Q828 318 828 390V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M726 320L750 352L774 320" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="750" cy="268" r="38" fill="#D5E6F3"/><svg x="768" y="362" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="788" y="384" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="434.4" y="333.28" width="31.200000000000003" height="24.959999999999997" rx="8.32" fill="#C3DBEE"/><path d="M368.88 600V426.88Q368.88 352 410.48 352H489.52Q531.12 352 531.12 426.88V600Z" fill="#FFFFFF" stroke="#C9D3DD" stroke-width="1.5"/><path d="M425.04 354L450 387.36L474.96 354" fill="none" stroke="#DCE2E8" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="450" cy="300.0" r="39.52" fill="#D5E6F3"/><svg x="468.72" y="397.76" width="35.36" height="19.76" viewBox="0 0 680 380" style="color:#2E3036;--mark-cut:#FFFFFF"><use href="#logo-mark"/></svg><rect x="489.52" y="420.64" width="12.48" height="3.12" rx="1.5" fill="#C8202F"/><rect x="584.4" y="333.28" width="31.200000000000003" height="24.959999999999997" rx="8.32" fill="#C3DBEE"/><path d="M518.88 600V426.88Q518.88 352 560.48 352H639.52Q681.12 352 681.12 426.88V600Z" fill="#FFFFFF" stroke="#C9D3DD" stroke-width="1.5"/><path d="M575.04 354L600 387.36L624.96 354" fill="none" stroke="#DCE2E8" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="600" cy="300.0" r="39.52" fill="#D5E6F3"/><svg x="618.72" y="397.76" width="35.36" height="19.76" viewBox="0 0 680 380" style="color:#2E3036;--mark-cut:#FFFFFF"><use href="#logo-mark"/></svg><rect x="639.52" y="420.64" width="12.48" height="3.12" rx="1.5" fill="#C8202F"/></svg>
             <span class="team-photo__hint">Foto institucional: 4 técnicos y 2 personas de atención al cliente</span>
           </div>
-          <picture>
+          <template data-pending-media><picture>
             <source type="image/avif" srcset="assets/img/equipo-mantenplus.avif">
             <source type="image/webp" srcset="assets/img/equipo-mantenplus.webp">
             <img src="assets/img/equipo-mantenplus.jpg" alt="Equipo de MantenPlus: cuatro técnicos con polo corporativo y dos integrantes de atención al cliente con camisa blanca bordada" width="2400" height="1350" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-          </picture>
+          </picture></template>
         </figure>
 
         <ul class="pillars" role="list">
@@ -719,7 +713,7 @@
 
           Si al publicar aún no hay reseñas, ocultar la sección con el atributo hidden.
         -->
-        <ul class="reviews" role="list">
+        <ul class="reviews" role="list" tabindex="0" aria-label="Opiniones de clientes (deslizable)">
           <li class="review review--placeholder" aria-hidden="true">
             <div class="review__stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
             <div class="skeleton"><span></span><span></span><span></span><span class="skeleton--short"></span></div>
@@ -883,7 +877,7 @@
               <li>
                 <a class="channel" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="contacto_whatsapp">
                   <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-whatsapp"/></svg></span>
-                  <span><small>WhatsApp</small><strong>+56 9 XXXX XXXX</strong></span>
+                  <span><small>WhatsApp</small><strong>Número definitivo pendiente</strong></span><!-- TODO: reemplazar por el número real, p. ej. +56 9 1234 5678 -->
                 </a>
               </li>
               <li>
@@ -1003,6 +997,23 @@
       Agendar servicio
     </a>
   </div>
+
+  <!-- Modo revisión de WhatsApp (idea de la propuesta Codex): solo se usa mientras el número de main.js sea provisorio -->
+  <dialog class="msg-dialog" aria-labelledby="msg-title" data-message-dialog>
+    <div class="msg-dialog__inner">
+      <button class="msg-dialog__close" type="button" aria-label="Cerrar" data-close-dialog><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+      <p class="kicker">Tu consulta</p>
+      <h2 class="msg-dialog__title" id="msg-title">Mensaje listo</h2>
+      <p class="msg-dialog__lead">Todavía no se envía por WhatsApp: el número definitivo está pendiente. Puedes revisarlo, copiarlo o mandarlo por correo.</p>
+      <label class="msg-dialog__label" for="msg-text">Tu mensaje</label>
+      <textarea id="msg-text" rows="5" data-message-text></textarea>
+      <div class="msg-dialog__actions">
+        <button class="btn btn--primary" type="button" data-copy-message>Copiar mensaje</button>
+        <a class="btn btn--soft" href="mailto:contacto@mantenplus.cl" data-mail-message data-track="dialogo_correo">Enviar por correo</a>
+      </div>
+      <p class="msg-dialog__status" role="status" data-copy-status></p>
+    </div>
+  </dialog>
 
   <!-- ============================== SPRITE SVG ============================== -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">

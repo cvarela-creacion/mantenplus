@@ -1,0 +1,12 @@
+{
+  "name": "mantenplus",
+  "private": true,
+  "description": "Sitio estático de MantenPlus. Estas dependencias son solo para las pruebas; el sitio no las necesita.",
+  "scripts": {
+    "test": "node tests/sitio.cjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.10.3",
+    "playwright": "1.56.1"
+  }
+}

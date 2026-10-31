@@ -139,13 +139,20 @@ p { margin: 0; }
 /* 5. HEADER ----------------------------------------------------------------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s, box-shadow .3s;
+}
+/* El vidrio esmerilado va en una capa propia: un backdrop-filter en el propio header
+   convierte al menú móvil (position: fixed) en hijo del header y lo recorta a su alto */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background: rgba(255, 255, 255, .72);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
   backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s, box-shadow .3s, background-color .3s;
+  transition: background-color .3s;
 }
-.site-header.is-scrolled { background: rgba(255, 255, 255, .9); border-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+.site-header.is-scrolled { border-color: var(--gray-100); box-shadow: var(--shadow-sm); }
+.site-header.is-scrolled::before { background: rgba(255, 255, 255, .9); }
 .site-header__inner { display: flex; align-items: center; gap: var(--space-5); height: var(--header-h); }
 
 .brand { display: inline-flex; align-items: center; gap: .6rem; color: var(--brand-ink); margin-right: auto; }
@@ -171,10 +178,10 @@ p { margin: 0; }
   position: absolute; left: 13px; width: 18px; height: 2px; border-radius: 2px; background: var(--ink);
   transition: transform .3s var(--ease), top .3s var(--ease);
 }
-.menu-toggle__bar:nth-of-type(1) { top: 17px; }
-.menu-toggle__bar:nth-of-type(2) { top: 24px; }
-.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-of-type(1) { top: 21px; transform: rotate(45deg); }
-.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-of-type(2) { top: 21px; transform: rotate(-45deg); }
+.menu-toggle__bar--top { top: 17px; }
+.menu-toggle__bar--bottom { top: 24px; }
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar--top { top: 21px; transform: rotate(45deg); }
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar--bottom { top: 21px; transform: rotate(-45deg); }
 
 .mobile-menu {
   position: fixed; inset: var(--header-h) 0 0; z-index: 49;

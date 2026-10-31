@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-31T14:24:31.797Z",
+  "browser": "154.0.8037.57",
+  "runs": [
+    {
+      "variant": "a",
+      "width": 390,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "a",
+      "width": 820,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "a",
+      "width": 1440,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "a",
+      "width": 1920,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "b",
+      "width": 390,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "b",
+      "width": 820,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "b",
+      "width": 1440,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    },
+    {
+      "variant": "b",
+      "width": 1920,
+      "passed": true,
+      "jsErrors": [],
+      "httpErrors": []
+    }
+  ],
+  "noJS": "content, 8 components, 6 services and FAQ checked",
+  "limitations": "No physical device, screen reader or field performance measurements"
+}

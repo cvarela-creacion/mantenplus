@@ -4,7 +4,7 @@
 
 El cliente medio-alto de Santiago no compra «una reparación». Compra **tranquilidad**: que alguien de confianza entre a su casa, cuide su cocina de diseño y deje su Bosch o su Miele funcionando como nuevo. Toda la web está pensada para responder, en este orden, a sus tres miedos:
 
-1. **«¿Puedo dejar entrar a esta persona a mi casa?»** → uniforme, credencial, cubrecalzado, equipo real.
+1. **«¿Puedo dejar entrar a esta persona a mi casa?»** → uniforme, credencial, trato cercano en la puerta, equipo real.
 2. **«¿Me van a cobrar de más?»** → diagnóstico transparente *antes* de reparar y garantía por escrito.
 3. **«¿Saben de equipos de alta gama?»** → despiece técnico, especialización en ingeniería alemana.
 
@@ -14,20 +14,22 @@ Cada sección responde una objeción y termina invitando a **Agendar servicio** 
 
 | # | Sección (ancla) | Objetivo | Recurso clave |
 |---|---|---|---|
-| 0 | Header fijo | Navegar sin perder la CTA | Header translúcido + botón «Agendar» |
-| 1 | **Hero** | Captar y convertir en 5 segundos | Eslogan oficial, foto en la puerta, selector de equipo → WhatsApp |
+| 0 | Header fijo | Navegar sin perder la CTA | Logo con eslogan + 7 enlaces + «Agendar» |
+| 1 | **Hero** | Captar y convertir en 5 segundos | Eslogan oficial, técnico recibido en la puerta, selector equipo → avería → WhatsApp |
 | 2 | Franja de marcas | Autoridad inmediata | Bosch, Siemens, Miele, Neff, Gaggenau, AEG (en texto) |
 | 3 | `#servicios` | «Reparan lo que tengo» | Tarjetas por equipo con **micro-video en bucle** |
-| 4 | `#resultados` | Prueba visual | **Slider antes/después** interactivo |
-| 5 | `#como-trabajamos` | Quitar el miedo a la visita | **Carrusel storytelling** de 4 pasos |
-| 6 | `#ingenieria` | Rigor técnico, alta gama | **Vista explosionada** animada con el scroll |
-| 7 | `#charlas-de-uso` | **Diferencial único** | Bloque editorial + 3 consejos de muestra + «incluida en cada visita» |
-| 8 | `#equipo` | Solidez y confianza | Foto institucional: 4 técnicos + 2 administrativas (sin fundador) |
-| 9 | `#opiniones` | Prueba social | Reseñas reales de Google (widget o texto curado) |
-| 10 | `#cobertura` | «¿Llegan a mi comuna?» | Chips de comunas: Las Condes, Vitacura, Lo Barnechea, Providencia, Ñuñoa, La Reina… |
-| 11 | `#faq` | Resolver objeciones finales | Acordeón: costo de visita, garantía, repuestos, plazos |
-| 12 | `#contacto` | Cierre | WhatsApp, contacto@mantenplus.cl, redes `[LINK_INSTAGRAM]` |
-| — | Barra CTA móvil | CTA siempre a mano del pulgar | Aparece al pasar el Hero |
+| 4 | `#instalacion` | **Diferencial**: instalación y panelado | Equipos encastrables y panelables de alta gama |
+| 5 | `#resultados` | Prueba visual | **Slider antes/después** con fotos |
+| 6 | `#galeria` | Trabajo real en terreno | Cuadrícula de 6 fotos (sin carrusel) + «Ver galería completa» (`galeria.html`) |
+| 7 | `#como-trabajamos` | Quitar el miedo a la visita | Proceso de 4 pasos, sin avance automático |
+| 8 | `#charlas-de-uso` | **Diferencial único** | Bloque editorial + consejos + «incluida en cada visita» |
+| 9 | `#equipo` | Solidez y confianza | Foto del equipo, 4 pilares y herramientas de diagnóstico |
+| 10 | `#empresas` | Clientes institucionales (B2B) | Constructoras, inmobiliarias y administraciones: instalación y mantenimiento por contrato |
+| 11 | `#opiniones` | Prueba social | Reseñas reales de Google |
+| 12 | `#cobertura` | «¿Llegan a mi comuna?» | Comunas por zona + comprobador |
+| 13 | `#faq` | Resolver objeciones finales | Acordeón con 10 preguntas |
+| 14 | `#contacto` | Cierre | WhatsApp directo, llamada al móvil, contacto@mantenplus.cl, redes |
+| — | Botón flotante | WhatsApp siempre a mano | Círculo verde original de WhatsApp |
 
 **Fase 2 (SEO local):** páginas `/reparacion-lavadoras`, `/reparacion-refrigeradores`, `/reparacion-encimeras`, `/servicio-tecnico-bosch`, `/servicio-tecnico-miele`… y por comuna (`/servicio-tecnico-las-condes`). Es lo que de verdad posiciona en Google para búsquedas como «técnico lavadora Bosch Vitacura».
 
@@ -62,7 +64,7 @@ Bosch, Siemens, Miele, Neff, Gaggenau y AEG son marcas de terceros. Se muestran 
 | Marcador | Dónde |
 |---|---|
 | `569XXXXXXXX` | `index.html` (todos los enlaces `wa.me`) y `assets/js/main.js` (`WA_NUMBER`) |
-| `+56 9 XXXX XXXX` | `index.html`, tarjeta de WhatsApp en Contacto (número visible) |
+| `tel:+569XXXXXXXX` y «Número definitivo pendiente» | `index.html` y `galeria.html` (llamada al móvil y número visible en Contacto); también `TEL` en `tools/partes.py` |
 | `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` | `index.html` (menú móvil, Contacto y footer) |
 | `[LINK_GOOGLE_RESENAS]` | `index.html`, botones de Opiniones (ficha de Google Business) |
 | `assets/img/hero-tecnico-puerta.{avif,webp,jpg}` | Foto del Hero (ver `04-brief-fotografico.md`) |
@@ -77,7 +79,7 @@ El sitio no inventa cifras, plazos ni reseñas. Aun así, estos textos describen
 | **Comunas de cobertura** | `#cobertura` (atributos `data-comuna`) | Lista propuesta (sector oriente, centro/sur oriente, Huechuraba y Chicureo). El comprobador «¿Llegamos a tu comuna?» lee esta lista: basta con agregar o quitar `<li data-comuna="…">`. |
 | **Reseñas** | `#opiniones` | Hoy son espacios reservados. Pegar **solo reseñas reales** de Google (formato en el comentario del HTML). Si al publicar aún no hay, ocultar la sección con `hidden`. |
 | Respuestas de **Preguntas frecuentes** | `#faq` | Valor de la visita informado al agendar, presupuesto antes de reparar, garantía por escrito, explicación del repuesto antes de usarlo, mantenciones preventivas. |
-| Promesas del servicio | Hero, Cómo trabajamos, Equipo | Cubrecalzado, credencial, aviso cuando el técnico va en camino, charla de uso incluida. |
+| Promesas del servicio | Hero, Cómo trabajamos, Equipo | Uniforme y credencial, aviso cuando el técnico va en camino, charla de uso incluida. |
 | Consejos técnicos | `#charlas-de-uso` | Son recomendaciones generales correctas; revisar que coincidan con lo que enseñan los técnicos. |
 
 **Pregunta sugerida para agregar cuando se confirme:** «¿Son servicio técnico oficial de estas marcas?». Responder solo con lo que sea cierto (independiente o certificado).

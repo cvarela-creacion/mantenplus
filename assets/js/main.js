@@ -7,8 +7,11 @@
   // Modo revisión (idea de la propuesta Codex): mientras el número sea provisorio, en vez de abrir un WhatsApp
   // que fallaría, se muestra el mensaje para revisarlo, copiarlo o mandarlo por correo. Con el número real, abre WhatsApp directo.
   const dialog = document.querySelector('[data-message-dialog]');
-  const sendWhatsApp = (message) => {
+  const lead = dialog?.querySelector('[data-dialog-lead]');
+  const defaultLead = lead?.textContent;
+  const sendWhatsApp = (message, introText = defaultLead) => {
     if (WA_READY || !dialog) return void window.open(waLink(message), '_blank', 'noopener');
+    lead.textContent = introText;
     dialog.querySelector('[data-message-text]').value = message;
     dialog.querySelector('[data-copy-status]').textContent = '';
     dialog.querySelector('[data-mail-message]').href = `mailto:contacto@mantenplus.cl?subject=${encodeURIComponent('Consulta desde mantenplus.cl')}&body=${encodeURIComponent(message)}`;
@@ -29,38 +32,29 @@
   }
   if (!WA_READY) {
     document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[href*="wa.me/"]');
+      const a = e.target.closest('a[href*="wa.me/"], a[href^="tel:"]');
       if (!a) return;
       e.preventDefault();
+      if (a.protocol === 'tel:') {
+        return sendWhatsApp('Hola MantenPlus, quiero agendar un servicio.', 'El número móvil definitivo está pendiente, así que todavía no recibimos llamadas. Puedes copiar este mensaje o mandarlo por correo.');
+      }
       sendWhatsApp(new URL(a.href).searchParams.get('text') || 'Hola MantenPlus, quiero agendar un servicio.');
     });
   }
 
-  // Header: sombra al hacer scroll + barra CTA móvil fuera del Hero, del Contacto y del footer
+  // Header: sombra al hacer scroll
   const header = document.querySelector('[data-header]');
-  const mobileCta = document.querySelector('[data-mobile-cta]');
-  const hero = document.querySelector('.hero__ctas');
+  const fab = document.querySelector('[data-wa-fab]'); // botón flotante de WhatsApp
 
   const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  if (mobileCta && hero && 'IntersectionObserver' in window) {
-    const visible = new Set(); // la barra se oculta mientras ya hay una CTA a la vista
-    const ctaIo = new IntersectionObserver((entries) => {
-      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
-      mobileCta.classList.toggle('is-visible', visible.size === 0);
-    });
-    [hero, document.getElementById('contacto'), document.querySelector('.site-footer')].forEach((el) => el && ctaIo.observe(el));
-  } else if (mobileCta) {
-    mobileCta.classList.add('is-visible');
-  }
-
   // Menú móvil
   const toggle = document.querySelector('[data-menu-toggle]');
   const menu = document.querySelector('[data-mobile-menu]');
   // Mientras el menú está abierto, el resto de la página queda inerte (ni foco ni lector de pantalla)
-  const outside = [document.querySelector('main'), document.querySelector('.site-footer'), mobileCta].filter(Boolean);
+  const outside = [document.querySelector('main'), document.querySelector('.site-footer'), fab].filter(Boolean);
   const setMenu = (open, { restoreFocus = true } = {}) => {
     toggle.setAttribute('aria-expanded', String(open));
     toggle.querySelector('.visually-hidden').textContent = open ? 'Cerrar menú' : 'Abrir menú';
@@ -245,40 +239,6 @@
     }, { passive: true });
   }
 
-  // Vista explosionada: las piezas se separan al entrar en pantalla, sin dejar la sección fija, y cada pieza
-  // se puede seleccionar para ver qué revisamos en ella (explorador tomado de la propuesta Codex)
-  const xp = document.querySelector('[data-xp]');
-  if (xp) {
-    const parts = [...xp.querySelectorAll('[data-part]')];
-    const detail = xp.querySelector('[data-part-detail]');
-    const prompt = detail.textContent;
-    detail.hidden = false;
-    parts.forEach((btn) => btn.addEventListener('click', () => {
-      const on = btn.getAttribute('aria-pressed') !== 'true';
-      parts.forEach((b) => b.setAttribute('aria-pressed', String(on && b === btn)));
-      xp.querySelectorAll('[data-xp-callout]').forEach((c) => c.classList.toggle('is-selected', on && c.dataset.xpCallout === btn.dataset.part));
-      detail.textContent = on ? `${btn.querySelector('strong').textContent}: ${btn.dataset.detail}` : prompt;
-    }));
-
-    if (!reduceMotion) {
-      const figure = xp.querySelector('.xp__figure');
-      let ticking = false;
-      const update = () => {
-        ticking = false;
-        const r = figure.getBoundingClientRect();
-        const vh = window.innerHeight;
-        const p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (vh * 0.55))); // de entrar por abajo a llegar al tercio superior
-        xp.style.setProperty('--p', p.toFixed(3));
-        xp.classList.toggle('is-exploded', p === 1);
-      };
-      const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
-      xp.classList.add('is-enhanced');
-      update();
-      window.addEventListener('scroll', request, { passive: true });
-      window.addEventListener('resize', request);
-    }
-  }
-
   // Cobertura: "¿Llegamos a tu comuna?" compara con las comunas de la lista de zonas (data-comuna)
   const checker = document.querySelector('[data-checker]');
   if (checker) {
@@ -336,6 +296,15 @@
       sendWhatsApp(lines.join('\n'));
     });
   }
+
+  // Galería completa: filtro por categoría (sin carrusel). Sin JavaScript se ven todas las categorías
+  const filters = [...document.querySelectorAll('[data-gallery-filter]')];
+  document.querySelector('[data-gallery-filters]')?.removeAttribute('hidden');
+  filters.forEach((btn) => btn.addEventListener('click', () => {
+    const cat = btn.dataset.galleryFilter;
+    filters.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+    document.querySelectorAll('[data-gallery-group]').forEach((g) => { g.hidden = cat !== 'todas' && g.dataset.galleryGroup !== cat; });
+  }));
 
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 

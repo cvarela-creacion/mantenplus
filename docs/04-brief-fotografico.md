@@ -12,13 +12,13 @@
 
 ## Foto 1 · Hero — «Recibido en la puerta»
 
-- **Escena:** puerta de entrada de madera clara o blanca, abierta. El cliente (adulto 35–55, ropa casual elegante) recibe al técnico con una sonrisa; el técnico, con maletín de herramientas ordenado y cubrecalzado ya puesto o en la mano, saluda con cortesía (leve inclinación, sonrisa, mirada a los ojos).
+- **Escena:** puerta de entrada de madera clara o blanca, abierta. El cliente (adulto 35–55, ropa casual elegante) recibe al técnico con una sonrisa; el técnico, con maletín de herramientas ordenado, saluda con cortesía (leve inclinación, sonrisa, mirada a los ojos).
 - **Encuadre:** vertical 5:6 para escritorio (1200×1440), versión 4:3 para móvil. El técnico ocupa el tercio derecho; el logo bordado del pecho debe verse **nítido**.
 - **Espacio negativo** a la izquierda/arriba para las tarjetas flotantes.
 - **Exportar:** AVIF + WebP + JPG, ≤ 180 KB, nombre `hero-tecnico-puerta.*` en `assets/img/`. La web la muestra automáticamente; luego activar el `preload` comentado en `index.html`.
 
 *Prompt de referencia para un boceto con IA (solo maqueta):*
-> Fotografía editorial luminosa, puerta de entrada de una casa moderna de Santiago de Chile, cliente sonriente recibe a un técnico de electrodomésticos con polo negro con logo bordado en el pecho, pantalón gris de trabajo, maletín de herramientas, cubrecalzado azul, luz natural de mañana, paleta blanca y azul cielo, 50 mm, profundidad de campo baja, estilo de marca premium.
+> Fotografía editorial luminosa, puerta de entrada de una casa moderna de Santiago de Chile, cliente sonriente recibe a un técnico de electrodomésticos con polo negro con logo bordado en el pecho, pantalón gris de trabajo, maletín de herramientas, luz natural de mañana, paleta blanca y azul cielo, 50 mm, profundidad de campo baja, estilo de marca premium.
 
 ## Foto 2 · Equipo institucional — `#equipo`
 

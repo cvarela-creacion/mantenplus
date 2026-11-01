@@ -6,17 +6,16 @@ Las cuatro técnicas se implementan sin librerías pesadas (JS nativo + CSS), co
 
 | Técnica | Estado | Sección | Archivos que faltan entregar |
 |---|---|---|---|
-| Slider antes/después | ✅ Implementado (con ilustraciones referenciales) | `#resultados` | `assets/img/resultados/{lavadora,encimera,campana}-{antes,despues}.webp` (1200×800). Al tenerlas, cambiar la extensión en `index.html` y quitar `.results__note`. |
+| Slider antes/después | ✅ Implementado con fotos referenciales (lavadora, encimera, campana) | `#resultados` | Fotos propias del mismo equipo antes y después: reemplazar `assets/img/resultados/{caso}-{antes,despues}-{800,1408}.webp` (mismo encuadre) y quitar `.results__note`. |
 | Storytelling en carrusel | ✅ Implementado (con ilustraciones de respaldo) | `#como-trabajamos` | `assets/img/proceso/paso-{1-llegada,2-diagnostico,3-ejecucion,4-charla}.{webp,jpg}` (1200×1000). Al subirlas, sacar cada `<picture>` de su `<template data-pending-media>`. |
 | Micro-video en bucle | ✅ Implementado (muestra el ícono mientras no hay video) | `#servicios` | `assets/video/{lavadora,refrigerador,lavavajillas,horno,encimera,campana}-loop.{webm,mp4}`. Al subirlos, sacar cada `<video>` de su `<template data-pending-media>` y agregarle `poster`. |
-| Vista explosionada | ✅ Implementado (ilustración vectorial propia + explorador de piezas) | `#ingenieria` | Nada obligatorio. Opcional: versiones para refrigerador o encimera. |
+| Vista explosionada | ❌ Retirada (1 nov 2026) | — | Se eliminó por decisión de marca: la web muestra solo trabajo y equipos reales. La sección §4 queda como registro histórico. |
 
 **Comportamiento implementado**
 - *Slider:* arrastre con mouse o dedo en cualquier punto de la imagen (sin bloquear el scroll vertical en móvil), control con flechas del teclado y lector de pantalla mediante un `input range` real, pestañas accesibles (Lavadora / Encimera / Campana) y una pista animada la primera vez que el slider aparece.
 - *Carrusel:* **no avanza solo** (criterio WCAG 2.2.2 tomado de la propuesta Codex): el visitante elige con la lista, las flechas o los pasos numerados 1–4, en escritorio y en móvil. En móvil las tarjetas se deslizan con *scroll-snap* y el paso activo es la tarjeta más cercana al inicio del carril.
 - *Micro-videos:* no se descarga nada hasta que la tarjeta se acerca a la pantalla. En escritorio se reproducen al pasar el mouse; en móvil, al estar visibles. No se reproducen con «reducir movimiento» o con ahorro de datos.
 - Cada «Agendar servicio» de las tarjetas abre WhatsApp con el equipo ya escrito y registra el evento `servicio_<equipo>`.
-- *Vista explosionada:* las 8 piezas se separan a lo largo del eje mientras la figura entra en pantalla, **sin dejar la sección fija**; al terminar aparecen los números. Cada pieza de la lista es un botón: al tocarla se marca en rojo de marca (lista y dibujo) y se muestra qué revisamos en ella (explorador y textos de la propuesta Codex). Sin JavaScript o con «reducir movimiento» se muestra directamente el despiece completo.
 - *Medios pendientes:* fotos del proceso, videos y foto del equipo esperan en `<template data-pending-media>`, así el sitio no pide archivos que aún no existen (idea de Codex).
 - *Charlas de uso:* acordeón nativo (`<details name="tips">`), accesible y sin JavaScript; abrir un consejo cierra el anterior.
 
@@ -64,7 +63,7 @@ document.querySelectorAll('.ba').forEach(el => el.querySelector('.ba__range')
 
 | Paso | Título | Texto | Imagen |
 |---|---|---|---|
-| 01 | Llegada pulcra | Puntuales, uniformados, con credencial y cubrecalzado. Protegemos el piso antes de empezar. | Técnico poniéndose cubrecalzado en la entrada |
+| 01 | Llegada pulcra | Puntuales, uniformados y con credencial. Te saludamos en la puerta y protegemos la zona de trabajo. | Técnico recibido por el cliente en la puerta |
 | 02 | Diagnóstico transparente | Te mostramos la falla y el presupuesto **antes** de tocar nada. Tú decides. | Técnico mostrando una tablet/pieza al cliente |
 | 03 | Ejecución impecable | Repuestos de calidad, herramientas ordenadas sobre un paño. Dejamos todo más limpio que como lo encontramos. | Manos con guantes, herramientas alineadas |
 | 04 | Charla de uso | Te enseñamos a cuidar tu equipo para que dure años. Garantía por escrito. | Técnico explicando el panel al cliente |

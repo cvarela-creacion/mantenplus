@@ -22,30 +22,36 @@ const server = http.createServer((req, res) => {
 
 (async () => {
   await new Promise((r) => server.listen(0, '127.0.0.1', r));
-  const URL_BASE = `http://127.0.0.1:${server.address().port}/index.html`;
+  const ORIGIN = `http://127.0.0.1:${server.address().port}`;
   const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
 
-  const open = async (viewport, extra = {}) => {
+  const open = async (viewport, extra = {}, file = 'index.html') => {
     const mobile = viewport.width < 861;
     const page = await browser.newPage({ viewport, isMobile: mobile, hasTouch: mobile, ...extra });
     const problems = [];
     page.on('pageerror', (e) => problems.push(`JS: ${e.message}`));
     page.on('requestfailed', (r) => problems.push(`fallida: ${r.url()}`));
     page.on('response', (r) => { if (r.status() >= 400) problems.push(`HTTP ${r.status()}: ${r.url()}`); });
-    await page.goto(URL_BASE, { waitUntil: 'networkidle' });
+    await page.goto(`${ORIGIN}/${file}`, { waitUntil: 'networkidle' });
     return { page, problems };
   };
   const scrollAll = (page) => page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 30)); } scrollTo(0, 0); });
 
-  // 1. Recorrido base en cuatro anchos
-  for (const width of [390, 820, 1440, 1920]) {
-    const { page, problems } = await open({ width, height: width < 861 ? 844 : 900 });
-    await scrollAll(page);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
-    check(`${width} px: sin scroll horizontal`, overflow <= 0, overflow > 0 ? `${overflow} px de más` : '');
-    check(`${width} px: sin errores JS ni peticiones fallidas`, problems.length === 0, problems.join(' | '));
-    check(`${width} px: no pide medios pendientes`, await page.evaluate(() => !document.querySelector('video') && performance.getEntriesByType('resource').every((e) => !/assets\/(video|img\/proceso|img\/equipo)/.test(e.name))));
-    await page.close();
+  // 1. Recorrido base de las dos páginas en cuatro anchos
+  for (const file of ['index.html', 'galeria.html']) {
+    for (const width of [390, 820, 1440, 1920]) {
+      const { page, problems } = await open({ width, height: width < 861 ? 844 : 900 }, {}, file);
+      await scrollAll(page);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+      check(`${file} ${width} px: sin scroll horizontal`, overflow <= 0, overflow > 0 ? `${overflow} px de más` : '');
+      check(`${file} ${width} px: sin errores JS ni peticiones fallidas`, problems.length === 0, problems.join(' | '));
+      check(`${file} ${width} px: no pide fotos ni videos pendientes`, await page.evaluate(() => !document.querySelector('video') && performance.getEntriesByType('resource').every((e) => !/assets\/(video\/|img\/galeria\/|img\/proceso\/paso-[124])/.test(e.name))));
+      check(`${file} ${width} px: logo con eslogan y botón verde de WhatsApp visibles`, await page.evaluate(() => {
+        const tag = document.querySelector('.brand__tagline'); const fab = document.querySelector('[data-wa-fab]');
+        return tag.offsetHeight > 0 && /cuidado y reparación/.test(tag.textContent) && fab.offsetHeight > 0 && getComputedStyle(fab.querySelector('.wa-fab__circle')).backgroundColor === 'rgb(37, 211, 102)';
+      }));
+      await page.close();
+    }
   }
 
   // 2. Menú móvil: ocupa la pantalla, todo alcanzable (también en teléfonos bajos), foco dentro, resto inerte
@@ -95,9 +101,17 @@ const server = http.createServer((req, res) => {
     check('Carrusel: no avanza solo', (await active()) === 0);
     await page.click('[data-dot] >> nth=2');
     check('Carrusel: los pasos numerados seleccionan', (await active()) === 2);
-    // Explorador de piezas
-    await page.click('[data-part="7"]');
-    check('Explorador: selección de pieza y explicación', await page.evaluate(() => document.querySelector('[data-part="7"]').getAttribute('aria-pressed') === 'true' && document.querySelector('[data-xp-callout="7"]').classList.contains('is-selected') && /Bomba/.test(document.querySelector('[data-part-detail]').textContent)));
+    // Estructura acordada: sin lavadora vectorial; con instalación, galería y empresas
+    check('Estructura: sin la sección de la lavadora desarmada', await page.evaluate(() => !document.querySelector('#ingenieria, [data-xp]')));
+    check('Estructura: secciones de instalación, galería y empresas', await page.evaluate(() => ['instalacion', 'galeria', 'empresas'].every((id) => document.getElementById(id))));
+    check('Galería: 6 fotos en cuadrícula y enlace a la galería completa', await page.evaluate(() => document.querySelectorAll('#galeria .g-tile').length === 6 && !!document.querySelector('#galeria a[href="galeria.html"]')));
+    check('Antes/después: fotos (no ilustraciones)', await page.evaluate(() => [...document.querySelectorAll('[data-ba] img')].every((i) => /\.webp$/.test(i.currentSrc || i.src))));
+    // Contacto: WhatsApp, llamada al móvil y correo; redes con colores de marca
+    check('Contacto: WhatsApp, llamada y correo', await page.evaluate(() => ['wa.me/', 'tel:+569', 'mailto:contacto@mantenplus.cl'].every((h) => document.querySelector(`#contacto .channel[href*="${h}"]`))));
+    check('Redes: Facebook azul e Instagram con degradado', await page.evaluate(() => getComputedStyle(document.querySelector('.site-footer .social__link--fb')).backgroundColor === 'rgb(24, 119, 242)' && getComputedStyle(document.querySelector('.site-footer .social__link--ig')).backgroundImage.includes('gradient')));
+    await page.click('#contacto .channel[href^="tel:"]');
+    check('Llamada con número provisorio: avisa en el diálogo', /número móvil definitivo está pendiente/.test(await page.textContent('[data-dialog-lead]')));
+    await page.click('[data-close-dialog]');
     // Cobertura
     for (const [q, cls] of [['nunoa', 'is-ok'], ['Chicureo', 'is-ok'], ['Maipú', 'is-maybe'], ['Narnia', 'is-error']]) {
       await page.fill('#checker-comuna', q); await page.click('[data-checker] button');
@@ -121,21 +135,28 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
-  // 5. Movimiento reducido: despiece abierto y números visibles sin animación
+  // 5. Galería completa: filtro por categoría, sin carrusel
   {
-    const { page } = await open({ width: 1440, height: 900 }, { reducedMotion: 'reduce' });
-    check('Movimiento reducido: despiece completo visible', await page.evaluate(() => !document.querySelector('[data-xp]').classList.contains('is-enhanced')));
+    const { page } = await open({ width: 1440, height: 900 }, {}, 'galeria.html');
+    const visibles = () => page.evaluate(() => [...document.querySelectorAll('[data-gallery-group]')].filter((g) => !g.hidden).map((g) => g.dataset.galleryGroup).join(','));
+    check('Galería completa: tres categorías', (await visibles()) === 'instalacion,reparacion,mantenimiento');
+    await page.click('[data-gallery-filter="mantenimiento"]');
+    check('Galería completa: el filtro muestra solo mantenimiento', (await visibles()) === 'mantenimiento');
+    await page.click('[data-gallery-filter="todas"]');
+    check('Galería completa: «Todas» vuelve a mostrar todo', (await visibles()) === 'instalacion,reparacion,mantenimiento');
     await page.close();
   }
 
   // 6. Accesibilidad WCAG 2.1 A/AA (axe-core)
-  for (const width of [390, 1440]) {
-    const { page } = await open({ width, height: 900 });
-    await scrollAll(page); await page.waitForTimeout(500);
-    await page.addScriptTag({ content: AXE });
-    const v = await page.evaluate(async () => (await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations.map((x) => `${x.id} (${x.nodes.length})`));
-    check(`${width} px: axe sin infracciones WCAG A/AA`, v.length === 0, v.join(', '));
-    await page.close();
+  for (const file of ['index.html', 'galeria.html']) {
+    for (const width of [390, 1440]) {
+      const { page } = await open({ width, height: 900 }, {}, file);
+      await scrollAll(page); await page.waitForTimeout(500);
+      await page.addScriptTag({ content: AXE });
+      const v = await page.evaluate(async () => (await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa'] } })).violations.map((x) => `${x.id} (${x.nodes.length})`));
+      check(`${file} ${width} px: axe sin infracciones WCAG A/AA`, v.length === 0, v.join(', '));
+      await page.close();
+    }
   }
 
   await browser.close();

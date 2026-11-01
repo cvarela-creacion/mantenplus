@@ -28,7 +28,7 @@
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Imagen principal de la portada (mejora el LCP) -->
-  <link rel="preload" as="image" href="assets/img/hero-conceptual-1200.webp" imagesrcset="assets/img/hero-conceptual-600.webp 600w, assets/img/hero-conceptual-1200.webp 1200w" imagesizes="(max-width: 860px) calc(100vw - 2rem), 46vw" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/portada-tecnico-cliente-1408.webp" imagesrcset="assets/img/portada-tecnico-cliente-800.webp 800w, assets/img/portada-tecnico-cliente-1408.webp 1408w" imagesizes="(max-width: 860px) calc(100vw - 2rem), 46vw" fetchpriority="high">
 
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
@@ -59,23 +59,26 @@
         <svg class="brand__mark" viewBox="0 0 680 380" aria-hidden="true" focusable="false">
           <use href="#logo-mark"/>
         </svg>
-        <span class="brand__word">MANTEN<span class="brand__plus">PLUS</span></span>
+        <span class="brand__text">
+          <span class="brand__word">MANTEN<span class="brand__plus">PLUS</span></span>
+          <span class="brand__tagline">Expertos en el cuidado y reparación de tus electrodomésticos</span>
+        </span>
       </a>
 
       <nav class="main-nav" aria-label="Principal">
         <ul class="main-nav__list">
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#instalacion">Instalación</a></li>
+          <li><a href="#galeria">Galería</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
-          <li><a href="#resultados">Resultados</a></li>
-          <li><a href="#charlas-de-uso">Charlas de uso</a></li>
+          <li><a href="#empresas">Empresas</a></li>
           <li><a href="#equipo">Equipo</a></li>
-          <li><a href="#cobertura">Cobertura</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary btn--sm" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="header_agendar">
+        <a class="btn btn--primary btn--sm" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="header_agendar">
           Agendar
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
@@ -91,20 +94,24 @@
       <nav aria-label="Menú móvil">
         <ul class="mobile-menu__list">
           <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#instalacion">Instalación</a></li>
+          <li><a href="#galeria">Galería</a></li>
           <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
-          <li><a href="#resultados">Resultados</a></li>
-          <li><a href="#charlas-de-uso">Charlas de uso</a></li>
+          <li><a href="#empresas">Empresas</a></li>
           <li><a href="#equipo">Equipo</a></li>
-          <li><a href="#cobertura">Cobertura</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
       <div class="mobile-menu__footer">
-        <a class="btn btn--primary btn--block" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="menu_agendar">Agendar servicio</a>
-        <a class="mobile-menu__mail" href="mailto:contacto@mantenplus.cl">contacto@mantenplus.cl</a>
+        <a class="btn btn--primary btn--block" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="menu_agendar">Agendar servicio</a>
+        <ul class="quick-contact" role="list" aria-label="Contacto directo">
+          <li><a class="quick-contact__item quick-contact__item--wa" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="menu_whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a></li>
+          <li><a class="quick-contact__item" href="tel:+569XXXXXXXX" data-track="menu_llamar"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a></li>
+          <li><a class="quick-contact__item" href="mailto:contacto@mantenplus.cl" data-track="menu_correo"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Correo</a></li>
+        </ul>
         <div class="social">
-          <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
         </div>
       </div>
     </div>
@@ -128,8 +135,8 @@
           </h1>
 
           <p class="hero__lead">
-            Técnicos especializados en equipos de alta gama que llegan puntuales, uniformados y con todo lo necesario.
-            Te mostramos el diagnóstico <strong>antes</strong> de reparar, dejamos tu espacio impecable y te enseñamos a cuidar tu equipo para que dure más.
+            Reparación, mantención e <strong>instalación de equipos de alta gama</strong>, incluidos los encastrables y panelables.
+            Llegamos puntuales e identificados, te mostramos el diagnóstico antes de reparar y te enseñamos a cuidar tu equipo.
           </p>
 
           <!-- Agendamiento rápido: elegir el equipo pre-llena el mensaje de WhatsApp -->
@@ -177,15 +184,15 @@
         <div class="hero__visual">
           <figure class="hero-photo">
             <!--
-              IMAGEN CONCEPTUAL (aporte de la propuesta Codex): no representa personal ni trabajos reales.
-              Reemplazar por la fotografía propia del brief (docs/04-brief-fotografico.md) y actualizar el preload del <head>.
+              FOTO DE PORTADA: técnico recibido por el cliente en la puerta. Es una imagen referencial;
+              al tener la fotografía propia (docs/04-brief-fotografico.md), reemplazar los archivos y el preload del <head>.
             -->
             <picture>
-              <img class="hero-photo__img" src="assets/img/hero-conceptual-1200.webp"
-                   srcset="assets/img/hero-conceptual-600.webp 600w, assets/img/hero-conceptual-1200.webp 1200w"
+              <img class="hero-photo__img" src="assets/img/portada-tecnico-cliente-1408.webp"
+                   srcset="assets/img/portada-tecnico-cliente-800.webp 800w, assets/img/portada-tecnico-cliente-1408.webp 1408w"
                    sizes="(max-width: 860px) calc(100vw - 2rem), 46vw"
-                   alt="Imagen conceptual: técnico con polo negro revisando la puerta de una lavadora en una casa luminosa con vista a la cordillera"
-                   width="1200" height="800" fetchpriority="high" decoding="async"
+                   alt="Técnico de MantenPlus con maletín de herramientas, recibido con una sonrisa por el cliente en la puerta de su casa"
+                   width="1408" height="768" fetchpriority="high" decoding="async"
                    onerror="this.closest('picture').remove()">
             </picture>
 
@@ -193,7 +200,7 @@
             <div class="hero-photo__placeholder" aria-hidden="true">
               <svg class="hero-photo__mark" viewBox="0 0 680 380"><use href="#logo-mark"/></svg>
             </div>
-            <figcaption class="hero-photo__caption">Imagen conceptual<span class="hero-photo__caption-more"> · fotografía definitiva pendiente</span></figcaption>
+            <figcaption class="hero-photo__caption">Imagen referencial</figcaption>
           </figure>
 
           <!-- Tarjeta flotante de confianza -->
@@ -201,7 +208,7 @@
             <span class="float-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
             <span>
               <strong>Técnico identificado</strong>
-              <small>Uniforme, credencial y cubrecalzado</small>
+              <small>Uniforme corporativo y credencial</small>
             </span>
           </div>
 
@@ -360,8 +367,46 @@
       </div>
     </section>
 
+    <!-- ============================== INSTALACIÓN Y PANELADO (DIFERENCIAL) ============================== -->
+    <section class="section section--tint" id="instalacion" aria-labelledby="instalacion-title">
+      <div class="container install">
+        <figure class="install__media">
+          <img src="assets/img/resultados/encimera-despues-1408.webp"
+               srcset="assets/img/resultados/encimera-despues-800.webp 800w, assets/img/resultados/encimera-despues-1408.webp 1408w"
+               sizes="(max-width: 860px) calc(100vw - 2rem), 50vw"
+               alt="Encimera de inducción instalada a ras en una isla de cocina de piedra"
+               width="1408" height="768" loading="lazy" decoding="async">
+          <figcaption class="photo-tag">Imagen referencial</figcaption>
+          <div class="install__badge">
+            <span class="install__badge-icon" aria-hidden="true"><svg class="icon"><use href="#i-panel"/></svg></span>
+            <span><strong>A ras y a medida</strong><small>Equipos encastrables y panelables</small></span>
+          </div>
+        </figure>
+
+        <div class="install__copy">
+          <p class="kicker">Instalación y panelado</p>
+          <h2 class="section-title" id="instalacion-title">Especialistas en equipos encastrables de alta gama</h2>
+          <p class="section-lead">Instalamos y panelamos hornos, encimeras, campanas, lavavajillas y refrigeradores integrables para que queden a ras, nivelados y alineados con tu mueble. Coordinamos el trabajo con tu mueblista, arquitecto o constructora.</p>
+          <ul class="check-list" role="list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Revisión previa de medidas, nichos y ventilación del mueble</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Conexión eléctrica, de agua y desagüe según las indicaciones del fabricante</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Panelado de lavavajillas y refrigeradores integrables: puerta de mueble, bisagras y ajuste fino</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Nivelación, sellado y alineación con cubiertas y puertas vecinas</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Prueba de funcionamiento y charla de uso al entregar</li>
+          </ul>
+          <div class="install__ctas">
+            <a class="btn btn--primary btn--lg" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20cotizar%20la%20instalaci%C3%B3n%20o%20el%20panelado%20de%20un%20equipo%20encastrable." data-track="instalacion_cotizar">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Cotizar instalación
+            </a>
+            <a class="btn btn--soft btn--lg" href="#empresas">Proyectos para empresas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== RESULTADOS: ANTES / DESPUÉS ============================== -->
-    <section class="section section--tint" id="resultados" aria-labelledby="resultados-title">
+    <section class="section" id="resultados" aria-labelledby="resultados-title">
       <div class="container results">
         <header class="section-head results__head">
           <p class="kicker">Resultados</p>
@@ -383,13 +428,14 @@
 
         <div class="results__stage">
           <!--
-            SLIDER ANTES/DESPUÉS: las imágenes actuales son ILUSTRACIONES REFERENCIALES.
-            Reemplazar por fotos reales (mismo encuadre y luz, 1200×800, WebP) y quitar .results__note.
+            SLIDER ANTES/DESPUÉS: imágenes referenciales (no son trabajos documentados de MantenPlus).
+            Al tener fotos propias del mismo equipo antes y después (mismo encuadre y luz), reemplazar los .webp
+            de assets/img/resultados/ y quitar .results__note.
           -->
           <div class="ba-panel" role="tabpanel" id="caso-lavadora" aria-labelledby="tab-lavadora">
             <div class="ba" style="--pos: 50%" data-ba>
-              <img src="assets/img/resultados/lavadora-antes.svg" alt="Puerta de lavadora con moho en la goma y vidrio opaco antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
-              <img class="ba__after" src="assets/img/resultados/lavadora-despues.svg" alt="Puerta de lavadora con goma limpia y vidrio transparente después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img src="assets/img/resultados/lavadora-antes-1408.webp" srcset="assets/img/resultados/lavadora-antes-800.webp 800w, assets/img/resultados/lavadora-antes-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Goma de la puerta de una lavadora con moho y residuos antes del servicio" width="1408" height="768" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/lavadora-despues-1408.webp" srcset="assets/img/resultados/lavadora-despues-800.webp 800w, assets/img/resultados/lavadora-despues-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="La misma lavadora con la goma y el vidrio limpios después del servicio" width="1408" height="768" loading="lazy" decoding="async">
               <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
               <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
               <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de la lavadora">
@@ -400,8 +446,8 @@
 
           <div class="ba-panel" role="tabpanel" id="caso-encimera" aria-labelledby="tab-encimera" hidden>
             <div class="ba" style="--pos: 50%" data-ba>
-              <img src="assets/img/resultados/encimera-antes.svg" alt="Encimera de vidrio con manchas quemadas y sarro antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
-              <img class="ba__after" src="assets/img/resultados/encimera-despues.svg" alt="Encimera de vidrio limpia y brillante después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img src="assets/img/resultados/encimera-antes-1408.webp" srcset="assets/img/resultados/encimera-antes-800.webp 800w, assets/img/resultados/encimera-antes-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Encimera de inducción con quemados y restos antes del servicio" width="1408" height="768" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/encimera-despues-1408.webp" srcset="assets/img/resultados/encimera-despues-800.webp 800w, assets/img/resultados/encimera-despues-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="La misma encimera limpia y brillante después del servicio" width="1408" height="768" loading="lazy" decoding="async">
               <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
               <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
               <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de la encimera">
@@ -412,8 +458,8 @@
 
           <div class="ba-panel" role="tabpanel" id="caso-campana" aria-labelledby="tab-campana" hidden>
             <div class="ba" style="--pos: 50%" data-ba>
-              <img src="assets/img/resultados/campana-antes.svg" alt="Filtro metálico de campana cubierto de grasa antes del servicio" width="1200" height="800" loading="lazy" decoding="async">
-              <img class="ba__after" src="assets/img/resultados/campana-despues.svg" alt="Filtro metálico de campana limpio después del servicio" width="1200" height="800" loading="lazy" decoding="async">
+              <img src="assets/img/resultados/campana-antes-1408.webp" srcset="assets/img/resultados/campana-antes-800.webp 800w, assets/img/resultados/campana-antes-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Campana de isla con filtros saturados de grasa antes del servicio" width="1408" height="768" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/campana-despues-1408.webp" srcset="assets/img/resultados/campana-despues-800.webp 800w, assets/img/resultados/campana-despues-1408.webp 1408w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="La misma campana con filtros limpios después del servicio" width="1408" height="768" loading="lazy" decoding="async">
               <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
               <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
               <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después del filtro de campana">
@@ -422,7 +468,92 @@
             <p class="ba-caption">Filtros de campana: desengrase profundo para recuperar la succión.</p>
           </div>
 
-          <p class="results__note">Imágenes referenciales. Pronto, fotos reales de nuestros trabajos.</p>
+          <p class="results__note">Imágenes referenciales del tipo de trabajo que realizamos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== GALERÍA REAL (cuadrícula, sin carrusel) ============================== -->
+    <section class="section section--tint" id="galeria" aria-labelledby="galeria-title">
+      <div class="container">
+        <header class="section-head gallery-head">
+          <div>
+            <p class="kicker">Galería</p>
+            <h2 class="section-title" id="galeria-title">Nuestro trabajo en terreno</h2>
+            <p class="section-lead">Fotos reales de instalaciones, reparaciones y mantenciones hechas por nuestro equipo.</p>
+          </div>
+          <a class="btn btn--soft gallery-head__link" href="galeria.html">Ver galería completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </header>
+
+        <!--
+          GALERÍA: solo fotos reales tomadas en terreno. Guardarlas en assets/img/galeria/ (1200×900, WebP)
+          y, en cada tarjeta, reemplazar el ícono y «Foto próximamente» por la <img> comentada. La galería completa está en galeria.html.
+        -->
+        <ul class="gallery" role="list">
+          <li class="g-tile" data-cat="instalacion">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-horno"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Horno y microondas encastrables" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Horno y microondas encastrables</span></figcaption>
+            </figure>
+          </li>
+          <li class="g-tile" data-cat="instalacion">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Panelado de lavavajillas integrable" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Panelado de lavavajillas integrable</span></figcaption>
+            </figure>
+          </li>
+          <li class="g-tile" data-cat="reparacion">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-diagnostico"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Diagnóstico de placa electrónica" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Diagnóstico de placa electrónica</span></figcaption>
+            </figure>
+          </li>
+          <li class="g-tile" data-cat="reparacion">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-encimera"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Reparación de encimera de inducción" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Reparación de encimera de inducción</span></figcaption>
+            </figure>
+          </li>
+          <li class="g-tile" data-cat="mantenimiento">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-campana"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Limpieza profunda de filtros de campana" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza profunda de filtros de campana</span></figcaption>
+            </figure>
+          </li>
+          <li class="g-tile" data-cat="mantenimiento">
+            <figure>
+              <div class="g-tile__media">
+                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg>
+                <span class="g-tile__pending">Foto próximamente</span>
+                <!-- <img src="assets/img/galeria/..." alt="Mantención de lavadora: goma y cajón" width="1200" height="900" loading="lazy" decoding="async"> -->
+              </div>
+              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Mantención de lavadora: goma y cajón</span></figcaption>
+            </figure>
+          </li>
+        </ul>
+
+        <div class="gallery__more">
+          <a class="btn btn--primary btn--lg" href="galeria.html">Ver galería completa <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -443,17 +574,17 @@
               <figure class="story__media">
                 <div class="story__placeholder" aria-hidden="true">
                   <svg viewBox="0 0 48 48"><use href="#s-llegada"/></svg>
-                  <span>Foto: técnico poniéndose cubrecalzado en la entrada</span>
+                  <span>Foto: llegada del técnico, puntual e identificado</span>
                 </div>
                 <template data-pending-media><picture>
                   <source type="image/webp" srcset="assets/img/proceso/paso-1-llegada.webp">
-                  <img src="assets/img/proceso/paso-1-llegada.jpg" alt="Técnico de MantenPlus poniéndose cubrecalzado en la entrada de un hogar" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
+                  <img src="assets/img/proceso/paso-1-llegada.jpg" alt="Técnico de MantenPlus llegando al domicilio, puntual e identificado" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
                 </picture></template>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">01</span>
                 <h3 class="story__title"><button type="button" data-step-btn aria-current="step">Llegada pulcra</button></h3>
-                <div class="story__desc"><p>Puntuales, uniformados, con credencial y cubrecalzado. Protegemos el piso y la zona de trabajo antes de empezar.</p></div>
+                <div class="story__desc"><p>Puntuales, uniformados y con credencial. Te saludamos en la puerta, protegemos la zona de trabajo y conversamos contigo antes de empezar.</p></div>
               </div>
             </li>
 
@@ -481,10 +612,10 @@
                   <svg viewBox="0 0 48 48"><use href="#s-ejecucion"/></svg>
                   <span>Foto: herramientas ordenadas y manos con guantes</span>
                 </div>
-                <template data-pending-media><picture>
-                  <source type="image/webp" srcset="assets/img/proceso/paso-3-ejecucion.webp">
-                  <img src="assets/img/proceso/paso-3-ejecucion.jpg" alt="Herramientas ordenadas sobre un paño mientras el técnico trabaja" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture></template>
+                <picture>
+                  <img src="assets/img/proceso/paso-3-ejecucion-1200.webp" srcset="assets/img/proceso/paso-3-ejecucion-600.webp 600w, assets/img/proceso/paso-3-ejecucion-1200.webp 1200w" sizes="(max-width: 860px) 85vw, 54vw" alt="Técnico revisando la puerta de una lavadora con su maletín de herramientas ordenado al lado" width="1200" height="800" loading="lazy" decoding="async">
+                </picture>
+                <span class="photo-tag">Imagen referencial</span>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">03</span>
@@ -529,44 +660,6 @@
             <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
             Agendar servicio
           </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== INGENIERÍA: VISTA EXPLOSIONADA ============================== -->
-    <section class="xp-section" id="ingenieria" aria-labelledby="ingenieria-title">
-      <!-- Las piezas se separan al entrar en pantalla y cada una se puede seleccionar (explorador tomado de la propuesta Codex) -->
-      <div class="xp" data-xp>
-        <div class="xp__inner">
-          <div class="container xp__grid">
-            <div class="xp__copy">
-              <p class="kicker">Ingeniería</p>
-              <h2 class="section-title" id="ingenieria-title">Conocemos tu equipo pieza por pieza</h2>
-              <p class="section-lead">Los equipos de ingeniería alemana son precisos y complejos. Por eso los diagnosticamos componente por componente, con método, en vez de cambiar piezas al azar.</p>
-              <ol class="xp__list" role="list">
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="1" data-detail="El cierre debe bloquear la puerta antes de iniciar el ciclo. Revisamos bisagras, seguro y estado del vidrio."><span class="xp__num" aria-hidden="true">1</span><span><strong>Puerta y cierre</strong><small>Bisagras, seguro y vidrio</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="2" data-detail="El fuelle sella la unión con la puerta. Revisamos desgaste, residuos y filtraciones."><span class="xp__num" aria-hidden="true">2</span><span><strong>Fuelle</strong><small>Hermeticidad, moho y filtraciones</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="3" data-detail="El tambor aloja la ropa. Su equilibrio ayuda a reducir vibraciones y ruidos."><span class="xp__num" aria-hidden="true">3</span><span><strong>Tambor</strong><small>Equilibrio, paletas y objetos atrapados</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="4" data-detail="La cuba contiene el agua; sus sellos y soportes evitan fugas y movimientos excesivos."><span class="xp__num" aria-hidden="true">4</span><span><strong>Cuba</strong><small>Sellos, contrapesos y amortiguadores</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="5" data-detail="El eje y los rodamientos permiten el giro. Su desgaste es el origen típico del ruido al centrifugar."><span class="xp__num" aria-hidden="true">5</span><span><strong>Eje y rodamientos</strong><small>Origen típico del ruido al centrifugar</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="6" data-detail="El motor controla el giro del tambor. Su diagnóstico incluye bobinados, conexiones y sensores."><span class="xp__num" aria-hidden="true">6</span><span><strong>Motor inverter</strong><small>Bobinados, sensores y conexiones</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="7" data-detail="La bomba evacua el agua. El filtro y el impulsor pueden quedar obstruidos."><span class="xp__num" aria-hidden="true">7</span><span><strong>Bomba de desagüe</strong><small>Filtro, impulsor y obstrucciones</small></span></button></li>
-                <li><button class="xp__part" type="button" aria-pressed="false" data-part="8" data-detail="La placa coordina el funcionamiento y recibe las señales de los sensores. Interpretamos sus códigos de error."><span class="xp__num" aria-hidden="true">8</span><span><strong>Placa electrónica</strong><small>Códigos de error y componentes</small></span></button></li>
-              </ol>
-              <p class="xp__detail" aria-live="polite" data-part-detail hidden>Toca una pieza para ver qué revisamos en ella.</p>
-            </div>
-            <figure class="xp__figure">
-              <svg class="xp__svg" viewBox="0 0 1000 580" role="img" aria-labelledby="xp-svg-title"><title id="xp-svg-title">Vista explosionada de una lavadora de carga frontal con sus ocho componentes principales numerados</title><defs>
-  <linearGradient id="xp-steel" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F6F8"/><stop offset=".45" stop-color="#C9D1D9"/><stop offset=".55" stop-color="#E7ECF0"/><stop offset="1" stop-color="#B7C1CB"/></linearGradient>
-  <linearGradient id="xp-plastic" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E6EBF0"/></linearGradient>
-  <linearGradient id="xp-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E4F2FC"/><stop offset="1" stop-color="#C7E4F8"/></linearGradient>
-  <linearGradient id="xp-chrome" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBFCFD"/><stop offset=".5" stop-color="#BFC8D1"/><stop offset="1" stop-color="#EEF2F5"/></linearGradient>
-  <radialGradient id="xp-glass" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#F6FBFF"/><stop offset=".6" stop-color="#C7E4F8"/><stop offset="1" stop-color="#7FB9E2"/></radialGradient>
-  <pattern id="xp-holes" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7" cy="7" r="2" fill="#7D8995" opacity=".45"/></pattern>
-</defs><path d="M30 300H985" class="xp-axis"/><g class="xp-part" style="--ax:-235;--ay:0"><path d="M887 205H943A36.1 95 0 0 1 943 395H887Z" fill="url(#xp-sky)" class="xp-face"/><ellipse cx="887" cy="300" rx="36.1" ry="95" fill="#fff" class="xp-face"/><g class="xp-coils"><circle cx="913.7" cy="300.0" r="5.5"/><circle cx="912.1" cy="324.0" r="5.5"/><circle cx="907.5" cy="345.2" r="5.5"/><circle cx="900.4" cy="360.9" r="5.5"/><circle cx="891.6" cy="369.2" r="5.5"/><circle cx="882.4" cy="369.2" r="5.5"/><circle cx="873.6" cy="360.9" r="5.5"/><circle cx="866.5" cy="345.2" r="5.5"/><circle cx="861.9" cy="324.0" r="5.5"/><circle cx="860.3" cy="300.0" r="5.5"/><circle cx="861.9" cy="276.0" r="5.5"/><circle cx="866.5" cy="254.8" r="5.5"/><circle cx="873.6" cy="239.1" r="5.5"/><circle cx="882.4" cy="230.8" r="5.5"/><circle cx="891.6" cy="230.8" r="5.5"/><circle cx="900.4" cy="239.1" r="5.5"/><circle cx="907.5" cy="254.8" r="5.5"/><circle cx="912.1" cy="276.0" r="5.5"/></g><ellipse cx="887" cy="300" rx="11.4" ry="30" fill="url(#xp-steel)" class="xp-face"/><g class="xp-callout" data-xp-callout="6"><path d="M915 205L915 170" class="xp-leader"/><circle cx="915" cy="170" r="15"/><text x="915" y="170" text-anchor="middle" dominant-baseline="central">6</text></g></g><g class="xp-part" style="--ax:-180;--ay:0"><rect x="790" y="291" width="78" height="18" rx="5" fill="url(#xp-steel)" class="xp-face"/><ellipse cx="846" cy="300" rx="11.4" ry="30" fill="#fff" class="xp-face"/><ellipse cx="846" cy="300" rx="4.6" ry="12" fill="url(#xp-steel)" class="xp-face"/><ellipse cx="802" cy="300" rx="14.4" ry="38" fill="#fff" class="xp-face"/><ellipse cx="802" cy="300" rx="5.7" ry="15" fill="url(#xp-steel)" class="xp-face"/><g class="xp-callout" data-xp-callout="5"><path d="M802 262L820 222" class="xp-leader"/><circle cx="820" cy="222" r="15"/><text x="820" y="222" text-anchor="middle" dominant-baseline="central">5</text></g></g><g class="xp-part" style="--ax:-90;--ay:0"><path d="M560 476l-22 52M650 474l22 50" class="xp-damper"/><rect x="526" y="518" width="24" height="12" rx="3" fill="#fff" class="xp-face"/><rect x="662" y="516" width="24" height="12" rx="3" fill="#fff" class="xp-face"/><path d="M495 120H705A68.4 180 0 0 1 705 480H495Z" fill="url(#xp-plastic)" class="xp-face"/><path d="M565 120A68.4 180 0 0 1 565 480" class="xp-rib"/><path d="M615 120A68.4 180 0 0 1 615 480" class="xp-rib"/><path d="M662 120A68.4 180 0 0 1 662 480" class="xp-rib"/><ellipse cx="495" cy="300" rx="68.4" ry="180" fill="#F7F9FB" class="xp-face"/><ellipse cx="495" cy="300" rx="50.2" ry="132" fill="#E4E9EE" class="xp-face"/><g class="xp-callout" data-xp-callout="4"><path d="M600 120L600 82" class="xp-leader"/><circle cx="600" cy="82" r="15"/><text x="600" y="82" text-anchor="middle" dominant-baseline="central">4</text></g></g><g class="xp-part" style="--ax:80;--ay:0"><path d="M325 150H515A57.0 150 0 0 1 515 450H325Z" fill="url(#xp-steel)" class="xp-face"/><path d="M325 150H515A57.0 150 0 0 1 515 450H325Z" fill="url(#xp-holes)"/><path d="M390 150A57.0 150 0 0 1 390 450" class="xp-rib"/><path d="M455 150A57.0 150 0 0 1 455 450" class="xp-rib"/><ellipse cx="325" cy="300" rx="57.0" ry="150" fill="#E6EBF0" class="xp-face"/><ellipse cx="325" cy="300" rx="44.8" ry="118" fill="#AEB8C2" class="xp-face"/><ellipse cx="325" cy="300" rx="44.8" ry="118" fill="url(#xp-holes)" /><g class="xp-callout" data-xp-callout="3"><path d="M420 150L420 112" class="xp-leader"/><circle cx="420" cy="112" r="15"/><text x="420" y="112" text-anchor="middle" dominant-baseline="central">3</text></g></g><g class="xp-part" style="--ax:145;--ay:0"><path d="M239 172H271A48.6 128 0 0 1 271 428H239Z" fill="#A3ACB5" class="xp-face"/><ellipse cx="239" cy="300" rx="48.6" ry="128" fill="#BCC3CA" class="xp-face"/><ellipse cx="239" cy="300" rx="42.6" ry="112" fill="none" class="xp-rib"/><ellipse cx="239" cy="300" rx="36.5" ry="96" fill="#6E7781" class="xp-face"/><g class="xp-callout" data-xp-callout="2"><path d="M255 172L255 140" class="xp-leader"/><circle cx="255" cy="140" r="15"/><text x="255" y="140" text-anchor="middle" dominant-baseline="central">2</text></g></g><g class="xp-part" style="--ax:250;--ay:0"><rect x="70" y="122" width="120" height="410" rx="8" fill="#fff" class="xp-face"/><rect x="70" y="122" width="120" height="48" rx="8" fill="#F1F4F7" class="xp-face"/><rect x="86" y="138" width="34" height="14" rx="3" fill="var(--xp-ink)"/><ellipse cx="158" cy="146" rx="7" ry="13" fill="#fff" class="xp-face"/><path d="M70 498H190" class="xp-rib"/><rect x="86" y="506" width="22" height="16" rx="3" fill="#F1F4F7" class="xp-face"/><ellipse cx="130" cy="300" rx="45.6" ry="120" fill="url(#xp-chrome)" class="xp-face"/><ellipse cx="130" cy="300" rx="36.5" ry="96" fill="url(#xp-glass)" class="xp-face"/><path d="M104 232A36.5 96 0 0 1 124 208" class="xp-shine"/><g class="xp-callout" data-xp-callout="1"><path d="M130 122L130 92" class="xp-leader"/><circle cx="130" cy="92" r="15"/><text x="130" y="92" text-anchor="middle" dominant-baseline="central">1</text></g></g><g class="xp-part" style="--ax:150;--ay:-55"><path d="M358 519h34v12h-34z" fill="url(#xp-plastic)" class="xp-face"/><rect x="300" y="503" width="60" height="44" rx="10" fill="url(#xp-plastic)" class="xp-face"/><ellipse cx="300" cy="525" rx="10" ry="22" fill="#fff" class="xp-face"/><ellipse cx="300" cy="525" rx="4" ry="9" fill="var(--xp-sky-strong)"/><g class="xp-callout" data-xp-callout="7"><path d="M290 525L252 525" class="xp-leader"/><circle cx="252" cy="525" r="15"/><text x="252" y="525" text-anchor="middle" dominant-baseline="central">7</text></g></g><g class="xp-part" style="--ax:-250;--ay:105"><rect x="690" y="40" width="150" height="70" rx="8" fill="var(--xp-sky-soft)" class="xp-face"/><path d="M742 68H754M763 72V88H786M772 62H803M725 80V98H770" class="xp-trace"/><rect x="708" y="56" width="34" height="24" rx="3" fill="var(--xp-ink)"/><rect x="754" y="54" width="18" height="18" rx="2" fill="var(--xp-ink)"/><rect x="786" y="80" width="36" height="16" rx="2" fill="#fff" class="xp-face"/><circle cx="810" cy="60" r="7" fill="#fff" class="xp-face"/><g class="xp-callout" data-xp-callout="8"><path d="M840 75.0L870 75.0" class="xp-leader"/><circle cx="870" cy="75.0" r="15"/><text x="870" y="75.0" text-anchor="middle" dominant-baseline="central">8</text></g></g></svg>
-              <figcaption class="xp__caption">Ilustración genérica de una lavadora de carga frontal</figcaption>
-            </figure>
-          </div>
         </div>
       </div>
     </section>
@@ -646,24 +739,20 @@
           <p class="section-lead">Técnicos especializados en terreno y un equipo de atención que coordina cada visita, para que tú no tengas que preocuparte de nada.</p>
         </header>
 
-        <figure class="team-photo">
-          <!--
-            FOTO INSTITUCIONAL (ver docs/04-brief-fotografico.md, Foto 2): 4 técnicos con polo corporativo y botas
-            de trabajo + 2 personas de atención al cliente con camisa blanca bordada. Sin el fundador.
-            Exportar 2400×1350 (AVIF/WebP/JPG) como assets/img/equipo-mantenplus.* y sacar el <picture> de su <template>.
-          -->
-          <div class="team-photo__placeholder" aria-hidden="true">
-            <svg class="team-photo__art" viewBox="0 -110 1050 710" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect x="135" y="312" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M72 600V402Q72 330 112 330H188Q228 330 228 402V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M126 332L150 364L174 332" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="150" cy="280" r="38" fill="#D5E6F3"/><svg x="168" y="374" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="188" y="396" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="885" y="312" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M822 600V402Q822 330 862 330H938Q978 330 978 402V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M876 332L900 364L924 332" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="900" cy="280" r="38" fill="#D5E6F3"/><svg x="918" y="374" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="938" y="396" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="285" y="300" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M222 600V390Q222 318 262 318H338Q378 318 378 390V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M276 320L300 352L324 320" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="300" cy="268" r="38" fill="#D5E6F3"/><svg x="318" y="362" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="338" y="384" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="735" y="300" width="30" height="24" rx="8" fill="#C3DBEE"/><path d="M672 600V390Q672 318 712 318H788Q828 318 828 390V600Z" fill="#2E3036" stroke="#C9D3DD" stroke-width="0"/><path d="M726 320L750 352L774 320" fill="none" stroke="#43464E" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="750" cy="268" r="38" fill="#D5E6F3"/><svg x="768" y="362" width="34" height="19" viewBox="0 0 680 380" style="color:#FFFFFF;--mark-cut:#2E3036"><use href="#logo-mark"/></svg><rect x="788" y="384" width="12" height="3" rx="1.5" fill="#C8202F"/><rect x="434.4" y="333.28" width="31.200000000000003" height="24.959999999999997" rx="8.32" fill="#C3DBEE"/><path d="M368.88 600V426.88Q368.88 352 410.48 352H489.52Q531.12 352 531.12 426.88V600Z" fill="#FFFFFF" stroke="#C9D3DD" stroke-width="1.5"/><path d="M425.04 354L450 387.36L474.96 354" fill="none" stroke="#DCE2E8" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="450" cy="300.0" r="39.52" fill="#D5E6F3"/><svg x="468.72" y="397.76" width="35.36" height="19.76" viewBox="0 0 680 380" style="color:#2E3036;--mark-cut:#FFFFFF"><use href="#logo-mark"/></svg><rect x="489.52" y="420.64" width="12.48" height="3.12" rx="1.5" fill="#C8202F"/><rect x="584.4" y="333.28" width="31.200000000000003" height="24.959999999999997" rx="8.32" fill="#C3DBEE"/><path d="M518.88 600V426.88Q518.88 352 560.48 352H639.52Q681.12 352 681.12 426.88V600Z" fill="#FFFFFF" stroke="#C9D3DD" stroke-width="1.5"/><path d="M575.04 354L600 387.36L624.96 354" fill="none" stroke="#DCE2E8" stroke-width="5.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="600" cy="300.0" r="39.52" fill="#D5E6F3"/><svg x="618.72" y="397.76" width="35.36" height="19.76" viewBox="0 0 680 380" style="color:#2E3036;--mark-cut:#FFFFFF"><use href="#logo-mark"/></svg><rect x="639.52" y="420.64" width="12.48" height="3.12" rx="1.5" fill="#C8202F"/></svg>
-            <span class="team-photo__hint">Foto institucional: 4 técnicos y 2 personas de atención al cliente</span>
-          </div>
-          <template data-pending-media><picture>
-            <source type="image/avif" srcset="assets/img/equipo-mantenplus.avif">
-            <source type="image/webp" srcset="assets/img/equipo-mantenplus.webp">
-            <img src="assets/img/equipo-mantenplus.jpg" alt="Equipo de MantenPlus: cuatro técnicos con polo corporativo y dos integrantes de atención al cliente con camisa blanca bordada" width="2400" height="1350" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-          </picture></template>
-        </figure>
-
-        <ul class="pillars" role="list">
+        <div class="team">
+          <figure class="team-photo">
+            <!--
+              FOTO DEL EQUIPO: imagen referencial. Reemplazar por la foto institucional real del brief
+              (docs/04-brief-fotografico.md, Foto 2) con los mismos nombres de archivo.
+            -->
+            <img src="assets/img/equipo-mantenplus-1109.webp"
+                 srcset="assets/img/equipo-mantenplus-700.webp 700w, assets/img/equipo-mantenplus-1109.webp 1109w"
+                 sizes="(max-width: 860px) calc(100vw - 2rem), 52vw"
+                 alt="Equipo de MantenPlus: técnicos con polo corporativo y botas de trabajo junto a dos integrantes de atención al cliente, en una cocina moderna"
+                 width="1109" height="960" loading="lazy" decoding="async">
+            <figcaption class="photo-tag">Imagen referencial</figcaption>
+          </figure>
+        <ul class="pillars pillars--stack" role="list">
           <li class="pillar">
             <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-wrench"/></svg></span>
             <h3 class="pillar__title">Técnicos especializados</h3>
@@ -683,6 +772,71 @@
             <span class="pillar__icon" aria-hidden="true"><svg class="icon"><use href="#i-list"/></svg></span>
             <h3 class="pillar__title">Un mismo protocolo</h3>
             <p>Llegada pulcra, diagnóstico transparente, ejecución impecable y charla de uso. En cada visita.</p>
+          </li>
+        </ul>
+        </div>
+
+        <!-- HERRAMIENTAS Y EQUIPOS DE DIAGNÓSTICO: fotos reales pendientes (assets/img/equipo/, 1200×900, WebP) -->
+        <div class="tools">
+          <div class="tools__head">
+            <h3 class="tools__title">Herramientas y equipos de diagnóstico</h3>
+            <p class="tools__lead">El instrumental con el que trabajamos en cada visita.</p>
+          </div>
+          <ul class="tools__grid" role="list">
+            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-diagnostico"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Multímetro y pinza amperimétrica</span></figcaption></figure></li>
+            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-ejecucion"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Herramientas de precisión</span></figcaption></figure></li>
+            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Diagnóstico electrónico de equipos</span></figcaption></figure></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== EMPRESAS Y EDIFICIOS (B2B) ============================== -->
+    <section class="section section--tint" id="empresas" aria-labelledby="empresas-title">
+      <div class="container b2b">
+        <div class="b2b__intro">
+          <p class="kicker">Empresas y edificios</p>
+          <h2 class="section-title" id="empresas-title">Instalación y mantenimiento por contrato</h2>
+          <p class="section-lead">Trabajamos con constructoras, inmobiliarias y administraciones de condominios y edificios nuevos. Un mismo equipo técnico instala el equipamiento de cocina y lavandería, atiende la postventa y lo mantiene en el tiempo.</p>
+          <ul class="check-list" role="list">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Un interlocutor y un canal de contacto dedicados</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Visitas programadas e informes técnicos por unidad</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>El mismo protocolo de llegada, diagnóstico y entrega en cada departamento</li>
+          </ul>
+          <div class="b2b__ctas">
+            <a class="btn btn--primary btn--lg" href="mailto:contacto@mantenplus.cl?subject=Propuesta%20de%20servicio%20para%20empresa&amp;body=Hola%20MantenPlus%2C%20represento%20a%20(empresa)%20y%20quiero%20una%20propuesta%20de%20instalaci%C3%B3n%20o%20mantenimiento%20para%20(proyecto%20o%20edificio)." data-track="empresas_propuesta">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+              Solicitar propuesta
+            </a>
+            <a class="btn btn--soft btn--lg" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20represento%20a%20una%20empresa%20y%20quiero%20conversar%20sobre%20un%20contrato%20de%20instalaci%C3%B3n%20o%20mantenimiento." data-track="empresas_whatsapp">
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+              Conversar por WhatsApp
+            </a>
+          </div>
+          <p class="b2b__mail">Correo para empresas: <strong>contacto@mantenplus.cl</strong></p>
+        </div>
+
+        <ul class="b2b__cards" role="list">
+          <li class="b2b-card">
+            <span class="b2b-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-building"/></svg></span>
+            <div>
+              <h3 class="b2b-card__title">Constructoras e inmobiliarias</h3>
+              <p>Instalación y puesta en marcha del equipamiento en obra, con revisión unidad por unidad antes de la entrega, y atención de postventa a propietarios.</p>
+            </div>
+          </li>
+          <li class="b2b-card">
+            <span class="b2b-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-key"/></svg></span>
+            <div>
+              <h3 class="b2b-card__title">Administración de condominios y edificios</h3>
+              <p>Mantenimiento preventivo del equipamiento de áreas comunes, como quinchos, salas de eventos y lavanderías, y atención a residentes.</p>
+            </div>
+          </li>
+          <li class="b2b-card">
+            <span class="b2b-card__icon" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></span>
+            <div>
+              <h3 class="b2b-card__title">Contratos a la medida</h3>
+              <p>Frecuencia de visitas, alcance y reportes definidos según el tamaño y las necesidades de cada proyecto.</p>
+            </div>
           </li>
         </ul>
       </div>
@@ -841,6 +995,14 @@
             <div class="faq-item__a"><p>Nos especializamos en equipos premium y de ingeniería alemana, como Bosch, Siemens, Miele, Neff, Gaggenau y AEG. Si tu equipo es de otra marca, escríbenos con la marca y el modelo y te confirmamos.</p></div>
           </details>
           <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Instalan equipos encastrables y panelables?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Sí, es una de nuestras especialidades. Instalamos hornos, encimeras, campanas, lavavajillas y refrigeradores integrables, incluido el panelado con la puerta de tu mueble, y coordinamos el trabajo con tu mueblista o arquitecto. Más detalles en <a href="#instalacion">Instalación y panelado</a>.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span class="faq-item__q">¿Trabajan con empresas, constructoras o edificios?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
+            <div class="faq-item__a"><p>Sí. Ofrecemos instalación y mantenimiento por contrato para constructoras, inmobiliarias y administraciones de condominios y edificios. Revisa la sección <a href="#empresas">Empresas</a> o escríbenos a contacto@mantenplus.cl.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
             <summary><span class="faq-item__q">¿La reparación tiene garantía?</span><span class="acc-plus" aria-hidden="true"><svg class="icon"><use href="#i-plus"/></svg></span></summary>
             <div class="faq-item__a"><p>Sí. Al terminar el servicio te entregamos por escrito el detalle del trabajo realizado y su garantía.</p></div>
           </details>
@@ -876,21 +1038,27 @@
             <ul class="channels" role="list">
               <li>
                 <a class="channel" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="contacto_whatsapp">
-                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-whatsapp"/></svg></span>
-                  <span><small>WhatsApp</small><strong>Número definitivo pendiente</strong></span><!-- TODO: reemplazar por el número real, p. ej. +56 9 1234 5678 -->
+                  <span class="channel__icon channel__icon--wa" aria-hidden="true"><svg class="icon"><use href="#i-whatsapp"/></svg></span>
+                  <span><small>WhatsApp directo</small><strong>Número definitivo pendiente</strong></span><!-- TODO: número real, p. ej. +56 9 1234 5678 -->
+                </a>
+              </li>
+              <li>
+                <a class="channel" href="tel:+569XXXXXXXX" data-track="contacto_llamar">
+                  <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
+                  <span><small>Llamada al móvil</small><strong>Número definitivo pendiente</strong></span><!-- TODO: mismo número móvil -->
                 </a>
               </li>
               <li>
                 <a class="channel" href="mailto:contacto@mantenplus.cl" data-track="contacto_correo">
                   <span class="channel__icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
-                  <span><small>Correo</small><strong>contacto@mantenplus.cl</strong></span>
+                  <span><small>Correo institucional</small><strong>contacto@mantenplus.cl</strong></span>
                 </a>
               </li>
             </ul>
 
             <div class="social social--start">
-              <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-              <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+              <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+              <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
             </div>
           </div>
 
@@ -943,19 +1111,19 @@
         </a>
         <p>Expertos en el cuidado y reparación de tus electrodomésticos.</p>
         <div class="social social--start">
-          <a href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
         </div>
       </div>
 
       <nav class="site-footer__col" aria-labelledby="footer-servicios">
         <h2 class="site-footer__title" id="footer-servicios">Servicios</h2>
         <ul role="list">
-          <li><a href="#servicios">Lavadoras y secadoras</a></li>
-          <li><a href="#servicios">Refrigeradores</a></li>
-          <li><a href="#servicios">Lavavajillas</a></li>
-          <li><a href="#servicios">Hornos y encimeras</a></li>
-          <li><a href="#servicios">Campanas</a></li>
+          <li><a href="#servicios">Reparación y mantención</a></li>
+          <li><a href="#instalacion">Instalación y panelado</a></li>
+          <li><a href="#empresas">Empresas y edificios</a></li>
+          <li><a href="#resultados">Antes y después</a></li>
+          <li><a href="galeria.html">Galería de trabajos</a></li>
         </ul>
       </nav>
 
@@ -974,6 +1142,7 @@
         <h2 class="site-footer__title">Contacto</h2>
         <ul role="list">
           <li><a href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="footer_whatsapp">WhatsApp</a></li>
+          <li><a href="tel:+569XXXXXXXX" data-track="footer_llamar">Llamar al móvil</a></li>
           <li><a href="mailto:contacto@mantenplus.cl">contacto@mantenplus.cl</a></li>
           <li>Santiago, Chile</li>
         </ul>
@@ -987,16 +1156,11 @@
   </footer>
 
 
-  <!-- Barra fija inferior en móvil (zona del pulgar) -->
-  <div class="mobile-cta" data-mobile-cta>
-    <a class="btn btn--soft" href="mailto:contacto@mantenplus.cl" aria-label="Escribir correo">
-      <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
-    </a>
-    <a class="btn btn--primary btn--block" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-wa data-track="sticky_agendar">
-      <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-      Agendar servicio
-    </a>
-  </div>
+  <!-- Botón flotante principal de WhatsApp (verde original de la marca) -->
+  <a class="wa-fab" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
+    <span class="wa-fab__label" aria-hidden="true">Escríbenos</span>
+    <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
+  </a>
 
   <!-- Modo revisión de WhatsApp (idea de la propuesta Codex): solo se usa mientras el número de main.js sea provisorio -->
   <dialog class="msg-dialog" aria-labelledby="msg-title" data-message-dialog>
@@ -1004,7 +1168,7 @@
       <button class="msg-dialog__close" type="button" aria-label="Cerrar" data-close-dialog><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
       <p class="kicker">Tu consulta</p>
       <h2 class="msg-dialog__title" id="msg-title">Mensaje listo</h2>
-      <p class="msg-dialog__lead">Todavía no se envía por WhatsApp: el número definitivo está pendiente. Puedes revisarlo, copiarlo o mandarlo por correo.</p>
+      <p class="msg-dialog__lead" data-dialog-lead>Todavía no se envía por WhatsApp: el número definitivo está pendiente. Puedes revisarlo, copiarlo o mandarlo por correo.</p>
       <label class="msg-dialog__label" for="msg-text">Tu mensaje</label>
       <textarea id="msg-text" rows="5" data-message-text></textarea>
       <div class="msg-dialog__actions">
@@ -1045,6 +1209,11 @@
     <symbol id="i-list" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 7h10M10 12h10M10 17h10"/><path d="m3.5 7 1.3 1.3L7 6M3.5 12l1.3 1.3L7 11M3.5 17l1.3 1.3L7 16"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 3.5 2.6 5.3 5.9.9-4.2 4.1 1 5.8-5.3-2.8-5.3 2.8 1-5.8-4.2-4.1 5.9-.9z"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6.6 3.5h2.6l1.4 4-1.9 1.3a11 11 0 0 0 6.5 6.5l1.3-1.9 4 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2z"/></symbol>
+    <symbol id="i-panel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M12 3v18M8.5 10v4M15.5 10v4"/></g></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v16M15 9h4a1 1 0 0 1 1 1v11M3 21h18"/><path d="M8 8h3M8 12h3M8 16h3"/></g></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8M16 7l2.5 2.5M14 9l2 2"/></g></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="m9 15 2 2 4-4"/></g></symbol>
     <symbol id="i-drag" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 7-5 5 5 5m6-10 5 5-5 5"/></symbol>
 
     <!-- Equipos (línea fina, mismo lenguaje que el isotipo) -->

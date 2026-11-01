@@ -6,7 +6,7 @@ Rama: `claude/integracion-aportes-codex`, creada desde `claude/mantenplus-web-re
 
 | Aporte | Cómo quedó en la integración |
 |---|---|
-| **Imagen conceptual de portada** (técnico con polo negro, cordillera de fondo) | En nuestra portada, con `srcset` 600/1200 px, precarga y rótulo visible «Imagen conceptual · fotografía definitiva pendiente». Reemplazar por la foto propia del brief |
+| **Imagen conceptual de portada** (técnico con polo negro, cordillera de fondo) | Primero en la portada; desde el 1 nov se usa en el paso «Ejecución impecable» del proceso, y la portada muestra al técnico recibido en la puerta |
 | **Tipografías autoalojadas** (WOFF2 variables + licencias OFL) | `assets/fonts`, precargadas; sin Google Fonts |
 | **Contraste** (grises y azul más oscuros) | Tokens `--gray-400/500`, `--sky-600/700`; axe pasa de 10–13 infracciones a 0 |
 | **Foco visible** de 3 px con contorno | `:focus-visible` global con `--focus` |
@@ -15,7 +15,7 @@ Rama: `claude/integracion-aportes-codex`, creada desde `claude/mantenplus-web-re
 | **Selector equipo → avería** | Integrado en los chips de la portada: al elegir el equipo aparecen sus averías típicas (paso 2, opcional). Se agregó Campana |
 | **Diálogo para revisar el mensaje** | «Modo revisión» automático: se usa solo mientras el número de WhatsApp sea provisorio (agrega «Enviar por correo», que ya funciona). Con el número real, WhatsApp abre directo |
 | **Carrusel sin avance automático**, pasos numerados y corrección de tablet | Flechas y pasos 1–4 también en escritorio |
-| **Explorador de piezas** con explicaciones | Botones con `aria-pressed`, pieza marcada en rojo de marca y texto de lo que se revisa |
+| **Explorador de piezas** con explicaciones | Implementado y luego **retirado** junto con la lavadora vectorial (ver `07-directrices-marca.md`) |
 | **Medios pendientes en `<template>`** | Sin peticiones a archivos que aún no existen |
 | **«Número definitivo pendiente»** en Contacto | En lugar de un número ficticio |
 | **Opiniones accesibles por teclado** | `tabindex` y nombre accesible en el carrusel |

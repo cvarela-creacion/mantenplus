@@ -30,9 +30,9 @@ Las fotos entregadas tienen rasgos de imagen generada (logotipos y textos ilegib
 | 6 | Foto nueva del equipo | Cuatro técnicos con el mismo uniforme y credencial visible, más dos integrantes de atención al cliente (4:3) |
 | 7 | Herramientas | Dos fotos en dos columnas: instrumentos de medición, y herramientas de precisión con detector de fugas de gas |
 
-Segunda entrega del 2 nov: foto nueva en Instalación y panelado (la anterior pasa al paso 4 «Charla de uso»), foto nueva en el paso 2 «Diagnóstico transparente» (técnico leyendo el código E15 de un lavavajillas en su tablet; la placa de horno queda solo en la galería) y foto nueva del equipo.
+Segunda entrega del 2 nov: foto nueva en Instalación y panelado, foto nueva en el paso 4 «Charla de uso» (técnico explicando el uso del horno a la dueña de casa), foto nueva en el paso 2 «Diagnóstico transparente» (técnico leyendo el código E15 de un lavavajillas en su tablet; la placa de horno queda solo en la galería) y foto nueva del equipo.
 
-Rótulo «Imagen referencial» en las fotos con logos o textos ilegibles: portada, Instalación y panelado, pasos 1 y 2 del proceso, equipo, placa de horno y fuelle de lavadora. En el carrusel del proceso el rótulo va arriba para no tapar detalles de la foto. El comparador mantiene la nota general «Imágenes referenciales del tipo de trabajo que realizamos».
+Rótulo «Imagen referencial» en las fotos con logos o textos ilegibles: portada, Instalación y panelado, pasos 1, 2 y 4 del proceso, equipo, placa de horno y fuelle de lavadora. En el carrusel del proceso el rótulo va arriba para no tapar detalles de la foto. El comparador mantiene la nota general «Imágenes referenciales del tipo de trabajo que realizamos».
 
 Observaciones pendientes para el cliente:
 - En varias fotos el polo lleva un logo «M+» con «Servicio Técnico de Electrodomésticos», distinto del isotipo oficial (casa con refrigerador y lavadora).
@@ -46,7 +46,7 @@ Observaciones pendientes para el cliente:
 | Instalación y panelado | `assets/img/instalacion-panelado-{800,1365}.webp` |
 | Antes/después | `assets/img/resultados/{lavadora,secadora,lavavajillas,horno,microondas,encimera,campana}-{antes,despues}-*.webp` |
 | Galería | `assets/img/galeria/*-{640,1280}.webp` |
-| Proceso | `assets/img/proceso/paso-1-llegada-{800,1408}.webp`, `paso-2-diagnostico-{480,688}.webp`, `paso-4-charla-{800,1279}.webp`; el paso 3 usa la campana de isla de la galería |
+| Proceso | `assets/img/proceso/paso-1-llegada-{800,1408}.webp`, `paso-2-diagnostico-{480,688}.webp`, `paso-4-charla-{800,1376}.webp`; el paso 3 usa la campana de isla de la galería |
 | Equipo | `assets/img/equipo-mantenplus-{720,1195}.webp` |
 | Herramientas | `assets/img/herramientas/{instrumentos-medicion,herramientas-precision}-{640,1280}.webp` |
 

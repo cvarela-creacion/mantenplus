@@ -45,7 +45,12 @@ const server = http.createServer((req, res) => {
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
       check(`${file} ${width} px: sin scroll horizontal`, overflow <= 0, overflow > 0 ? `${overflow} px de más` : '');
       check(`${file} ${width} px: sin errores JS ni peticiones fallidas`, problems.length === 0, problems.join(' | '));
-      check(`${file} ${width} px: no pide fotos ni videos pendientes`, await page.evaluate(() => !document.querySelector('video') && performance.getEntriesByType('resource').every((e) => !/assets\/(video\/|img\/galeria\/|img\/proceso\/paso-[124])/.test(e.name))));
+      check(`${file} ${width} px: no pide videos pendientes`, await page.evaluate(() => !document.querySelector('video') && performance.getEntriesByType('resource').every((e) => !/assets\/video\//.test(e.name))));
+      // Fuerza la carga de las fotos diferidas y comprueba que todos los archivos existan
+      await page.evaluate(() => document.querySelectorAll('img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; }));
+      const fotosOk = await page.waitForFunction(() => [...document.images].filter((i) => i.offsetParent).every((i) => i.complete && i.naturalWidth > 0), null, { timeout: 8000 }).then(() => true, () => false);
+      check(`${file} ${width} px: todas las fotos visibles cargan`, fotosOk);
+      check(`${file} ${width} px: íconos SVG del sitio apuntan al sprite de la misma página`, await page.evaluate(() => [...document.querySelectorAll('use')].every((u) => /^#/.test(u.getAttribute('href')) && document.getElementById(u.getAttribute('href').slice(1)))));
       check(`${file} ${width} px: logo con eslogan y botón verde de WhatsApp visibles`, await page.evaluate(() => {
         const tag = document.querySelector('.brand__tagline'); const fab = document.querySelector('[data-wa-fab]');
         return tag.offsetHeight > 0 && /cuidado y reparación/.test(tag.textContent) && fab.offsetHeight > 0 && getComputedStyle(fab.querySelector('.wa-fab__circle')).backgroundColor === 'rgb(37, 211, 102)';
@@ -104,7 +109,21 @@ const server = http.createServer((req, res) => {
     // Estructura acordada: sin lavadora vectorial; con instalación, galería y empresas
     check('Estructura: sin la sección de la lavadora desarmada', await page.evaluate(() => !document.querySelector('#ingenieria, [data-xp]')));
     check('Estructura: secciones de instalación, galería y empresas', await page.evaluate(() => ['instalacion', 'galeria', 'empresas'].every((id) => document.getElementById(id))));
-    check('Galería: 6 fotos en cuadrícula y enlace a la galería completa', await page.evaluate(() => document.querySelectorAll('#galeria .g-tile').length === 6 && !!document.querySelector('#galeria a[href="galeria.html"]')));
+    check('Galería: 6 fotos en cuadrícula y enlace a la galería completa', await page.evaluate(() => document.querySelectorAll('#galeria .g-tile img').length === 6 && !!document.querySelector('#galeria a[href="galeria.html"]')));
+    check('Instalación: sin el botón «Proyectos para empresas»', await page.evaluate(() => !/Proyectos para empresas/.test(document.getElementById('instalacion').textContent)));
+    check('Herramientas: dos fotos', await page.evaluate(() => document.querySelectorAll('.tools .g-tile img').length === 2));
+    // Resultados: siete casos; cada pestaña muestra sus dos fotos
+    const tabs = await page.$$eval('[data-tabs] [role="tab"]', (els) => els.map((e) => e.id));
+    check('Resultados: siete pestañas', tabs.join() === 'tab-lavadora,tab-secadora,tab-lavavajillas,tab-horno,tab-microondas,tab-encimera,tab-campana', tabs.join());
+    let allCases = true;
+    for (const id of tabs) {
+      await page.click(`#${id}`);
+      const panel = await page.getAttribute(`#${id}`, 'aria-controls');
+      await page.locator(`#${panel} [data-ba]`).scrollIntoViewIfNeeded();
+      await page.waitForFunction((pid) => [...document.querySelectorAll(`#${pid} img`)].every((i) => i.complete && i.naturalWidth > 0), panel, { timeout: 5000 }).catch(() => { allCases = false; });
+    }
+    check('Resultados: las 7 pestañas cargan antes y después', allCases);
+    await page.click('#tab-lavadora');
     check('Antes/después: fotos (no ilustraciones)', await page.evaluate(() => [...document.querySelectorAll('[data-ba] img')].every((i) => /\.webp$/.test(i.currentSrc || i.src))));
     // Contacto: WhatsApp, llamada al móvil y correo; redes con colores de marca
     check('Contacto: WhatsApp, llamada y correo', await page.evaluate(() => ['wa.me/', 'tel:+569', 'mailto:contacto@mantenplus.cl'].every((h) => document.querySelector(`#contacto .channel[href*="${h}"]`))));

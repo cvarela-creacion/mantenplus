@@ -28,7 +28,7 @@
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Imagen principal de la portada (mejora el LCP) -->
-  <link rel="preload" as="image" href="assets/img/portada-tecnico-cliente-1408.webp" imagesrcset="assets/img/portada-tecnico-cliente-800.webp 800w, assets/img/portada-tecnico-cliente-1408.webp 1408w" imagesizes="(max-width: 860px) calc(100vw - 2rem), 46vw" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/portada-tecnico-lavadora-1200.webp" imagesrcset="assets/img/portada-tecnico-lavadora-600.webp 600w, assets/img/portada-tecnico-lavadora-1200.webp 1200w" imagesizes="(max-width: 860px) calc(100vw - 2rem), 46vw" fetchpriority="high">
 
   <link rel="stylesheet" href="assets/css/styles.css">
   <script src="assets/js/main.js" defer></script>
@@ -184,15 +184,15 @@
         <div class="hero__visual">
           <figure class="hero-photo">
             <!--
-              FOTO DE PORTADA: técnico recibido por el cliente en la puerta. Es una imagen referencial;
-              al tener la fotografía propia (docs/04-brief-fotografico.md), reemplazar los archivos y el preload del <head>.
+              FOTO DE PORTADA: técnico revisando una lavadora con la cordillera de fondo (imagen conceptual).
+              Al tener una fotografía propia, reemplazar los archivos y el preload del <head>.
             -->
             <picture>
-              <img class="hero-photo__img" src="assets/img/portada-tecnico-cliente-1408.webp"
-                   srcset="assets/img/portada-tecnico-cliente-800.webp 800w, assets/img/portada-tecnico-cliente-1408.webp 1408w"
+              <img class="hero-photo__img" src="assets/img/portada-tecnico-lavadora-1200.webp"
+                   srcset="assets/img/portada-tecnico-lavadora-600.webp 600w, assets/img/portada-tecnico-lavadora-1200.webp 1200w"
                    sizes="(max-width: 860px) calc(100vw - 2rem), 46vw"
-                   alt="Técnico de MantenPlus con maletín de herramientas, recibido con una sonrisa por el cliente en la puerta de su casa"
-                   width="1408" height="768" fetchpriority="high" decoding="async"
+                   alt="Técnico con polo negro revisando la puerta de una lavadora en una casa luminosa con vista a la cordillera"
+                   width="1200" height="800" fetchpriority="high" decoding="async"
                    onerror="this.closest('picture').remove()">
             </picture>
 
@@ -371,12 +371,11 @@
     <section class="section section--tint" id="instalacion" aria-labelledby="instalacion-title">
       <div class="container install">
         <figure class="install__media">
-          <img src="assets/img/resultados/encimera-despues-1408.webp"
-               srcset="assets/img/resultados/encimera-despues-800.webp 800w, assets/img/resultados/encimera-despues-1408.webp 1408w"
+          <img src="assets/img/instalacion-panelado-1279.webp"
+               srcset="assets/img/instalacion-panelado-800.webp 800w, assets/img/instalacion-panelado-1279.webp 1279w"
                sizes="(max-width: 860px) calc(100vw - 2rem), 50vw"
-               alt="Encimera de inducción instalada a ras en una isla de cocina de piedra"
-               width="1408" height="768" loading="lazy" decoding="async">
-          <figcaption class="photo-tag">Imagen referencial</figcaption>
+               alt="Dos técnicos de MantenPlus en una cocina de alta gama: uno termina el panelado de un refrigerador integrable y el otro explica a la dueña de casa el uso de su lavavajillas panelado"
+               width="1279" height="719" loading="lazy" decoding="async">
           <div class="install__badge">
             <span class="install__badge-icon" aria-hidden="true"><svg class="icon"><use href="#i-panel"/></svg></span>
             <span><strong>A ras y a medida</strong><small>Equipos encastrables y panelables</small></span>
@@ -399,7 +398,6 @@
               <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
               Cotizar instalación
             </a>
-            <a class="btn btn--soft btn--lg" href="#empresas">Proyectos para empresas</a>
           </div>
         </div>
       </div>
@@ -415,6 +413,10 @@
 
           <div class="tabs" role="tablist" aria-label="Casos de antes y después" data-tabs>
             <button class="tab" type="button" role="tab" id="tab-lavadora" aria-controls="caso-lavadora" aria-selected="true">Lavadora</button>
+            <button class="tab" type="button" role="tab" id="tab-secadora" aria-controls="caso-secadora" aria-selected="false" tabindex="-1">Secadora</button>
+            <button class="tab" type="button" role="tab" id="tab-lavavajillas" aria-controls="caso-lavavajillas" aria-selected="false" tabindex="-1">Lavavajillas</button>
+            <button class="tab" type="button" role="tab" id="tab-horno" aria-controls="caso-horno" aria-selected="false" tabindex="-1">Horno</button>
+            <button class="tab" type="button" role="tab" id="tab-microondas" aria-controls="caso-microondas" aria-selected="false" tabindex="-1">Microondas</button>
             <button class="tab" type="button" role="tab" id="tab-encimera" aria-controls="caso-encimera" aria-selected="false" tabindex="-1">Encimera</button>
             <button class="tab" type="button" role="tab" id="tab-campana" aria-controls="caso-campana" aria-selected="false" tabindex="-1">Campana</button>
           </div>
@@ -442,6 +444,54 @@
               <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
             </div>
             <p class="ba-caption">Goma y vidrio de la puerta: eliminación de moho, sarro y residuos de detergente.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-secadora" aria-labelledby="tab-secadora" hidden>
+            <div class="ba" style="--pos: 50%; aspect-ratio: 1280 / 1169" data-ba>
+              <img src="assets/img/resultados/secadora-antes-1280.webp" srcset="assets/img/resultados/secadora-antes-800.webp 800w, assets/img/resultados/secadora-antes-1280.webp 1280w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Secadora de bomba de calor desarmada durante la reparación, con sus paneles retirados" width="1280" height="1169" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/secadora-despues-1280.webp" srcset="assets/img/resultados/secadora-despues-800.webp 800w, assets/img/resultados/secadora-despues-1280.webp 1280w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="La misma secadora armada y funcionando después de la reparación" width="1280" height="1169" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después de la secadora">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Secadora de bomba de calor: desarme, revisión de componentes y armado.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-lavavajillas" aria-labelledby="tab-lavavajillas" hidden>
+            <div class="ba" style="--pos: 50%; aspect-ratio: 1280 / 1150" data-ba>
+              <img src="assets/img/resultados/lavavajillas-antes-1280.webp" srcset="assets/img/resultados/lavavajillas-antes-800.webp 800w, assets/img/resultados/lavavajillas-antes-1280.webp 1280w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Lavavajillas con residuos, sarro y manchas en la cuba y la puerta antes del servicio" width="1280" height="1150" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/lavavajillas-despues-1280.webp" srcset="assets/img/resultados/lavavajillas-despues-800.webp 800w, assets/img/resultados/lavavajillas-despues-1280.webp 1280w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="El mismo lavavajillas limpio y brillante después del servicio" width="1280" height="1150" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después del lavavajillas">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Lavavajillas: limpieza profunda de cuba, filtros, brazos aspersores y puerta.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-horno" aria-labelledby="tab-horno" hidden>
+            <div class="ba" style="--pos: 50%; aspect-ratio: 1270 / 951" data-ba>
+              <img src="assets/img/resultados/horno-antes-1270.webp" srcset="assets/img/resultados/horno-antes-800.webp 800w, assets/img/resultados/horno-antes-1270.webp 1270w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Horno empotrado con grasa y restos quemados en el vidrio, las rejillas y las bandejas antes del servicio" width="1270" height="951" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/horno-despues-1270.webp" srcset="assets/img/resultados/horno-despues-800.webp 800w, assets/img/resultados/horno-despues-1270.webp 1270w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="El mismo horno con vidrio, rejillas y bandejas limpios después del servicio" width="1270" height="951" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después del horno">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Horno: desengrase de cavidad, rejillas, bandejas y vidrio de la puerta.</p>
+          </div>
+
+          <div class="ba-panel" role="tabpanel" id="caso-microondas" aria-labelledby="tab-microondas" hidden>
+            <div class="ba" style="--pos: 50%; aspect-ratio: 1273 / 953" data-ba>
+              <img src="assets/img/resultados/microondas-antes-1273.webp" srcset="assets/img/resultados/microondas-antes-800.webp 800w, assets/img/resultados/microondas-antes-1273.webp 1273w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="Microondas empotrado con salpicaduras y grasa en el interior y el vidrio antes del servicio" width="1273" height="953" loading="lazy" decoding="async">
+              <img class="ba__after" src="assets/img/resultados/microondas-despues-1273.webp" srcset="assets/img/resultados/microondas-despues-800.webp 800w, assets/img/resultados/microondas-despues-1273.webp 1273w" sizes="(max-width: 860px) calc(100vw - 2rem), 60vw" alt="El mismo microondas limpio y brillante después del servicio" width="1273" height="953" loading="lazy" decoding="async">
+              <span class="ba__tag ba__tag--before" aria-hidden="true">Antes</span>
+              <span class="ba__tag ba__tag--after" aria-hidden="true">Después</span>
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después del microondas">
+              <span class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg class="icon" aria-hidden="true"><use href="#i-drag"/></svg></span></span>
+            </div>
+            <p class="ba-caption">Microondas: limpieza de cavidad, plato giratorio y vidrio de la puerta.</p>
           </div>
 
           <div class="ba-panel" role="tabpanel" id="caso-encimera" aria-labelledby="tab-encimera" hidden>
@@ -480,22 +530,19 @@
           <div>
             <p class="kicker">Galería</p>
             <h2 class="section-title" id="galeria-title">Nuestro trabajo en terreno</h2>
-            <p class="section-lead">Fotos reales de instalaciones, reparaciones y mantenciones hechas por nuestro equipo.</p>
+            <p class="section-lead">Instalaciones, reparaciones y mantenciones hechas por nuestro equipo en hogares de Santiago.</p>
           </div>
           <a class="btn btn--soft gallery-head__link" href="galeria.html">Ver galería completa <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </header>
 
         <!--
-          GALERÍA: solo fotos reales tomadas en terreno. Guardarlas en assets/img/galeria/ (1200×900, WebP)
-          y, en cada tarjeta, reemplazar el ícono y «Foto próximamente» por la <img> comentada. La galería completa está en galeria.html.
+          GALERÍA: fotos en assets/img/galeria/ (WebP 640 y 1280 px). La galería completa, con todas las fotos por categoría, está en galeria.html.
         -->
         <ul class="gallery" role="list">
           <li class="g-tile" data-cat="instalacion">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-horno"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Horno y microondas encastrables" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/instalacion-horno-microondas-640.webp" srcset="assets/img/galeria/instalacion-horno-microondas-640.webp 640w, assets/img/galeria/instalacion-horno-microondas-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico ajustando un horno y un microondas encastrables en un mueble de cocina" width="640" height="480" loading="lazy" decoding="async">
               </div>
               <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Horno y microondas encastrables</span></figcaption>
             </figure>
@@ -503,51 +550,41 @@
           <li class="g-tile" data-cat="instalacion">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Panelado de lavavajillas integrable" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/instalacion-lavavajillas-panelado-640.webp" srcset="assets/img/galeria/instalacion-lavavajillas-panelado-640.webp 640w, assets/img/galeria/instalacion-lavavajillas-panelado-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico ajustando la puerta de mueble de un lavavajillas integrable" width="640" height="480" loading="lazy" decoding="async">
               </div>
               <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Panelado de lavavajillas integrable</span></figcaption>
             </figure>
           </li>
-          <li class="g-tile" data-cat="reparacion">
+          <li class="g-tile" data-cat="instalacion">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-diagnostico"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Diagnóstico de placa electrónica" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/instalacion-encimera-induccion-640.webp" srcset="assets/img/galeria/instalacion-encimera-induccion-640.webp 640w, assets/img/galeria/instalacion-encimera-induccion-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Encimera de inducción instalada a ras en una cubierta de cocina" width="640" height="480" loading="lazy" decoding="async">
               </div>
-              <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Diagnóstico de placa electrónica</span></figcaption>
+              <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Encimera de inducción a ras</span></figcaption>
             </figure>
           </li>
           <li class="g-tile" data-cat="reparacion">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-encimera"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Reparación de encimera de inducción" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/reparacion-placa-horno-640.webp" srcset="assets/img/galeria/reparacion-placa-horno-640.webp 640w, assets/img/galeria/reparacion-placa-horno-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico reparando la placa electrónica de un horno desmontado sobre la cubierta" width="640" height="480" loading="lazy" decoding="async"><span class="photo-tag">Imagen referencial</span>
               </div>
-              <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Reparación de encimera de inducción</span></figcaption>
+              <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Placa electrónica de horno</span></figcaption>
             </figure>
           </li>
           <li class="g-tile" data-cat="mantenimiento">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-campana"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Limpieza profunda de filtros de campana" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/mantencion-lavavajillas-640.webp" srcset="assets/img/galeria/mantencion-lavavajillas-640.webp 640w, assets/img/galeria/mantencion-lavavajillas-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico limpiando el brazo aspersor de un lavavajillas, con los filtros desmontados sobre un paño" width="640" height="480" loading="lazy" decoding="async">
               </div>
-              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza profunda de filtros de campana</span></figcaption>
+              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza de filtros y aspersores de lavavajillas</span></figcaption>
             </figure>
           </li>
           <li class="g-tile" data-cat="mantenimiento">
             <figure>
               <div class="g-tile__media">
-                <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg>
-                <span class="g-tile__pending">Foto próximamente</span>
-                <!-- <img src="assets/img/galeria/..." alt="Mantención de lavadora: goma y cajón" width="1200" height="900" loading="lazy" decoding="async"> -->
+                <img src="assets/img/galeria/mantencion-fuelle-lavadora-640.webp" srcset="assets/img/galeria/mantencion-fuelle-lavadora-640.webp 640w, assets/img/galeria/mantencion-fuelle-lavadora-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico trabajando en una lavadora sin panel frontal, con la goma de puerta nueva sobre un paño" width="640" height="480" loading="lazy" decoding="async"><span class="photo-tag">Imagen referencial</span>
               </div>
-              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Mantención de lavadora: goma y cajón</span></figcaption>
+              <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Recambio de fuelle (goma) de lavadora</span></figcaption>
             </figure>
           </li>
         </ul>
@@ -567,7 +604,7 @@
           <p class="section-lead">Cuatro pasos, siempre los mismos, en cada servicio.</p>
         </header>
 
-        <!-- Fotos del carrusel: ver docs/04-brief-fotografico.md. Cada <picture> espera en un <template data-pending-media>: al subir la foto, sacarlo del template. Mientras tanto se muestra la ilustración. -->
+        <!-- Fotos del proceso: el paso 1 tiene su propia foto; los pasos 2 a 4 reutilizan fotos de la galería y de Instalación con otro encuadre. -->
         <div class="story" data-story role="region" aria-roledescription="carrusel" aria-label="Los cuatro pasos de nuestro servicio">
           <ol class="story__track" role="list" data-story-track>
             <li class="story__step is-active" data-step>
@@ -576,10 +613,10 @@
                   <svg viewBox="0 0 48 48"><use href="#s-llegada"/></svg>
                   <span>Foto: llegada del técnico, puntual e identificado</span>
                 </div>
-                <template data-pending-media><picture>
-                  <source type="image/webp" srcset="assets/img/proceso/paso-1-llegada.webp">
-                  <img src="assets/img/proceso/paso-1-llegada.jpg" alt="Técnico de MantenPlus llegando al domicilio, puntual e identificado" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture></template>
+                <picture>
+                  <img src="assets/img/proceso/paso-1-llegada-1408.webp" srcset="assets/img/proceso/paso-1-llegada-800.webp 800w, assets/img/proceso/paso-1-llegada-1408.webp 1408w" sizes="(max-width: 860px) 85vw, 54vw" alt="Técnico de MantenPlus con su maletín, recibido con una sonrisa por el cliente en la puerta de su casa" width="1408" height="768" style="object-position: 72% 50%" loading="lazy" decoding="async">
+                </picture>
+                <span class="photo-tag">Imagen referencial</span>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">01</span>
@@ -594,10 +631,10 @@
                   <svg viewBox="0 0 48 48"><use href="#s-diagnostico"/></svg>
                   <span>Foto: técnico mostrando el diagnóstico al cliente</span>
                 </div>
-                <template data-pending-media><picture>
-                  <source type="image/webp" srcset="assets/img/proceso/paso-2-diagnostico.webp">
-                  <img src="assets/img/proceso/paso-2-diagnostico.jpg" alt="Técnico mostrando al cliente el diagnóstico de su equipo" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture></template>
+                <picture>
+                  <img src="assets/img/galeria/reparacion-placa-horno-1280.webp" srcset="assets/img/galeria/reparacion-placa-horno-640.webp 640w, assets/img/galeria/reparacion-placa-horno-1280.webp 1280w" sizes="(max-width: 860px) 85vw, 54vw" alt="Técnico revisando la placa electrónica de un horno para diagnosticar la falla" width="1280" height="1170" style="object-position: 60% 30%" loading="lazy" decoding="async">
+                </picture>
+                <span class="photo-tag">Imagen referencial</span>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">02</span>
@@ -613,9 +650,8 @@
                   <span>Foto: herramientas ordenadas y manos con guantes</span>
                 </div>
                 <picture>
-                  <img src="assets/img/proceso/paso-3-ejecucion-1200.webp" srcset="assets/img/proceso/paso-3-ejecucion-600.webp 600w, assets/img/proceso/paso-3-ejecucion-1200.webp 1200w" sizes="(max-width: 860px) 85vw, 54vw" alt="Técnico revisando la puerta de una lavadora con su maletín de herramientas ordenado al lado" width="1200" height="800" loading="lazy" decoding="async">
+                  <img src="assets/img/galeria/mantencion-campana-isla-1280.webp" srcset="assets/img/galeria/mantencion-campana-isla-640.webp 640w, assets/img/galeria/mantencion-campana-isla-1280.webp 1280w" sizes="(max-width: 860px) 85vw, 54vw" alt="Dos técnicos limpiando los filtros y la estructura de una campana de isla, con los materiales ordenados sobre la cubierta" width="1280" height="960" style="object-position: 50% 40%" loading="lazy" decoding="async">
                 </picture>
-                <span class="photo-tag">Imagen referencial</span>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">03</span>
@@ -630,10 +666,9 @@
                   <svg viewBox="0 0 48 48"><use href="#s-charla"/></svg>
                   <span>Foto: técnico explicando el panel del equipo al cliente</span>
                 </div>
-                <template data-pending-media><picture>
-                  <source type="image/webp" srcset="assets/img/proceso/paso-4-charla.webp">
-                  <img src="assets/img/proceso/paso-4-charla.jpg" alt="Técnico explicando al cliente cómo cuidar su electrodoméstico" width="1200" height="1000" loading="lazy" decoding="async" onerror="this.closest('picture').remove()">
-                </picture></template>
+                <picture>
+                  <img src="assets/img/instalacion-panelado-1279.webp" srcset="assets/img/instalacion-panelado-800.webp 800w, assets/img/instalacion-panelado-1279.webp 1279w" sizes="(max-width: 860px) 85vw, 54vw" alt="Técnico explicando a la dueña de casa cómo usar su lavavajillas" width="1279" height="719" style="object-position: 30% 50%" loading="lazy" decoding="async">
+                </picture>
               </figure>
               <div class="story__text">
                 <span class="story__num" aria-hidden="true">04</span>
@@ -742,14 +777,14 @@
         <div class="team">
           <figure class="team-photo">
             <!--
-              FOTO DEL EQUIPO: imagen referencial. Reemplazar por la foto institucional real del brief
-              (docs/04-brief-fotografico.md, Foto 2) con los mismos nombres de archivo.
+              FOTO DEL EQUIPO: imagen referencial (logos poco legibles). Al tener la foto institucional real
+              (docs/04-brief-fotografico.md, Foto 2), reemplazar assets/img/equipo-mantenplus-{720,1280}.webp.
             -->
-            <img src="assets/img/equipo-mantenplus-1109.webp"
-                 srcset="assets/img/equipo-mantenplus-700.webp 700w, assets/img/equipo-mantenplus-1109.webp 1109w"
-                 sizes="(max-width: 860px) calc(100vw - 2rem), 52vw"
-                 alt="Equipo de MantenPlus: técnicos con polo corporativo y botas de trabajo junto a dos integrantes de atención al cliente, en una cocina moderna"
-                 width="1109" height="960" loading="lazy" decoding="async">
+            <img src="assets/img/equipo-mantenplus-1280.webp"
+                 srcset="assets/img/equipo-mantenplus-720.webp 720w, assets/img/equipo-mantenplus-1280.webp 1280w"
+                 sizes="(max-width: 860px) calc(100vw - 2rem), 56vw"
+                 alt="Equipo de MantenPlus: cuatro técnicos con polo azul marino, pantalón de trabajo y botas, junto a dos integrantes de atención al cliente con polo blanco, en una cocina de alta gama"
+                 width="1280" height="960" loading="lazy" decoding="async">
             <figcaption class="photo-tag">Imagen referencial</figcaption>
           </figure>
         <ul class="pillars pillars--stack" role="list">
@@ -776,16 +811,25 @@
         </ul>
         </div>
 
-        <!-- HERRAMIENTAS Y EQUIPOS DE DIAGNÓSTICO: fotos reales pendientes (assets/img/equipo/, 1200×900, WebP) -->
+        <!-- HERRAMIENTAS Y EQUIPOS DE DIAGNÓSTICO: fotos en assets/img/herramientas/ (WebP 640 y 1280 px) -->
         <div class="tools">
           <div class="tools__head">
             <h3 class="tools__title">Herramientas y equipos de diagnóstico</h3>
             <p class="tools__lead">El instrumental con el que trabajamos en cada visita.</p>
           </div>
           <ul class="tools__grid" role="list">
-            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-diagnostico"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Multímetro y pinza amperimétrica</span></figcaption></figure></li>
-            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-ejecucion"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Herramientas de precisión</span></figcaption></figure></li>
-            <li class="g-tile g-tile--tool"><figure><div class="g-tile__media"><svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg><span class="g-tile__pending">Foto próximamente</span></div><figcaption><span class="g-tile__title">Diagnóstico electrónico de equipos</span></figcaption></figure></li>
+            <li class="g-tile g-tile--tool">
+              <figure>
+                <div class="g-tile__media"><img src="assets/img/herramientas/instrumentos-medicion-640.webp" srcset="assets/img/herramientas/instrumentos-medicion-640.webp 640w, assets/img/herramientas/instrumentos-medicion-1280.webp 1280w" sizes="(max-width: 560px) calc(100vw - 2rem), 600px" alt="Pinza amperimétrica, medidor de consumo eléctrico, termómetro digital de sonda y foco LED de trabajo sobre una cubierta" width="640" height="480" loading="lazy" decoding="async"></div>
+                <figcaption><span class="g-tile__title">Instrumentos de medición: pinza amperimétrica, medidor de consumo y termómetro</span></figcaption>
+              </figure>
+            </li>
+            <li class="g-tile g-tile--tool">
+              <figure>
+                <div class="g-tile__media"><img src="assets/img/herramientas/herramientas-precision-640.webp" srcset="assets/img/herramientas/herramientas-precision-640.webp 640w, assets/img/herramientas/herramientas-precision-1280.webp 1280w" sizes="(max-width: 560px) calc(100vw - 2rem), 600px" alt="Pinza amperimétrica, termómetro para refrigerador, detector de fugas de gas, llaves Allen, puntas, destornilladores de precisión, llave ajustable, alicate y huincha sobre una cubierta" width="640" height="480" loading="lazy" decoding="async"></div>
+                <figcaption><span class="g-tile__title">Herramientas de precisión y detector de fugas de gas</span></figcaption>
+              </figure>
+            </li>
           </ul>
         </div>
       </div>

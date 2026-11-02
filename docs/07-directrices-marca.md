@@ -18,16 +18,35 @@ Cambios aplicados en `claude/integracion-aportes-codex` según las directrices d
 
 Las fotos entregadas tienen rasgos de imagen generada (logotipos y textos ilegibles en polos, maletín y lavadora; productos de marcas de terceros). Por eso se publican con el rótulo **«Imagen referencial»**, y el comparador dice «Imágenes referenciales del tipo de trabajo que realizamos». Presentarlas como trabajos documentados sería engañoso para el cliente (Ley 19.496) y contradice la promesa de transparencia. Cuando existan fotos propias tomadas en terreno, basta con reemplazar los archivos con los mismos nombres y quitar esos rótulos.
 
+## Actualización del 2 nov 2026
+
+| # | Pedido | Cómo quedó |
+|---|---|---|
+| 1 | Quitar «Proyectos para empresas» antes de Resultados | Eliminado; Instalación queda solo con «Cotizar instalación» |
+| 2 | Foto nueva en Instalación y panelado | Dos técnicos: uno termina el panelado de un refrigerador y otro da la charla de uso junto al lavavajillas panelado |
+| 3 | Más casos en Resultados | Siete pestañas: Lavadora, Secadora, Lavavajillas, Horno, Microondas, Encimera y Campana. Los pares nuevos se alinearon por puntos comunes (muebles, cubierta, piso) para que calcen al deslizar; cada caso conserva su formato |
+| 4 | Galería con fotos | Portada: 3 instalaciones, 1 reparación y 2 mantenciones. `galeria.html`: 8 fotos por categoría (la de la campana y la de la secadora desarmada solo ahí) |
+| 5 | Fotos principales | Portada: técnico revisando la lavadora con la cordillera de fondo. «Cómo trabajamos», paso 1: técnico recibido en la puerta. Los pasos 2 a 4 reutilizan con otro encuadre la placa de horno, la campana de isla y la charla de uso de Instalación |
+| 6 | Foto nueva del equipo | Cuatro técnicos con el mismo uniforme y credencial visible, más dos integrantes de atención al cliente (4:3) |
+| 7 | Herramientas | Dos fotos en dos columnas: instrumentos de medición, y herramientas de precisión con detector de fugas de gas |
+
+Rótulo «Imagen referencial» en las fotos con logos o textos ilegibles: portada, paso 1 y paso 2 del proceso, equipo, placa de horno y fuelle de lavadora. El comparador mantiene la nota general «Imágenes referenciales del tipo de trabajo que realizamos».
+
+Observaciones pendientes para el cliente:
+- En varias fotos el polo lleva un logo «M+» con «Servicio Técnico de Electrodomésticos», distinto del isotipo oficial (casa con refrigerador y lavadora).
+- El medidor de consumo de la foto de instrumentos marca 120 V y tiene un enchufe estadounidense; en Chile la red es de 220 V con enchufes tipo L o C.
+
 ## Archivos de imagen
 
 | Uso | Archivos |
 |---|---|
-| Portada | `assets/img/portada-tecnico-cliente-{800,1408}.webp` |
-| Antes/después | `assets/img/resultados/{lavadora,encimera,campana}-{antes,despues}-{800,1408}.webp` |
-| Equipo | `assets/img/equipo-mantenplus-{700,1109}.webp` |
-| Proceso, paso 3 | `assets/img/proceso/paso-3-ejecucion-{600,1200}.webp` (imagen conceptual de Codex) |
-| Galería (pendiente) | `assets/img/galeria/*.webp` (1200×900): reemplazar en cada tarjeta el ícono por la `<img>` comentada |
-| Herramientas (pendiente) | `assets/img/equipo/*.webp` (1200×900) |
+| Portada | `assets/img/portada-tecnico-lavadora-{600,1200}.webp` |
+| Instalación y panelado | `assets/img/instalacion-panelado-{800,1279}.webp` |
+| Antes/después | `assets/img/resultados/{lavadora,secadora,lavavajillas,horno,microondas,encimera,campana}-{antes,despues}-*.webp` |
+| Galería | `assets/img/galeria/*-{640,1280}.webp` |
+| Proceso, paso 1 | `assets/img/proceso/paso-1-llegada-{800,1408}.webp` |
+| Equipo | `assets/img/equipo-mantenplus-{720,1280}.webp` |
+| Herramientas | `assets/img/herramientas/{instrumentos-medicion,herramientas-precision}-{640,1280}.webp` |
 
 ## Piezas compartidas
 

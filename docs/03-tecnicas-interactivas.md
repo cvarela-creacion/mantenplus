@@ -6,8 +6,8 @@ Las cuatro técnicas se implementan sin librerías pesadas (JS nativo + CSS), co
 
 | Técnica | Estado | Sección | Archivos que faltan entregar |
 |---|---|---|---|
-| Slider antes/después | ✅ Implementado con fotos referenciales (lavadora, encimera, campana) | `#resultados` | Fotos propias del mismo equipo antes y después: reemplazar `assets/img/resultados/{caso}-{antes,despues}-{800,1408}.webp` (mismo encuadre) y quitar `.results__note`. |
-| Storytelling en carrusel | ✅ Implementado (con ilustraciones de respaldo) | `#como-trabajamos` | `assets/img/proceso/paso-{1-llegada,2-diagnostico,3-ejecucion,4-charla}.{webp,jpg}` (1200×1000). Al subirlas, sacar cada `<picture>` de su `<template data-pending-media>`. |
+| Slider antes/después | ✅ Implementado: 7 casos (lavadora, secadora, lavavajillas, horno, microondas, encimera, campana) | `#resultados` | Para sumar un caso: un par del mismo equipo con el mismo encuadre, una pestaña y un panel con su `aspect-ratio` (cada caso conserva su formato). |
+| Storytelling en carrusel | ✅ Implementado con fotos en los 4 pasos | `#como-trabajamos` | Paso 1 con foto propia; pasos 2 a 4 reutilizan fotos de la galería y de Instalación. Reemplazables por fotos dedicadas. |
 | Micro-video en bucle | ✅ Implementado (muestra el ícono mientras no hay video) | `#servicios` | `assets/video/{lavadora,refrigerador,lavavajillas,horno,encimera,campana}-loop.{webm,mp4}`. Al subirlos, sacar cada `<video>` de su `<template data-pending-media>` y agregarle `poster`. |
 | Vista explosionada | ❌ Retirada (1 nov 2026) | — | Se eliminó por decisión de marca: la web muestra solo trabajo y equipos reales. La sección §4 queda como registro histórico. |
 

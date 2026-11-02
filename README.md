@@ -15,7 +15,7 @@ assets/css/styles.css      Sistema visual (tokens, botones, header, hero, respon
 assets/js/main.js          Menú móvil, WhatsApp, slider, pestañas, carrusel, micro-videos, filtro de galería,
                            comprobador de cobertura, formulario de contacto y medición
 assets/img/logo-mark.svg   Isotipo redibujado en vector
-assets/img/                Fotos de portada, equipo, antes/después (resultados/) y proceso (proceso/), en WebP
+assets/img/                Fotos en WebP: portada, instalación, equipo, resultados/, galeria/, proceso/, herramientas/
 assets/fonts/              Inter y Plus Jakarta Sans autoalojadas (licencia SIL OFL)
 assets/brand/              Logotipo original y fotos de referencia del uniforme
 robots.txt, sitemap.xml    Indexación en Google para https://mantenplus.cl
@@ -48,5 +48,5 @@ Pruebas automáticas (opcionales): `npm ci && npm test`.
 - Número visible en Contacto: reemplazar «Número definitivo pendiente».
 - Redes sociales y reseñas: reemplazar `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` y `[LINK_GOOGLE_RESENAS]`.
 - Confirmar comunas de cobertura, reseñas reales y respuestas de Preguntas frecuentes (detalle en `docs/01-arquitectura.md`).
-- Fotos propias tomadas en terreno para reemplazar las imágenes referenciales (portada, antes/después, equipo) y completar la galería y las herramientas (ver `docs/07-directrices-marca.md`).
-- Fotos del proceso (pasos 1, 2 y 4) y micro-videos: esperan en `<template data-pending-media>`; al subir cada archivo, sacar su `<picture>`/`<video>` del template.
+- Las fotos con rótulo «Imagen referencial» (logos ilegibles) conviene reemplazarlas por fotos propias con el uniforme oficial (ver `docs/07-directrices-marca.md`).
+- Micro-videos de servicios: esperan en `<template data-pending-media>`; al subir cada archivo, sacar su `<video>` del template.

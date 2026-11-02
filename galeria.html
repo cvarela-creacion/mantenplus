@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Galería de trabajos · MantenPlus</title>
-  <meta name="description" content="Fotos reales de instalaciones, reparaciones y mantenciones de electrodomésticos hechas por el equipo de MantenPlus en Santiago.">
+  <meta name="description" content="Instalaciones, reparaciones y mantenciones de electrodomésticos hechas por el equipo de MantenPlus en Santiago.">
   <meta name="theme-color" content="#FFFFFF">
   <link rel="canonical" href="https://mantenplus.cl/galeria.html">
 
@@ -105,13 +105,12 @@
         <header class="section-head">
           <p class="kicker">Galería</p>
           <h1 class="section-title" id="galeria-title">Nuestro trabajo en terreno</h1>
-          <p class="section-lead">Fotos reales de instalaciones, reparaciones y mantenciones hechas por nuestro equipo en hogares de Santiago.</p>
+          <p class="section-lead">Instalaciones, reparaciones y mantenciones hechas por nuestro equipo en hogares de Santiago.</p>
         </header>
 
         <!--
-          GALERÍA COMPLETA: solo fotos reales tomadas en terreno. Guardarlas en assets/img/galeria/ (1200×900, WebP)
-          y, en cada tarjeta, reemplazar el ícono y «Foto próximamente» por la <img> comentada.
-          Se pueden agregar más tarjetas copiando un <li class="g-tile"> dentro de su categoría.
+          GALERÍA COMPLETA: fotos en assets/img/galeria/ (WebP 640 y 1280 px). Para sumar una foto,
+          copiar un <li class="g-tile"> dentro de su categoría y cambiar la imagen, el texto alternativo y el título.
         -->
         <div class="gallery-filter" role="group" aria-label="Filtrar por tipo de trabajo" hidden data-gallery-filters>
           <button class="gallery-filter__btn" type="button" data-gallery-filter="todas" aria-pressed="true">Todas</button>
@@ -126,9 +125,7 @@
             <li class="g-tile" data-cat="instalacion">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-horno"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Horno y microondas encastrables" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/instalacion-horno-microondas-640.webp" srcset="assets/img/galeria/instalacion-horno-microondas-640.webp 640w, assets/img/galeria/instalacion-horno-microondas-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico ajustando un horno y un microondas encastrables en un mueble de cocina" width="1280" height="960" loading="lazy" decoding="async">
                 </div>
                 <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Horno y microondas encastrables</span></figcaption>
               </figure>
@@ -136,9 +133,7 @@
             <li class="g-tile" data-cat="instalacion">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Panelado de lavavajillas integrable" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/instalacion-lavavajillas-panelado-640.webp" srcset="assets/img/galeria/instalacion-lavavajillas-panelado-640.webp 640w, assets/img/galeria/instalacion-lavavajillas-panelado-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico ajustando la puerta de mueble de un lavavajillas integrable" width="1280" height="960" loading="lazy" decoding="async">
                 </div>
                 <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Panelado de lavavajillas integrable</span></figcaption>
               </figure>
@@ -146,41 +141,9 @@
             <li class="g-tile" data-cat="instalacion">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-encimera"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Encimera de inducción a ras" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/instalacion-encimera-induccion-640.webp" srcset="assets/img/galeria/instalacion-encimera-induccion-640.webp 640w, assets/img/galeria/instalacion-encimera-induccion-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Encimera de inducción instalada a ras en una cubierta de cocina" width="1280" height="960" loading="lazy" decoding="async">
                 </div>
                 <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Encimera de inducción a ras</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="instalacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-campana"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Campana de isla" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Campana de isla</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="instalacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-refrigerador"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Refrigerador integrable panelado" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Refrigerador integrable panelado</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="instalacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Lavadora y secadora en columna" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Instalación</span><span class="g-tile__title">Lavadora y secadora en columna</span></figcaption>
               </figure>
             </li>
           </ul>
@@ -192,61 +155,17 @@
             <li class="g-tile" data-cat="reparacion">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#s-diagnostico"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Diagnóstico de placa electrónica" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/reparacion-placa-horno-640.webp" srcset="assets/img/galeria/reparacion-placa-horno-640.webp 640w, assets/img/galeria/reparacion-placa-horno-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico reparando la placa electrónica de un horno desmontado sobre la cubierta" width="1280" height="1170" loading="lazy" decoding="async"><span class="photo-tag">Imagen referencial</span>
                 </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Diagnóstico de placa electrónica</span></figcaption>
+                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Placa electrónica de horno</span></figcaption>
               </figure>
             </li>
             <li class="g-tile" data-cat="reparacion">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-encimera"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Reparación de encimera de inducción" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/resultados/secadora-antes-800.webp" srcset="assets/img/resultados/secadora-antes-800.webp 800w, assets/img/resultados/secadora-antes-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Secadora de bomba de calor desarmada durante la reparación, con sus paneles retirados y las herramientas sobre un paño" width="1280" height="1169" loading="lazy" decoding="async">
                 </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Reparación de encimera de inducción</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="reparacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Cambio de rodamientos de lavadora" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Cambio de rodamientos de lavadora</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="reparacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Bomba de desagüe de lavavajillas" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Bomba de desagüe de lavavajillas</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="reparacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-refrigerador"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Sistema de frío de refrigerador" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Sistema de frío de refrigerador</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="reparacion">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-horno"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Resistencia y termostato de horno" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Resistencia y termostato de horno</span></figcaption>
+                <figcaption><span class="g-tile__cat">Reparación</span><span class="g-tile__title">Secadora de bomba de calor</span></figcaption>
               </figure>
             </li>
           </ul>
@@ -258,61 +177,25 @@
             <li class="g-tile" data-cat="mantenimiento">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-campana"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Limpieza profunda de filtros de campana" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/mantencion-lavavajillas-640.webp" srcset="assets/img/galeria/mantencion-lavavajillas-640.webp 640w, assets/img/galeria/mantencion-lavavajillas-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico limpiando el brazo aspersor de un lavavajillas, con los filtros desmontados sobre un paño" width="1280" height="960" loading="lazy" decoding="async">
                 </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza profunda de filtros de campana</span></figcaption>
+                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza de filtros y aspersores de lavavajillas</span></figcaption>
               </figure>
             </li>
             <li class="g-tile" data-cat="mantenimiento">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavadora"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Mantención de lavadora: goma y cajón" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/mantencion-fuelle-lavadora-640.webp" srcset="assets/img/galeria/mantencion-fuelle-lavadora-640.webp 640w, assets/img/galeria/mantencion-fuelle-lavadora-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Técnico trabajando en una lavadora sin panel frontal, con la goma de puerta nueva sobre un paño" width="1280" height="960" loading="lazy" decoding="async"><span class="photo-tag">Imagen referencial</span>
                 </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Mantención de lavadora: goma y cajón</span></figcaption>
+                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Recambio de fuelle (goma) de lavadora</span></figcaption>
               </figure>
             </li>
             <li class="g-tile" data-cat="mantenimiento">
               <figure>
                 <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-lavavajillas"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Descalcificación de lavavajillas" width="1200" height="900" loading="lazy" decoding="async"> -->
+                  <img src="assets/img/galeria/mantencion-campana-isla-640.webp" srcset="assets/img/galeria/mantencion-campana-isla-640.webp 640w, assets/img/galeria/mantencion-campana-isla-1280.webp 1280w" sizes="(max-width: 860px) 50vw, 400px" alt="Dos técnicos limpiando los filtros y la estructura de una campana de isla" width="1280" height="960" loading="lazy" decoding="async">
                 </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Descalcificación de lavavajillas</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="mantenimiento">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-refrigerador"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Limpieza de condensador de refrigerador" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza de condensador de refrigerador</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="mantenimiento">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-horno"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Revisión preventiva de horno" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Revisión preventiva de horno</span></figcaption>
-              </figure>
-            </li>
-            <li class="g-tile" data-cat="mantenimiento">
-              <figure>
-                <div class="g-tile__media">
-                  <svg class="g-tile__icon" viewBox="0 0 48 48" aria-hidden="true"><use href="#a-encimera"/></svg>
-                  <span class="g-tile__pending">Foto próximamente</span>
-                  <!-- <img src="assets/img/galeria/..." alt="Cuidado de encimera vitrocerámica" width="1200" height="900" loading="lazy" decoding="async"> -->
-                </div>
-                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Cuidado de encimera vitrocerámica</span></figcaption>
+                <figcaption><span class="g-tile__cat">Mantenimiento</span><span class="g-tile__title">Limpieza de filtros de campana de isla</span></figcaption>
               </figure>
             </li>
           </ul>
@@ -334,13 +217,13 @@
     <div class="container site-footer__grid">
       <div class="site-footer__brand">
         <a class="brand" href="./" aria-label="MantenPlus, ir al inicio">
-          <svg class="brand__mark" viewBox="0 0 680 380" aria-hidden="true" focusable="false"><use href="index.html#logo-mark"/></svg>
+          <svg class="brand__mark" viewBox="0 0 680 380" aria-hidden="true" focusable="false"><use href="#logo-mark"/></svg>
           <span class="brand__word">MANTEN<span class="brand__plus">PLUS</span></span>
         </a>
         <p>Expertos en el cuidado y reparación de tus electrodomésticos.</p>
         <div class="social social--start">
-          <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="index.html#i-instagram"/></svg></a>
-          <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="index.html#i-facebook"/></svg></a>
+          <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
         </div>
       </div>
 

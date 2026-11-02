@@ -76,11 +76,18 @@ def social(extra=''):
 
 
 def fab():
-    return f'''  <!-- Botón flotante principal de WhatsApp (verde original de la marca) -->
-  <a class="wa-fab" href="{AGENDAR}" aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
-    <span class="wa-fab__label" aria-hidden="true">Escríbenos</span>
-    <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
-  </a>'''
+    """Botones flotantes de contacto directo: llamada (arriba) y WhatsApp (abajo, en su verde original)."""
+    return f'''  <!-- Botones flotantes de contacto directo -->
+  <div class="fab-stack" data-fab>
+    <a class="call-fab" href="{TEL}" aria-label="Llámanos" data-track="fab_llamar">
+      <span class="fab-label" aria-hidden="true">Llámanos</span>
+      <span class="call-fab__circle" aria-hidden="true"><svg class="call-fab__icon"><use href="#i-headset"/></svg></span>
+    </a>
+    <a class="wa-fab" href="{AGENDAR}" aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
+      <span class="fab-label" aria-hidden="true">Escríbenos</span>
+      <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
+    </a>
+  </div><!-- /botones flotantes -->'''
 
 
 DIALOG = '''  <!-- Modo revisión de WhatsApp (idea de la propuesta Codex): solo se usa mientras el número de main.js sea provisorio -->
@@ -110,7 +117,7 @@ if __name__ == '__main__':
             continue
         s = p.read_text()
         s = re.sub(r'  <header class="site-header" data-header>.*?</header>', lambda m: header(base), s, count=1, flags=re.S)
-        s = re.sub(r'  <!-- Botón flotante principal de WhatsApp.*?</a>', lambda m: fab(), s, count=1, flags=re.S)
+        s = re.sub(r'  <!-- Botones flotantes de contacto directo -->.*?<!-- /botones flotantes -->', lambda m: fab(), s, count=1, flags=re.S)
         s = re.sub(r'  <!-- Modo revisión de WhatsApp.*?</dialog>', lambda m: DIALOG, s, count=1, flags=re.S)
         p.write_text(s)
         print('actualizado', name)

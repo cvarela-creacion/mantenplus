@@ -106,6 +106,16 @@ const server = http.createServer((req, res) => {
     check('Carrusel: no avanza solo', (await active()) === 0);
     await page.click('[data-dot] >> nth=2');
     check('Carrusel: los pasos numerados seleccionan', (await active()) === 2);
+    // Portada: eslogan en la marca; H1 con servicio y ciudad; franja de servicios
+    check('Portada: H1 con el servicio y Santiago', (await page.textContent('h1')).replace(/\s+/g, ' ').trim() === 'Servicio técnico de electrodomésticos en Santiago');
+    check('Portada: el eslogan sigue junto al logo y no se repite en el H1', await page.evaluate(() => /cuidado y reparación/.test(document.querySelector('.site-header .brand__tagline').textContent) && !/cuidado/.test(document.querySelector('h1').textContent)));
+    check('Portada: franja «Reparación · Mantención · Instalación»', /Reparación · Mantención · Instalación/.test(await page.textContent('.hero .eyebrow')));
+    // Botones flotantes: «Llámanos» arriba de «Escríbenos», ambos fijos
+    const fabs = await page.evaluate(() => {
+      const call = document.querySelector('.fab-stack .call-fab'); const wa = document.querySelector('.fab-stack .wa-fab');
+      return { fixed: getComputedStyle(document.querySelector('.fab-stack')).position === 'fixed', tel: call.getAttribute('href').startsWith('tel:'), above: call.getBoundingClientRect().bottom <= wa.getBoundingClientRect().top, labels: call.textContent.trim() + '|' + wa.textContent.trim() };
+    });
+    check('Botones flotantes: «Llámanos» (tel:) sobre «Escríbenos», fijos', fabs.fixed && fabs.tel && fabs.above && fabs.labels === 'Llámanos|Escríbenos', JSON.stringify(fabs));
     // Estructura acordada: sin lavadora vectorial; con instalación, galería y empresas
     check('Estructura: sin la sección de la lavadora desarmada', await page.evaluate(() => !document.querySelector('#ingenieria, [data-xp]')));
     check('Estructura: secciones de instalación, galería y empresas', await page.evaluate(() => ['instalacion', 'galeria', 'empresas'].every((id) => document.getElementById(id))));

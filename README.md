@@ -21,7 +21,7 @@ assets/brand/              Logotipo original y fotos de referencia del uniforme
 robots.txt, sitemap.xml    Indexación en Google para https://mantenplus.cl
 .nojekyll                  GitHub Pages publica los archivos tal cual
 tests/sitio.cjs            Pruebas en Chromium + accesibilidad (npm test)
-tools/partes.py            Cabecera, botón de WhatsApp y diálogo compartidos por las dos páginas
+tools/partes.py            Cabecera, botones flotantes (llamada y WhatsApp) y diálogo compartidos por las dos páginas
 docs/
   01-arquitectura.md            Mapa del sitio, embudo de conversión, decisiones técnicas
   02-guia-visual.md             Paleta, tipografía, botones, movimiento

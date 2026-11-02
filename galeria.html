@@ -266,11 +266,17 @@
     </div>
   </footer>
 
-  <!-- Botón flotante principal de WhatsApp (verde original de la marca) -->
-  <a class="wa-fab" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
-    <span class="wa-fab__label" aria-hidden="true">Escríbenos</span>
-    <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
-  </a>
+  <!-- Botones flotantes de contacto directo -->
+  <div class="fab-stack" data-fab>
+    <a class="call-fab" href="tel:+569XXXXXXXX" aria-label="Llámanos" data-track="fab_llamar">
+      <span class="fab-label" aria-hidden="true">Llámanos</span>
+      <span class="call-fab__circle" aria-hidden="true"><svg class="call-fab__icon"><use href="#i-headset"/></svg></span>
+    </a>
+    <a class="wa-fab" href="https://wa.me/569XXXXXXXX?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
+      <span class="fab-label" aria-hidden="true">Escríbenos</span>
+      <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
+    </a>
+  </div><!-- /botones flotantes -->
 
   <!-- Modo revisión de WhatsApp (idea de la propuesta Codex): solo se usa mientras el número de main.js sea provisorio -->
   <dialog class="msg-dialog" aria-labelledby="msg-title" data-message-dialog>

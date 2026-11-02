@@ -915,31 +915,42 @@ details[open] > summary .acc-plus { transform: rotate(45deg); }
 @media (max-width: 860px) { .b2b { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 560px) { .install__ctas .btn, .b2b__ctas .btn { width: 100%; } }
 
-/* 6s. BOTÓN FLOTANTE DE WHATSAPP (verde original) ----------------------------- */
-/* Círculo verde con el ícono blanco (como el botón original de WhatsApp) y etiqueta en pastilla blanca:
-   el texto blanco sobre #25D366 no alcanza el contraste mínimo, así que la palabra va en oscuro sobre blanco */
-.wa-fab {
+/* 6s. BOTONES FLOTANTES DE CONTACTO (llamada + WhatsApp) -------------------- */
+/* Pila fija en la esquina: «Llámanos» arriba y «Escríbenos» abajo, en el verde original de WhatsApp.
+   Las etiquetas van en pastillas blancas: el texto blanco sobre #25D366 no alcanza el contraste mínimo */
+.fab-stack {
   position: fixed; z-index: 45;
   right: calc(1.25rem + env(safe-area-inset-right, 0px)); bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
-  display: flex; align-items: center; gap: .6rem; border-radius: var(--radius-pill);
+  display: flex; flex-direction: column; align-items: flex-end; gap: .75rem;
+  animation: fab-in .6s var(--ease) .3s both;
 }
-.wa-fab__circle {
-  display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; color: #FFFFFF; background: #25D366;
-  box-shadow: 0 10px 24px -6px rgba(18, 140, 126, .55), 0 2px 6px rgba(21, 27, 35, .15);
+@keyframes fab-in { from { opacity: 0; transform: translateY(16px); } }
+.call-fab, .wa-fab { display: flex; align-items: center; gap: .6rem; border-radius: var(--radius-pill); }
+.fab-label {
+  padding: .5rem .9rem; font-family: var(--font-display); font-size: .875rem; font-weight: 700; color: var(--ink);
+  background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-pill); box-shadow: var(--shadow-md);
+  transition: transform .25s var(--ease);
+}
+.wa-fab__circle, .call-fab__circle {
+  display: grid; place-items: center; border-radius: 50%; color: #FFFFFF;
   transition: transform .25s var(--ease), box-shadow .25s var(--ease), background-color .2s;
 }
+/* El aro blanco separa los círculos del contenido que pasa por detrás (por ejemplo, un botón azul) */
+.wa-fab__circle { width: 60px; height: 60px; background: #25D366; box-shadow: 0 0 0 3px var(--white), 0 10px 24px -6px rgba(18, 140, 126, .55), 0 2px 6px rgba(21, 27, 35, .15); }
 .wa-fab__icon { width: 32px; height: 32px; }
-.wa-fab__label {
-  padding: .55rem .95rem; font-family: var(--font-display); font-size: .875rem; font-weight: 700; color: var(--ink);
-  background: var(--white); border: 1px solid var(--gray-100); border-radius: var(--radius-pill); box-shadow: var(--shadow-md);
-}
-.wa-fab:hover .wa-fab__circle { background: #1EBE5A; transform: translateY(-2px); box-shadow: 0 14px 30px -8px rgba(18, 140, 126, .6), 0 2px 6px rgba(21, 27, 35, .15); }
-.wa-fab:focus-visible { outline-offset: 4px; }
+/* Llamada: algo más pequeño (WhatsApp es la acción principal), centrado sobre el círculo verde */
+.call-fab__circle { width: 52px; height: 52px; margin-right: 4px; background: var(--sky-600); box-shadow: 0 0 0 3px var(--white), 0 10px 22px -8px rgba(18, 110, 175, .6), 0 2px 6px rgba(21, 27, 35, .15); }
+.call-fab__icon { width: 26px; height: 26px; }
+.wa-fab:hover .wa-fab__circle { background: #1EBE5A; transform: translateY(-2px); }
+.call-fab:hover .call-fab__circle { background: var(--sky-700); transform: translateY(-2px); }
+.call-fab:hover .fab-label, .wa-fab:hover .fab-label { transform: translateX(-3px); }
+.call-fab:focus-visible, .wa-fab:focus-visible { outline-offset: 4px; }
 @media (max-width: 860px) {
-  .wa-fab { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
-  .wa-fab__circle { width: 58px; height: 58px; }
-  .wa-fab__label { display: none; }
-  .site-footer__bottom { padding-bottom: 5.5rem; } /* que el botón no tape el pie */
+  .fab-stack { right: calc(1rem + env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); gap: .6rem; }
+  .wa-fab__circle { width: 56px; height: 56px; }
+  .call-fab__circle { width: 48px; height: 48px; }
+  .fab-label { display: none; } /* en el celular solo los círculos, para no tapar el contenido */
+  .site-footer__bottom { padding-bottom: 8.5rem; } /* que los botones no tapen el pie */
 }
 
 /* 7. RESPONSIVE ------------------------------------------------------------- */

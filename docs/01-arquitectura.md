@@ -15,7 +15,7 @@ Cada sección responde una objeción y termina invitando a **Agendar servicio** 
 | # | Sección (ancla) | Objetivo | Recurso clave |
 |---|---|---|---|
 | 0 | Header fijo | Navegar sin perder la CTA | Logo con eslogan + 7 enlaces + «Agendar» |
-| 1 | **Hero** | Captar y convertir en 5 segundos | Eslogan oficial, técnico recibido en la puerta, selector equipo → avería → WhatsApp |
+| 1 | **Hero** | Captar y convertir en 5 segundos | H1 «Servicio técnico de electrodomésticos en Santiago», franja de servicios, foto del técnico, selector equipo → avería → WhatsApp |
 | 2 | Franja de marcas | Autoridad inmediata | Bosch, Siemens, Miele, Neff, Gaggenau, AEG (en texto) |
 | 3 | `#servicios` | «Reparan lo que tengo» | Tarjetas por equipo con **micro-video en bucle** |
 | 4 | `#instalacion` | **Diferencial**: instalación y panelado | Equipos encastrables y panelables de alta gama |
@@ -29,7 +29,7 @@ Cada sección responde una objeción y termina invitando a **Agendar servicio** 
 | 12 | `#cobertura` | «¿Llegan a mi comuna?» | Comunas por zona + comprobador |
 | 13 | `#faq` | Resolver objeciones finales | Acordeón con 10 preguntas |
 | 14 | `#contacto` | Cierre | WhatsApp directo, llamada al móvil, contacto@mantenplus.cl, redes |
-| — | Botón flotante | WhatsApp siempre a mano | Círculo verde original de WhatsApp |
+| — | Botones flotantes | Contacto siempre a mano | «Llámanos» (azul, audífonos) sobre «Escríbenos» (verde original de WhatsApp) |
 
 **Fase 2 (SEO local):** páginas `/reparacion-lavadoras`, `/reparacion-refrigeradores`, `/reparacion-encimeras`, `/servicio-tecnico-bosch`, `/servicio-tecnico-miele`… y por comuna (`/servicio-tecnico-las-condes`). Es lo que de verdad posiciona en Google para búsquedas como «técnico lavadora Bosch Vitacura».
 

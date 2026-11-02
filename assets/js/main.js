@@ -44,7 +44,7 @@
 
   // Header: sombra al hacer scroll
   const header = document.querySelector('[data-header]');
-  const fab = document.querySelector('[data-wa-fab]'); // botón flotante de WhatsApp
+  const fab = document.querySelector('[data-fab]'); // botones flotantes de llamada y WhatsApp
 
   const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
   onScroll();

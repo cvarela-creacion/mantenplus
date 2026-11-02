@@ -38,16 +38,33 @@ Observaciones pendientes para el cliente:
 - En varias fotos el polo lleva un logo «M+» con «Servicio Técnico de Electrodomésticos», distinto del isotipo oficial (casa con refrigerador y lavadora).
 - El medidor de consumo de la foto de instrumentos marca 120 V y tiene un enchufe estadounidense; en Chile la red es de 220 V con enchufes tipo L o C.
 
+## Portada, SEO y contacto flotante (2 nov 2026)
+
+| Elemento | Antes | Ahora |
+|---|---|---|
+| Franja sobre el título | Servicio técnico a domicilio · Santiago | Reparación · Mantención · Instalación |
+| H1 | Expertos en el cuidado y reparación de tus electrodomésticos | Servicio técnico de electrodomésticos en Santiago |
+| Descripción | Reparación, mantención e instalación… | A domicilio y con diagnóstico transparente: te mostramos la falla y el presupuesto antes de reparar. Especialistas en equipos de alta gama, incluidos encastrables y panelables. Cuidamos tus equipos y tu hogar. |
+| Eslogan | Bajo el logo y como H1 | Solo bajo el logo (cabecera y footer) y en la imagen para compartir |
+
+La descripción no repite «reparación, mantención e instalación», que ya están en la franja superior.
+
+SEO revisado: el `<title>` («Servicio técnico de electrodomésticos a domicilio en Santiago») ya era coherente y no cambió. Se actualizaron la metadescripción y el título y la descripción para redes (Open Graph), y se agregó «Instalación y panelado de electrodomésticos encastrables» a `knowsAbout` en los datos estructurados, porque es un servicio que la página ofrece. No cambiaron URLs, dominio ni datos comerciales.
+
+Botones flotantes: «Llámanos» (círculo azul con el ícono de audífonos, enlace `tel:`) sobre «Escríbenos» (círculo verde de WhatsApp), en una pila fija con aro blanco. En el celular se muestran solo los círculos para no tapar el contenido; las etiquetas quedan como nombre accesible. Mientras el número sea provisorio, ambos abren el diálogo para copiar el mensaje.
+
+Fotos reemplazadas: portada (el técnico con el parche «German Engineering» en la manga, 4:3), paso 1 «Llegada pulcra» (otro calzado) y equipo (cambia la integrante de la izquierda).
+
 ## Archivos de imagen
 
 | Uso | Archivos |
 |---|---|
-| Portada | `assets/img/portada-tecnico-lavadora-{600,1200}.webp` |
+| Portada | `assets/img/portada-tecnico-lavadora-{720,1440}.webp` |
 | Instalación y panelado | `assets/img/instalacion-panelado-{800,1365}.webp` |
 | Antes/después | `assets/img/resultados/{lavadora,secadora,lavavajillas,horno,microondas,encimera,campana}-{antes,despues}-*.webp` |
 | Galería | `assets/img/galeria/*-{640,1280}.webp` |
-| Proceso | `assets/img/proceso/paso-1-llegada-{800,1408}.webp`, `paso-2-diagnostico-{480,688}.webp`, `paso-4-charla-{800,1440}.webp`; el paso 3 usa la campana de isla de la galería |
-| Equipo | `assets/img/equipo-mantenplus-{720,1195}.webp` |
+| Proceso | `assets/img/proceso/paso-1-llegada-{800,1440}.webp`, `paso-2-diagnostico-{480,688}.webp`, `paso-4-charla-{800,1440}.webp`; el paso 3 usa la campana de isla de la galería |
+| Equipo | `assets/img/equipo-mantenplus-{720,1440}.webp` |
 | Herramientas | `assets/img/herramientas/{instrumentos-medicion,herramientas-precision}-{640,1280}.webp` |
 
 ## Piezas compartidas

@@ -1,0 +1,9 @@
+ccxt>=4.5,<5
+pandas>=2.2
+numpy>=1.26
+anthropic>=2.4,<3
+pydantic>=2.7,<3
+python-dotenv>=1.0
+
+# Desarrollo / pruebas
+pytest>=8

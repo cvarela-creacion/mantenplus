@@ -50,7 +50,7 @@ Pruebas automáticas (opcionales): `npm ci && npm test`.
 
 ## Pendientes antes de publicar
 
-- Redes sociales y reseñas: reemplazar `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` y `[LINK_GOOGLE_RESENAS]`.
+- Redes sociales y reseñas: los íconos de Instagram y Facebook y los botones de reseñas de Google están ocultos (atributo `hidden`) hasta tener los perfiles. Al recibir los enlaces, reemplazar `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` y `[LINK_GOOGLE_RESENAS]` y quitar `hidden` (en `tools/partes.py`, `index.html` y `galeria.html`).
 - Confirmar comunas de cobertura, reseñas reales y respuestas de Preguntas frecuentes (detalle en `docs/01-arquitectura.md`).
 - Las fotos con rótulo «Imagen referencial» (logos ilegibles) conviene reemplazarlas por fotos propias con el uniforme oficial (ver `docs/07-directrices-marca.md`).
 - Micro-videos de servicios: esperan en `<template data-pending-media>`; al subir cada archivo, sacar su `<video>` del template.

@@ -69,7 +69,9 @@ def quick_contact(origen):
 
 def social(extra=''):
     """Íconos de redes con sus colores de marca (Facebook azul clásico, degradado de Instagram)."""
-    return f'''        <div class="social{extra}">
+    # Ocultas hasta crear los perfiles: reemplazar [LINK_INSTAGRAM] y [LINK_FACEBOOK] y quitar «hidden»
+    return f'''        <!-- Redes ocultas hasta crear los perfiles: reemplazar [LINK_INSTAGRAM] y [LINK_FACEBOOK] y quitar «hidden» -->
+        <div class="social{extra}" hidden>
           <a class="social__link social__link--ig" href="[LINK_INSTAGRAM]" aria-label="Instagram de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
           <a class="social__link social__link--fb" href="[LINK_FACEBOOK]" aria-label="Facebook de MantenPlus"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
         </div>'''

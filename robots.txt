@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+# Carpetas y archivos internos del proyecto: no forman parte de la web
+Disallow: /docs/
+Disallow: /tests/
+Disallow: /tools/
+Disallow: /README.md
+Disallow: /package.json
 
 Sitemap: https://mantenplus.cl/sitemap.xml

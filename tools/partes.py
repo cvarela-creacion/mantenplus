@@ -1,8 +1,8 @@
 """Piezas compartidas de cabecera, botón de WhatsApp y diálogo para index.html y galeria.html.
 Uso: python3 tools/partes.py  (reescribe los bloques marcados en ambas páginas)."""
 
-WA = 'https://wa.me/569XXXXXXXX?text='
-TEL = 'tel:+569XXXXXXXX'  # TODO: número móvil definitivo (el mismo de WhatsApp)
+WA = 'https://wa.me/56935402182?text='
+TEL = 'tel:+56935402182'  # móvil y WhatsApp Business de MantenPlus
 AGENDAR = WA + 'Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio.'
 
 NAV = [('servicios', 'Servicios'), ('instalacion', 'Instalación'), ('galeria', 'Galería'),

@@ -129,7 +129,7 @@ Desde ese momento, `cvarela-creacion.github.io/mantenplus/` y `www.mantenplus.cl
 ## Lista de control antes de anunciar el sitio
 
 - [ ] Correo contacto@mantenplus.cl recibiendo y enviando (paso 7).
-- [ ] Número de WhatsApp y móvil real (`569XXXXXXXX` y «Número definitivo pendiente»).
+- [x] Número de WhatsApp y móvil real: +56 9 3540 2182 (8 nov 2026).
 - [ ] Enlaces de Instagram, Facebook y reseñas de Google.
 - [ ] Comunas de cobertura confirmadas.
 - [ ] Respuestas de Preguntas frecuentes y promesas del servicio validadas (ver `01-arquitectura.md`).

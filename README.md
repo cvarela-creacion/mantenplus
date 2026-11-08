@@ -42,10 +42,14 @@ python3 -m http.server 8080   # luego abre http://localhost:8080
 
 Pruebas automáticas (opcionales): `npm ci && npm test`.
 
+## Datos de contacto
+
+- WhatsApp Business y móvil: **+56 9 3540 2182** (`56935402182` en `assets/js/main.js` y en los enlaces `wa.me` y `tel:` de `index.html`, `galeria.html` y `tools/partes.py`).
+- Correo: **contacto@mantenplus.cl** (Zoho Mail).
+- Dominio: **https://mantenplus.cl** (archivo `CNAME`; no borrarlo).
+
 ## Pendientes antes de publicar
 
-- Número de WhatsApp y móvil: reemplazar `569XXXXXXXX` en `index.html`, `galeria.html`, `assets/js/main.js` y `tools/partes.py`. Mientras sea provisorio, los botones de WhatsApp y de llamada abren un diálogo para revisar y copiar el mensaje; con el número real funcionan directo.
-- Número visible en Contacto: reemplazar «Número definitivo pendiente».
 - Redes sociales y reseñas: reemplazar `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` y `[LINK_GOOGLE_RESENAS]`.
 - Confirmar comunas de cobertura, reseñas reales y respuestas de Preguntas frecuentes (detalle en `docs/01-arquitectura.md`).
 - Las fotos con rótulo «Imagen referencial» (logos ilegibles) conviene reemplazarlas por fotos propias con el uniforme oficial (ver `docs/07-directrices-marca.md`).

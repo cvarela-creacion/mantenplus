@@ -1,6 +1,6 @@
 /* MantenPlus · interacciones del sitio (sin dependencias) */
 (() => {
-  const WA_NUMBER = '569XXXXXXXX'; // TODO: reemplazar por el número de WhatsApp Business (569 + 8 dígitos)
+  const WA_NUMBER = '56935402182'; // WhatsApp Business de MantenPlus (569 + 8 dígitos)
   const WA_READY = /^569\d{8}$/.test(WA_NUMBER);
   const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
 
@@ -29,6 +29,10 @@
     });
     dialog.querySelector('[data-close-dialog]').addEventListener('click', () => dialog.close());
     dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); }); // clic fuera del panel
+  }
+  // Con el número real, WhatsApp se abre en una pestaña nueva para que el visitante no pierda la página
+  if (WA_READY) {
+    document.querySelectorAll('a[href*="wa.me/"]').forEach((a) => { a.target = '_blank'; a.rel = 'noopener'; });
   }
   if (!WA_READY) {
     document.addEventListener('click', (e) => {

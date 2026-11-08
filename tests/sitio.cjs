@@ -80,21 +80,23 @@ const server = http.createServer((req, res) => {
   // 3. Interacciones en escritorio
   {
     const { page } = await open({ width: 1440, height: 900 });
-    // Selector de equipo + avería → diálogo de revisión (número provisorio)
+    // WhatsApp real: se intercepta window.open para comprobar el mensaje sin salir de la página
+    await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }; });
+    const lastOpened = () => page.evaluate(() => window.__opened.at(-1) || '');
+    // Selector de equipo + avería
     await page.click('label.chip:has(input[value="refrigerador"])');
     const issues = await page.$$eval('[data-issue-chips] input', (els) => els.map((e) => e.value));
     check('Selector: averías del refrigerador', issues.includes('No enfría'), issues.join(', '));
     await page.click('[data-issue-chips] label.chip:has(input[value="No enfría"])');
     await page.click('[data-quick-book] button[type=submit]');
-    const msg = await page.inputValue('[data-message-text]');
-    check('Selector: mensaje con equipo y avería en el diálogo', /refrigerador\. Problema: no enfría\./.test(msg), msg);
-    await page.keyboard.press('Escape');
+    const sel = await lastOpened();
+    check('Selector: abre WhatsApp del número real con equipo y avería', sel.startsWith('https://wa.me/56935402182?text=') && /refrigerador\. Problema: no enfría\./.test(decodeURIComponent(sel)), sel);
     await page.click('label.chip:has(input[value="otro equipo"])');
     check('Selector: «Otro» oculta el paso de avería', await page.isHidden('[data-issues]'));
-    // Enlaces de WhatsApp en modo revisión
-    await page.click('.service__link >> nth=1');
-    check('WhatsApp provisorio: abre el diálogo con el mensaje', /refrigerador/.test(await page.inputValue('[data-message-text]')));
-    await page.click('[data-close-dialog]');
+    // Enlaces de WhatsApp y llamada: número real
+    check('WhatsApp: todos los enlaces van al número real y abren en pestaña nueva', await page.evaluate(() => { const l = [...document.querySelectorAll('a[href*="wa.me/"]')]; return l.length > 10 && l.every((a) => a.href.startsWith('https://wa.me/56935402182?') && a.target === '_blank'); }));
+    check('Llamada: todos los enlaces marcan +56 9 3540 2182', await page.evaluate(() => { const l = [...document.querySelectorAll('a[href^="tel:"]')]; return l.length >= 4 && l.every((a) => a.getAttribute('href') === 'tel:+56935402182'); }));
+    check('Sin datos provisorios en la página', !/569XXXXXXXX|Número definitivo pendiente/.test(await page.content()));
     // Comparador y pestañas
     await page.focus('#caso-lavadora .ba__range'); await page.keyboard.press('ArrowRight');
     check('Comparador: teclado mueve el tirador', (await page.$eval('#caso-lavadora [data-ba]', (e) => e.style.getPropertyValue('--pos'))) === '51%');
@@ -138,20 +140,20 @@ const server = http.createServer((req, res) => {
     // Contacto: WhatsApp, llamada al móvil y correo; redes con colores de marca
     check('Contacto: WhatsApp, llamada y correo', await page.evaluate(() => ['wa.me/', 'tel:+569', 'mailto:contacto@mantenplus.cl'].every((h) => document.querySelector(`#contacto .channel[href*="${h}"]`))));
     check('Redes: Facebook azul e Instagram con degradado', await page.evaluate(() => getComputedStyle(document.querySelector('.site-footer .social__link--fb')).backgroundColor === 'rgb(24, 119, 242)' && getComputedStyle(document.querySelector('.site-footer .social__link--ig')).backgroundImage.includes('gradient')));
-    await page.click('#contacto .channel[href^="tel:"]');
-    check('Llamada con número provisorio: avisa en el diálogo', /número móvil definitivo está pendiente/.test(await page.textContent('[data-dialog-lead]')));
-    await page.click('[data-close-dialog]');
+    check('Contacto: muestra el número y el correo', await page.evaluate(() => { const t = [...document.querySelectorAll('#contacto .channel strong')].map((e) => e.textContent); return t.filter((x) => x === '+56 9 3540 2182').length === 2 && t.includes('contacto@mantenplus.cl'); }));
     // Cobertura
     for (const [q, cls] of [['nunoa', 'is-ok'], ['Chicureo', 'is-ok'], ['Maipú', 'is-maybe'], ['Narnia', 'is-error']]) {
       await page.fill('#checker-comuna', q); await page.click('[data-checker] button');
       check(`Cobertura: «${q}»`, (await page.getAttribute('[data-checker-result]', 'class')).includes(cls));
     }
     // Formulario de contacto
+    const before = await page.evaluate(() => window.__opened.length);
     await page.click('[data-contact-form] button[type=submit]');
-    check('Contacto: campos vacíos no avanzan', !(await page.evaluate(() => document.querySelector('[data-message-dialog]').open)));
+    check('Contacto: campos vacíos no avanzan', (await page.evaluate(() => window.__opened.length)) === before);
     await page.fill('#cf-nombre', 'Ana'); await page.fill('#cf-comuna', 'Las Condes'); await page.selectOption('#cf-equipo', 'Horno'); await page.fill('#cf-detalle', 'no calienta');
     await page.click('[data-contact-form] button[type=submit]');
-    check('Contacto: mensaje completo', /soy Ana[\s\S]*horno en Las Condes[\s\S]*Problema: no calienta/.test(await page.inputValue('[data-message-text]')));
+    const form = decodeURIComponent(await lastOpened());
+    check('Contacto: abre WhatsApp con el mensaje completo', form.startsWith('https://wa.me/56935402182?text=') && /soy Ana[\s\S]*horno en Las Condes[\s\S]*Problema: no calienta/.test(form), form);
     await page.close();
   }
 

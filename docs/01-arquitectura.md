@@ -63,8 +63,7 @@ Bosch, Siemens, Miele, Neff, Gaggenau y AEG son marcas de terceros. Se muestran 
 
 | Marcador | Dónde |
 |---|---|
-| `569XXXXXXXX` | `index.html` (todos los enlaces `wa.me`) y `assets/js/main.js` (`WA_NUMBER`) |
-| `tel:+569XXXXXXXX` y «Número definitivo pendiente» | `index.html` y `galeria.html` (llamada al móvil y número visible en Contacto); también `TEL` en `tools/partes.py` |
+| ~~`569XXXXXXXX`~~ | Resuelto el 8 nov 2026: +56 9 3540 2182 en todos los enlaces `wa.me` y `tel:` |
 | `[LINK_INSTAGRAM]`, `[LINK_FACEBOOK]` | `index.html` (menú móvil, Contacto y footer) |
 | `[LINK_GOOGLE_RESENAS]` | `index.html`, botones de Opiniones (ficha de Google Business) |
 | `assets/img/hero-tecnico-puerta.{avif,webp,jpg}` | Foto del Hero (ver `04-brief-fotografico.md`) |

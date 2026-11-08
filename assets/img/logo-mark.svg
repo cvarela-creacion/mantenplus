@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" role="img" aria-label="MantenPlus">
+  <title>MantenPlus</title>
+  <!-- Casa: contorno continuo (suelo → muro → techo → chimenea → techo → muro → suelo) -->
+  <path d="M10 358H137V178H100L330 12L422 78V34H488V126L562 178H519V358H670"
+        fill="none" stroke="#2E3036" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Refrigerador -->
+  <rect x="232" y="120" width="98" height="220" rx="9" fill="#2E3036"/>
+  <rect x="232" y="199" width="98" height="6" fill="#fff"/>
+  <rect x="243" y="146" width="7" height="30" rx="3.5" fill="#fff"/>
+  <rect x="243" y="216" width="7" height="34" rx="3.5" fill="#fff"/>
+  <!-- Lavadora -->
+  <rect x="348" y="197" width="111" height="143" rx="9" fill="#2E3036"/>
+  <rect x="348" y="224" width="111" height="5" fill="#fff"/>
+  <circle cx="403.5" cy="283" r="33" fill="#fff"/>
+</svg>

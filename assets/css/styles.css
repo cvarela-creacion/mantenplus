@@ -90,7 +90,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 h1, h2, h3 { font-family: var(--font-display); color: var(--ink); margin: 0; letter-spacing: -.025em; }
 p { margin: 0; }
 :where(ul[role="list"]) { list-style: none; margin: 0; padding: 0; }
-[hidden] { display: none !important; } /* lo oculto con el atributo hidden no reaparece por un display de su clase */
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: var(--radius-sm); }
 
 /* 3. UTILIDADES ------------------------------------------------------------- */

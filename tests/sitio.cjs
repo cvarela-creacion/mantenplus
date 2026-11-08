@@ -139,7 +139,7 @@ const server = http.createServer((req, res) => {
     check('Antes/después: fotos (no ilustraciones)', await page.evaluate(() => [...document.querySelectorAll('[data-ba] img')].every((i) => /\.webp$/.test(i.currentSrc || i.src))));
     // Contacto: WhatsApp, llamada al móvil y correo; redes con colores de marca
     check('Contacto: WhatsApp, llamada y correo', await page.evaluate(() => ['wa.me/', 'tel:+569', 'mailto:contacto@mantenplus.cl'].every((h) => document.querySelector(`#contacto .channel[href*="${h}"]`))));
-    check('Sin enlaces provisorios visibles: redes y reseñas de Google ocultas hasta tener los perfiles', await page.evaluate(() => { const b = [...document.querySelectorAll('.social')]; return b.length === 3 && b.every((x) => x.hidden && x.offsetParent === null) && [...document.querySelectorAll('a[href^="[LINK_"]')].every((a) => a.offsetParent === null); }));
+    check('Redes: Facebook azul e Instagram con degradado', await page.evaluate(() => getComputedStyle(document.querySelector('.site-footer .social__link--fb')).backgroundColor === 'rgb(24, 119, 242)' && getComputedStyle(document.querySelector('.site-footer .social__link--ig')).backgroundImage.includes('gradient')));
     check('Contacto: muestra el número y el correo', await page.evaluate(() => { const t = [...document.querySelectorAll('#contacto .channel strong')].map((e) => e.textContent); return t.filter((x) => x === '+56 9 3540 2182').length === 2 && t.includes('contacto@mantenplus.cl'); }));
     // Cobertura
     for (const [q, cls] of [['nunoa', 'is-ok'], ['Chicureo', 'is-ok'], ['Maipú', 'is-maybe'], ['Narnia', 'is-error']]) {

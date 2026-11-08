@@ -27,7 +27,7 @@ docs/
   02-guia-visual.md             Paleta, tipografía, botones, movimiento
   03-tecnicas-interactivas.md   Slider antes/después, carrusel storytelling, micro-videos
   04-brief-fotografico.md       Dirección de arte para la foto del Hero y la del equipo
-  05-publicacion.md             Publicación gratis con GitHub Pages y conexión de mantenplus.cl
+  05-publicacion.md             Conexión de mantenplus.cl (Cloudflare + NIC Chile), GitHub Pages y correo Zoho
   06-integracion-codex.md       Qué se tomó de la propuesta Codex, qué se conservó y por qué
   07-directrices-marca.md       Directrices definitivas del 1 nov 2026 y estado de las imágenes
 ```

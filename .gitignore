@@ -1,0 +1,13 @@
+# Secretos y estado local: NUNCA subir al repositorio
+.env
+state/
+logs/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/

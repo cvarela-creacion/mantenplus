@@ -102,6 +102,14 @@ const server = http.createServer((req, res) => {
     check('Selector: averías del refrigerador', issues.includes('No enfría'), issues.join(', '));
     const q2 = await submitQuick();
     check('Agenda: «No estoy seguro» no envía detalle', q2 === `${AGENDA}?servicio=reparacion&equipo=refrigerador`, q2);
+    check('Selector: diez equipos, con lavasecadora y microondas', (await page.$$eval('input[name=equipo]', (els) => els.map((e) => e.value).join())) === 'lavadora,secadora,lavasecadora,refrigerador,lavavajillas,horno,microondas,encimera,campana,otro');
+    await page.click('label.chip:has(input[value="microondas"])');
+    await page.click('[data-issue-chips] label.chip:has(input[value="No calienta"])');
+    const q4 = await submitQuick();
+    check('Agenda: reparación de microondas con detalle', q4 === `${AGENDA}?servicio=reparacion&equipo=microondas&detalle=No%20calienta`, q4);
+    await page.click('label.chip:has(input[value="lavasecadora"])');
+    const q5 = await submitQuick();
+    check('Agenda: lavasecadora', q5 === `${AGENDA}?servicio=reparacion&equipo=lavasecadora`, q5);
     await page.click('label.chip:has(input[value="mantencion"])');
     check('Selector: mantención oculta el paso de avería', await page.isHidden('[data-issues]'));
     await page.click('label.chip:has(input[value="horno"])');

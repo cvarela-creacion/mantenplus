@@ -3,6 +3,7 @@
   const WA_NUMBER = '56935402182'; // WhatsApp Business de MantenPlus (569 + 8 dígitos)
   const WA_READY = /^569\d{8}$/.test(WA_NUMBER);
   const waLink = (text) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+  const AGENDA = 'https://mantenplus.onrender.com/agendar/mantenplus'; // formulario de agenda en línea (botones «Agendar»)
 
   // Modo revisión (idea de la propuesta Codex): mientras el número sea provisorio, en vez de abrir un WhatsApp
   // que fallaría, se muestra el mensaje para revisarlo, copiarlo o mandarlo por correo. Con el número real, abre WhatsApp directo.
@@ -82,16 +83,16 @@
   });
   matchMedia('(min-width: 1181px)').addEventListener('change', (e) => { if (e.matches && !menu.hidden) setMenu(false, { restoreFocus: false }); });
 
-  // Agendamiento rápido: el equipo (paso 1) y la avería opcional (paso 2) viajan en el mensaje
+  // Agendamiento rápido: servicio (paso 1), equipo (paso 2) y avería opcional (paso 3, solo en reparaciones)
+  // viajan a la agenda en línea como ?servicio=reparacion&equipo=lavadora&detalle=No%20centrifuga
   const form = document.querySelector('[data-quick-book]');
   if (form) {
-    const text = form.querySelector('[data-wa-text]');
     const issues = form.querySelector('[data-issues]');
     const issueChips = form.querySelector('[data-issue-chips]');
     const chip = (value, label, checked) => {
       const wrap = document.createElement('label');
       wrap.className = 'chip';
-      const input = Object.assign(document.createElement('input'), { type: 'radio', name: 'averia', value, checked });
+      const input = Object.assign(document.createElement('input'), { type: 'radio', name: 'detalle', value, checked });
       const span = document.createElement('span');
       span.textContent = label;
       wrap.append(input, span);
@@ -99,25 +100,22 @@
     };
     const selected = (name) => form.querySelector(`input[name="${name}"]:checked`);
     const renderIssues = () => {
-      const averias = selected('equipo')?.dataset.averias;
+      const averias = selected('servicio')?.value === 'reparacion' && selected('equipo')?.dataset.averias;
       issues.hidden = !averias;
       if (averias) issueChips.replaceChildren(chip('', 'No estoy seguro', true), ...averias.split('|').map((a) => chip(a, a, false)));
+      else issueChips.replaceChildren(); // sin avería: «detalle» no viaja
     };
-    const sync = () => {
-      const equipo = selected('equipo')?.value || 'electrodoméstico';
-      const averia = selected('averia')?.value;
-      text.value = `Hola MantenPlus, quiero agendar un servicio para mi ${equipo}.` + (averia ? ` Problema: ${averia.toLowerCase()}.` : '');
-    };
-    form.addEventListener('change', (e) => {
-      if (e.target.name === 'equipo') renderIssues();
-      sync();
-    });
+    form.addEventListener('change', (e) => { if (e.target.name !== 'detalle') renderIssues(); });
     renderIssues();
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      sync();
-      track('hero_agendar', { equipo: selected('equipo')?.value, averia: selected('averia')?.value || 'sin especificar' });
-      sendWhatsApp(text.value);
+      const params = ['servicio', 'equipo', 'detalle']
+        .map((k) => [k, selected(k)?.value])
+        .filter(([, v]) => v)
+        .map(([k, v]) => `${k}=${encodeURIComponent(v)}`);
+      const url = `${form.action}?${params.join('&')}`;
+      track('hero_agendar', { servicio: selected('servicio')?.value, equipo: selected('equipo')?.value, detalle: selected('detalle')?.value || 'sin especificar' });
+      window.location.assign(url);
     });
   }
 
@@ -266,8 +264,8 @@
       if (comuna && covered.has(comuna)) {
         out.className = 'checker__result is-ok';
         msg.textContent = `¡Sí! Atendemos en ${name}.`;
-        link.textContent = 'Agendar por WhatsApp';
-        link.href = waLink(`Hola MantenPlus, estoy en ${name} y quiero agendar un servicio.`);
+        link.textContent = 'Agendar servicio';
+        link.href = AGENDA;
       } else if (comuna) {
         out.className = 'checker__result is-maybe';
         msg.textContent = `${name} no está en nuestra zona habitual, pero escríbenos y lo evaluamos.`;

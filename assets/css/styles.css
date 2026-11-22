@@ -298,11 +298,13 @@ p { margin: 0; }
 
 .hero__ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: var(--space-5); }
 .quick-book__note { margin-top: var(--space-3); font-size: var(--fs-xs); color: var(--gray-500); }
+.quick-book__note a { color: var(--sky-700); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .quick-book__step {
   display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: .55rem; vertical-align: 1px;
   border-radius: 50%; font-size: .75rem; font-weight: 700; color: var(--white); background: var(--sky-600);
 }
 .quick-book__optional { font-weight: 400; color: var(--gray-500); }
+.quick-book__set--next { margin-top: var(--space-5); }
 .quick-book__set--issues { margin-top: var(--space-5); animation: tip-in .35s var(--ease); }
 .chips--issues .chip span { min-height: 36px; padding: 0 .9rem; font-size: .8125rem; }
 

@@ -8,14 +8,14 @@ El cliente medio-alto de Santiago no compra «una reparación». Compra **tranqu
 2. **«¿Me van a cobrar de más?»** → diagnóstico transparente *antes* de reparar y garantía por escrito.
 3. **«¿Saben de equipos de alta gama?»** → despiece técnico, especialización en ingeniería alemana.
 
-Cada sección responde una objeción y termina invitando a **Agendar servicio** (WhatsApp).
+Cada sección responde una objeción y termina invitando a **Agendar servicio** (agenda en línea: https://mantenplus.onrender.com/agendar/mantenplus). WhatsApp, la llamada y el correo quedan como contacto directo.
 
 ## Mapa del sitio (fase 1: landing de una página + páginas SEO)
 
 | # | Sección (ancla) | Objetivo | Recurso clave |
 |---|---|---|---|
 | 0 | Header fijo | Navegar sin perder la CTA | Logo con eslogan + 7 enlaces + «Agendar» |
-| 1 | **Hero** | Captar y convertir en 5 segundos | H1 «Servicio técnico de electrodomésticos en Santiago», franja de servicios, foto del técnico, selector equipo → avería → WhatsApp |
+| 1 | **Hero** | Captar y convertir en 5 segundos | H1 «Servicio técnico de electrodomésticos en Santiago», franja de servicios, foto del técnico, selector servicio → equipo → avería → agenda en línea |
 | 2 | Franja de marcas | Autoridad inmediata | Bosch, Siemens, Miele, Neff, Gaggenau, AEG (en texto) |
 | 3 | `#servicios` | «Reparan lo que tengo» | Tarjetas por equipo con **micro-video en bucle** |
 | 4 | `#instalacion` | **Diferencial**: instalación y panelado | Equipos encastrables y panelables de alta gama |
@@ -36,13 +36,18 @@ Cada sección responde una objeción y termina invitando a **Agendar servicio** 
 ## Embudo de conversión
 
 ```
-Visita → Hero (selecciona equipo) → WhatsApp con mensaje pre-llenado
-                                     «Hola MantenPlus, quiero agendar un servicio para mi lavadora.»
+Visita → Hero (servicio + equipo + avería) → Agenda en línea con los datos ya elegidos
+         https://mantenplus.onrender.com/agendar/mantenplus?servicio=reparacion&equipo=lavadora&detalle=No%20centrifuga
 ```
 
-- **Una sola acción principal** en todo el sitio: *Agendar servicio*. El correo es secundario.
-- El **selector de equipo** del Hero es un micro-compromiso: el usuario ya «empezó» a agendar, y el mensaje llega pre-calificado al equipo de atención.
-- Eventos medibles ya implementados (`data-track`): `header_agendar`, `hero_agendar` (con el equipo elegido), `menu_agendar`, `sticky_agendar`. Se envían a GA4 (`gtag`) y Meta Pixel (`fbq`) si están instalados.
+- **Una sola acción principal** en todo el sitio: *Agendar servicio*, que abre la agenda en línea. WhatsApp («Escríbenos»), la llamada y el correo son contacto adicional.
+- Parámetros que recibe la agenda:
+  - `servicio`: `reparacion`, `mantencion` o `instalacion`.
+  - `equipo`: `lavadora`, `secadora`, `lavasecadora`, `lavavajillas`, `refrigerador`, `horno`, `encimera`, `campana`, `microondas` u `otro`.
+  - `detalle`: la avería elegida (solo en reparaciones; si es «No estoy seguro», no se envía).
+- Las tarjetas de Servicios abren la agenda con su equipo (`?equipo=campana`); los demás botones «Agendar», sin parámetros.
+- El **selector** del Hero es un micro-compromiso: el usuario ya «empezó» a agendar y la solicitud llega pre-calificada.
+- Eventos medibles ya implementados (`data-track`): `header_agendar`, `hero_agendar` (con servicio, equipo y detalle), `menu_agendar`, `servicio_<equipo>`, `proceso_agendar`, `charlas_agendar`, `galeria_agendar`, `cobertura_agendar`, `hero_whatsapp`. Se envían a GA4 (`gtag`) y Meta Pixel (`fbq`) si están instalados.
 
 ## Decisiones técnicas
 
@@ -85,6 +90,6 @@ El sitio no inventa cifras, plazos ni reseñas. Aun así, estos textos describen
 
 ## Conversión implementada en la fase final
 
-- **Comprobador de cobertura:** acepta nombres sin tildes («nunoa» → Ñuñoa) y el alias «Chicureo». Si la comuna está cubierta, ofrece «Agendar por WhatsApp» con la comuna ya escrita; si no, «Consultar por WhatsApp». Registra el evento `cobertura_consulta`.
+- **Comprobador de cobertura:** acepta nombres sin tildes («nunoa» → Ñuñoa) y el alias «Chicureo». Si la comuna está cubierta, ofrece «Agendar servicio» (agenda en línea); si no, «Consultar por WhatsApp». Registra el evento `cobertura_consulta`.
 - **Formulario de contacto sin servidor:** valida con el navegador y abre WhatsApp con un mensaje ordenado (nombre, equipo, comuna, marca/modelo y problema). No guarda datos. Evento `contacto_formulario`.
 - **Barra fija móvil:** se oculta mientras se ve el Hero, la sección Contacto o el footer, para no duplicar botones.

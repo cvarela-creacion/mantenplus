@@ -83,18 +83,38 @@ const server = http.createServer((req, res) => {
     // WhatsApp real: se intercepta window.open para comprobar el mensaje sin salir de la página
     await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }; });
     const lastOpened = () => page.evaluate(() => window.__opened.at(-1) || '');
-    // Selector de equipo + avería
+    // Agendamiento rápido: servicio + equipo + avería viajan a la agenda en línea
+    const AGENDA = 'https://mantenplus.onrender.com/agendar/mantenplus';
+    await page.route(`${AGENDA}**`, (route) => route.fulfill({ status: 200, contentType: 'text/html', body: '<title>Agenda</title>' }));
+    const submitQuick = async () => {
+      await Promise.all([page.waitForURL(`${AGENDA}**`), page.click('[data-quick-book] button[type=submit]')]);
+      const url = page.url();
+      await page.goBack(); await page.waitForSelector('[data-quick-book]');
+      await page.evaluate(() => { window.__opened = []; window.open = (u) => { window.__opened.push(u); return null; }; });
+      return url;
+    };
+    await page.click('label.chip:has(input[value="lavadora"])');
+    await page.click('[data-issue-chips] label.chip:has(input[value="No centrifuga"])');
+    const q1 = await submitQuick();
+    check('Agenda: servicio, equipo y detalle en la dirección', q1 === `${AGENDA}?servicio=reparacion&equipo=lavadora&detalle=No%20centrifuga`, q1);
     await page.click('label.chip:has(input[value="refrigerador"])');
     const issues = await page.$$eval('[data-issue-chips] input', (els) => els.map((e) => e.value));
     check('Selector: averías del refrigerador', issues.includes('No enfría'), issues.join(', '));
-    await page.click('[data-issue-chips] label.chip:has(input[value="No enfría"])');
-    await page.click('[data-quick-book] button[type=submit]');
-    const sel = await lastOpened();
-    check('Selector: abre WhatsApp del número real con equipo y avería', sel.startsWith('https://wa.me/56935402182?text=') && /refrigerador\. Problema: no enfría\./.test(decodeURIComponent(sel)), sel);
-    await page.click('label.chip:has(input[value="otro equipo"])');
+    const q2 = await submitQuick();
+    check('Agenda: «No estoy seguro» no envía detalle', q2 === `${AGENDA}?servicio=reparacion&equipo=refrigerador`, q2);
+    await page.click('label.chip:has(input[value="mantencion"])');
+    check('Selector: mantención oculta el paso de avería', await page.isHidden('[data-issues]'));
+    await page.click('label.chip:has(input[value="horno"])');
+    const q3 = await submitQuick();
+    check('Agenda: mantención de horno', q3 === `${AGENDA}?servicio=mantencion&equipo=horno`, q3);
+    await page.click('label.chip:has(input[value="reparacion"])');
+    await page.click('label.chip:has(input[value="otro"])');
     check('Selector: «Otro» oculta el paso de avería', await page.isHidden('[data-issues]'));
+    const ag = await page.evaluate(() => [...document.querySelectorAll('a')].filter((a) => /Agendar/.test(a.textContent)).map((a) => a.href));
+    check('Agenda: todos los botones «Agendar» abren el formulario en línea', ag.length >= 10 && ag.every((h) => h.startsWith('https://mantenplus.onrender.com/agendar/mantenplus')), ag.filter((h) => !h.includes('onrender')).join(' '));
+    check('Agenda: tarjetas de servicio con su equipo', await page.getAttribute('[data-track="servicio_campana"]', 'href') === `${AGENDA}?equipo=campana`);
     // Enlaces de WhatsApp y llamada: número real
-    check('WhatsApp: todos los enlaces van al número real y abren en pestaña nueva', await page.evaluate(() => { const l = [...document.querySelectorAll('a[href*="wa.me/"]')]; return l.length > 10 && l.every((a) => a.href.startsWith('https://wa.me/56935402182?') && a.target === '_blank'); }));
+    check('WhatsApp: todos los enlaces van al número real y abren en pestaña nueva', await page.evaluate(() => { const l = [...document.querySelectorAll('a[href*="wa.me/"]')]; return l.length >= 8 && l.every((a) => a.href.startsWith('https://wa.me/56935402182?') && a.target === '_blank'); }));
     check('Llamada: todos los enlaces marcan +56 9 3540 2182', await page.evaluate(() => { const l = [...document.querySelectorAll('a[href^="tel:"]')]; return l.length >= 4 && l.every((a) => a.getAttribute('href') === 'tel:+56935402182'); }));
     check('Sin datos provisorios en la página', !/569XXXXXXXX|Número definitivo pendiente/.test(await page.content()));
     // Comparador y pestañas
@@ -146,6 +166,8 @@ const server = http.createServer((req, res) => {
       await page.fill('#checker-comuna', q); await page.click('[data-checker] button');
       check(`Cobertura: «${q}»`, (await page.getAttribute('[data-checker-result]', 'class')).includes(cls));
     }
+    await page.fill('#checker-comuna', 'Vitacura'); await page.click('[data-checker] button');
+    check('Cobertura: comuna cubierta lleva a la agenda en línea', (await page.getAttribute('[data-checker-result] a', 'href')) === AGENDA);
     // Formulario de contacto
     const before = await page.evaluate(() => window.__opened.length);
     await page.click('[data-contact-form] button[type=submit]');

@@ -13,7 +13,7 @@ index.html                 Landing: Hero → Servicios → Instalación y panela
 galeria.html               Galería completa por categoría (instalaciones, reparaciones, mantenimiento)
 assets/css/styles.css      Sistema visual (tokens, botones, header, hero, responsive)
 assets/js/main.js          Menú móvil, WhatsApp, slider, pestañas, carrusel, micro-videos, filtro de galería,
-                           comprobador de cobertura, formulario de contacto y medición
+                           comprobador de cobertura, formulario de contacto, enlace a la agenda y medición
 assets/img/logo-mark.svg   Isotipo redibujado en vector
 assets/img/                Fotos en WebP: portada, instalación, equipo, resultados/, galeria/, proceso/, herramientas/
 assets/fonts/              Inter y Plus Jakarta Sans autoalojadas (licencia SIL OFL)
@@ -44,6 +44,7 @@ Pruebas automáticas (opcionales): `npm ci && npm test`.
 
 ## Datos de contacto
 
+- Botones «Agendar»: agenda en línea **https://mantenplus.onrender.com/agendar/mantenplus** (`AGENDAR` en `tools/partes.py`, `AGENDA` en `assets/js/main.js`). El formulario de la portada agrega `?servicio=…&equipo=…&detalle=…` (detalle en `docs/01-arquitectura.md`).
 - WhatsApp Business y móvil: **+56 9 3540 2182** (`56935402182` en `assets/js/main.js` y en los enlaces `wa.me` y `tel:` de `index.html`, `galeria.html` y `tools/partes.py`).
 - Correo: **contacto@mantenplus.cl** (Zoho Mail).
 - Dominio: **https://mantenplus.cl** (archivo `CNAME`; no borrarlo).

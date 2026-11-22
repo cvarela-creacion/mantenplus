@@ -79,7 +79,7 @@
       </nav>
 
       <div class="site-header__actions">
-        <a class="btn btn--primary btn--sm" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="header_agendar">
+        <a class="btn btn--primary btn--sm" href="https://mantenplus.onrender.com/agendar/mantenplus" data-track="header_agendar">
           Agendar
         </a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
@@ -104,7 +104,7 @@
         </ul>
       </nav>
       <div class="mobile-menu__footer">
-        <a class="btn btn--primary btn--block" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="menu_agendar">Agendar servicio</a>
+        <a class="btn btn--primary btn--block" href="https://mantenplus.onrender.com/agendar/mantenplus" data-track="menu_agendar">Agendar servicio</a>
         <ul class="quick-contact" role="list" aria-label="Contacto directo">
           <li><a class="quick-contact__item quick-contact__item--wa" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="menu_whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a></li>
           <li><a class="quick-contact__item" href="tel:+56935402182" data-track="menu_llamar"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a></li>
@@ -138,10 +138,20 @@
             Especialistas en equipos de alta gama, incluidos encastrables y panelables. Cuidamos tus equipos y tu hogar.
           </p>
 
-          <!-- Agendamiento rápido: elegir el equipo pre-llena el mensaje de WhatsApp -->
-          <form class="quick-book" action="https://wa.me/56935402182" method="get" target="_blank" data-quick-book>
+          <!-- Agendamiento rápido: lo elegido viaja a la agenda en línea como ?servicio=…&equipo=…&detalle=…
+               (sin JavaScript, el envío nativo del formulario manda los mismos campos) -->
+          <form class="quick-book" action="https://mantenplus.onrender.com/agendar/mantenplus" method="get" data-quick-book>
             <fieldset class="quick-book__set">
-              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">1</span>¿Qué equipo necesitas revisar?</legend>
+              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">1</span>¿Qué necesitas?</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="servicio" value="reparacion" checked><span>Reparación</span></label>
+                <label class="chip"><input type="radio" name="servicio" value="mantencion"><span>Mantención</span></label>
+                <label class="chip"><input type="radio" name="servicio" value="instalacion"><span>Instalación</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="quick-book__set quick-book__set--next">
+              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">2</span>¿Para qué equipo?</legend>
               <div class="chips">
                 <label class="chip"><input type="radio" name="equipo" value="lavadora" data-averias="No centrifuga|Pierde agua|Ruidos al girar|Código de error" checked><span>Lavadora</span></label>
                 <label class="chip"><input type="radio" name="equipo" value="secadora" data-averias="No seca|No calienta|Hace ruido|Código de error"><span>Secadora</span></label>
@@ -150,26 +160,25 @@
                 <label class="chip"><input type="radio" name="equipo" value="horno" data-averias="No calienta|Cocción dispareja|Ventilador|Puerta"><span>Horno</span></label>
                 <label class="chip"><input type="radio" name="equipo" value="encimera" data-averias="No enciende|Código de error|Se apaga sola|Chispero"><span>Encimera</span></label>
                 <label class="chip"><input type="radio" name="equipo" value="campana" data-averias="Pierde succión|Ruido|Luces|Grasa acumulada"><span>Campana</span></label>
-                <label class="chip"><input type="radio" name="equipo" value="otro equipo"><span>Otro</span></label>
+                <label class="chip"><input type="radio" name="equipo" value="otro"><span>Otro</span></label>
               </div>
             </fieldset>
 
-            <!-- Paso 2 opcional (idea de la propuesta Codex): averías típicas del equipo elegido; main.js arma los chips -->
+            <!-- Paso 3 opcional, solo en reparaciones (idea de la propuesta Codex): averías típicas del equipo elegido; main.js arma los chips (name="detalle") -->
             <fieldset class="quick-book__set quick-book__set--issues" data-issues hidden>
-              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">2</span>¿Qué le pasa? <span class="quick-book__optional">(opcional)</span></legend>
+              <legend class="quick-book__label"><span class="quick-book__step" aria-hidden="true">3</span>¿Qué le pasa? <span class="quick-book__optional">(opcional)</span></legend>
               <div class="chips chips--issues" data-issue-chips></div>
             </fieldset>
-            <input type="hidden" name="text" value="Hola MantenPlus, quiero agendar un servicio para mi lavadora." data-wa-text>
 
             <div class="hero__ctas">
               <button class="btn btn--primary btn--lg" type="submit" data-track="hero_agendar">
-                <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
                 Agendar servicio
                 <svg class="icon icon--arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
               </button>
               <a class="btn btn--soft btn--lg" href="#como-trabajamos">Cómo trabajamos</a>
             </div>
-            <p class="quick-book__note">Te respondemos por WhatsApp en horario hábil. Sin compromiso.</p>
+            <p class="quick-book__note">Agenda en línea y sin compromiso. ¿Prefieres WhatsApp? <a href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="hero_whatsapp">Escríbenos</a>.</p>
           </form>
 
           <ul class="trust" role="list">
@@ -261,7 +270,7 @@
               <h3 class="service__title">Lavadoras y secadoras</h3>
               <p class="service__text">Carga frontal y superior, lavadoras-secadoras y secadoras de condensación o bomba de calor.</p>
               <ul class="service__tags" role="list"><li>No centrifuga</li><li>Pierde agua</li><li>Ruidos al girar</li><li>Código de error</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20lavadora%20o%20secadora." data-track="servicio_lavadora">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=lavadora" data-track="servicio_lavadora">
                 Agendar servicio<span class="visually-hidden"> de lavadora o secadora</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -280,7 +289,7 @@
               <h3 class="service__title">Refrigeradores</h3>
               <p class="service__text">No Frost, side by side, french door y empotrados. Diagnóstico de compresor, sensores y placa electrónica.</p>
               <ul class="service__tags" role="list"><li>No enfría</li><li>Forma hielo</li><li>Ruido del motor</li><li>Gotea agua</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20refrigerador." data-track="servicio_refrigerador">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=refrigerador" data-track="servicio_refrigerador">
                 Agendar servicio<span class="visually-hidden"> de refrigerador</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -299,7 +308,7 @@
               <h3 class="service__title">Lavavajillas</h3>
               <p class="service__text">Libre instalación y panelables. Bombas, aspersores, resistencias y sistemas de secado.</p>
               <ul class="service__tags" role="list"><li>No desagua</li><li>No seca</li><li>Deja residuos</li><li>Fugas</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20lavavajillas." data-track="servicio_lavavajillas">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=lavavajillas" data-track="servicio_lavavajillas">
                 Agendar servicio<span class="visually-hidden"> de lavavajillas</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -318,7 +327,7 @@
               <h3 class="service__title">Hornos</h3>
               <p class="service__text">Eléctricos, multifunción, a vapor y pirolíticos. Resistencias, termostatos, ventiladores y cierres.</p>
               <ul class="service__tags" role="list"><li>No calienta</li><li>Cocción dispareja</li><li>Ventilador</li><li>Puerta</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20horno." data-track="servicio_horno">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=horno" data-track="servicio_horno">
                 Agendar servicio<span class="visually-hidden"> de horno</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -337,7 +346,7 @@
               <h3 class="service__title">Encimeras</h3>
               <p class="service__text">Inducción, vitrocerámica y gas. Zonas que no encienden, errores de placa y encendido eléctrico.</p>
               <ul class="service__tags" role="list"><li>No enciende</li><li>Código de error</li><li>Se apaga sola</li><li>Chispero</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20encimera." data-track="servicio_encimera">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=encimera" data-track="servicio_encimera">
                 Agendar servicio<span class="visually-hidden"> de encimera</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -356,7 +365,7 @@
               <h3 class="service__title">Campanas</h3>
               <p class="service__text">Murales, de isla y extractores. Motores, iluminación y limpieza profunda de filtros.</p>
               <ul class="service__tags" role="list"><li>Pierde succión</li><li>Ruido</li><li>Luces</li><li>Grasa acumulada</li></ul>
-              <a class="service__link" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio%20para%20mi%20campana." data-track="servicio_campana">
+              <a class="service__link" href="https://mantenplus.onrender.com/agendar/mantenplus?equipo=campana" data-track="servicio_campana">
                 Agendar servicio<span class="visually-hidden"> de campana</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
               </a>
@@ -692,8 +701,8 @@
         </div>
 
         <div class="story__cta">
-          <a class="btn btn--primary btn--lg" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="proceso_agendar">
-            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          <a class="btn btn--primary btn--lg" href="https://mantenplus.onrender.com/agendar/mantenplus" data-track="proceso_agendar">
+            <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
             Agendar servicio
           </a>
         </div>
@@ -717,8 +726,8 @@
             <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Consejos para ahorrar agua y energía</li>
           </ul>
 
-          <a class="btn btn--primary btn--lg" href="https://wa.me/56935402182?text=Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio." data-track="charlas_agendar">
-            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          <a class="btn btn--primary btn--lg" href="https://mantenplus.onrender.com/agendar/mantenplus" data-track="charlas_agendar">
+            <svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>
             Agendar servicio
           </a>
         </div>

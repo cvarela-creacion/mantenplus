@@ -1,9 +1,11 @@
 """Piezas compartidas de cabecera, botón de WhatsApp y diálogo para index.html y galeria.html.
+«Agendar» abre la agenda en línea; WhatsApp, la llamada y el correo quedan como contacto directo.
 Uso: python3 tools/partes.py  (reescribe los bloques marcados en ambas páginas)."""
 
 WA = 'https://wa.me/56935402182?text='
 TEL = 'tel:+56935402182'  # móvil y WhatsApp Business de MantenPlus
-AGENDAR = WA + 'Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio.'
+WHATSAPP = WA + 'Hola%20MantenPlus%2C%20quiero%20agendar%20un%20servicio.'
+AGENDAR = 'https://mantenplus.onrender.com/agendar/mantenplus'  # formulario de agenda en línea
 
 NAV = [('servicios', 'Servicios'), ('instalacion', 'Instalación'), ('galeria', 'Galería'),
        ('como-trabajamos', 'Cómo trabajamos'), ('empresas', 'Empresas'), ('equipo', 'Equipo'), ('contacto', 'Contacto')]
@@ -61,7 +63,7 @@ def header(base=''):
 def quick_contact(origen):
     """WhatsApp directo, llamada al móvil y correo institucional (sin número fijo)."""
     return f'''        <ul class="quick-contact" role="list" aria-label="Contacto directo">
-          <li><a class="quick-contact__item quick-contact__item--wa" href="{AGENDAR}" data-track="{origen}_whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a></li>
+          <li><a class="quick-contact__item quick-contact__item--wa" href="{WHATSAPP}" data-track="{origen}_whatsapp"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a></li>
           <li><a class="quick-contact__item" href="{TEL}" data-track="{origen}_llamar"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Llamar</a></li>
           <li><a class="quick-contact__item" href="mailto:contacto@mantenplus.cl" data-track="{origen}_correo"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Correo</a></li>
         </ul>'''
@@ -83,7 +85,7 @@ def fab():
       <span class="fab-label" aria-hidden="true">Llámanos</span>
       <span class="call-fab__circle" aria-hidden="true"><svg class="call-fab__icon"><use href="#i-headset"/></svg></span>
     </a>
-    <a class="wa-fab" href="{AGENDAR}" aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
+    <a class="wa-fab" href="{WHATSAPP}" aria-label="Escríbenos por WhatsApp" data-wa-fab data-track="fab_whatsapp">
       <span class="fab-label" aria-hidden="true">Escríbenos</span>
       <span class="wa-fab__circle" aria-hidden="true"><svg class="wa-fab__icon"><use href="#i-whatsapp"/></svg></span>
     </a>
